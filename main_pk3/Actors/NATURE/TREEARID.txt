@@ -1,0 +1,51 @@
+Actor Arid_Tree_1
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TREF A -1
+		Stop
+	}
+}
+
+Actor Arid_Tree_2
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TREF B -1
+		Stop
+	}
+}
+
+Actor Arid_Tree_3
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TREF C -1
+		Stop
+	}
+}
+
+Actor Arid_Tree_4
+{
+Radius 16
+Height 50
++SOLID
+States
+	{
+	Spawn:
+		TREF D -1
+		Stop
+	}
+}

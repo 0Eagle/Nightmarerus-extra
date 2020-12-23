@@ -1,0 +1,155 @@
+Actor Temp_Rock_1
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TRER A -1
+		Stop
+	}
+}
+
+Actor Temp_Rock_2
+{
+Radius 16
+Height 60
++SOLID
+States
+	{
+	Spawn:
+		TRER B -1
+		Stop
+	}
+}
+
+Actor Temp_Rock_3
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TRER C -1
+		Stop
+	}
+}
+
+Actor Temp_Rock_4
+{
+Radius 16
+Height 60
++SOLID
+States
+	{
+	Spawn:
+		TRER D -1
+		Stop
+	}
+}
+
+Actor Temp_Rock_5
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TRER E -1
+		Stop
+	}
+}
+
+Actor Temp_Rock_6
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TRER F -1
+		Stop
+	}
+}
+
+Actor Temp_Rock_7
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TRER G -1
+		Stop
+	}
+}
+
+Actor Temp_Rock_8
+{
+Radius 16
+Height 60
++SOLID
+States
+	{
+	Spawn:
+		TRER H -1
+		Stop
+	}
+}
+
+Actor Temp_Rock_9
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TRER I -1
+		Stop
+	}
+}
+
+Actor Temp_Rock_10
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TRER J -1
+		Stop
+	}
+}
+
+Actor Temp_Rock_11
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TRER K -1
+		Stop
+	}
+}
+
+Actor Temp_Rock_12
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TRER L -1
+		Stop
+	}
+}

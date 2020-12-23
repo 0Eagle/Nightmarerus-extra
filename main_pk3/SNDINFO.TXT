@@ -1,0 +1,42 @@
+Sounds/HealthChamberActivated	HLTCHAMB
+
+ambient2 hum
+$rolloff ambient2 256 1024
+$ambient 2 ambient2 point continuous 20.0 35.0 1.0
+
+//Extra BFG
+weapons/ExtraBFGBall		EXTBFGBL
+weapons/ExtraBFGExplode		EXTBFGEX
+$rolloff weapons/ExtraBFGExplode 1000 2400
+$limit weapons/ExtraBFGExplode 16
+weapons/ExtraBFGFire		EXTBFGFR
+$rolloff weapons/ExtraBFGFire 400 2200
+
+//Turret
+ExtraTurret/See					DSALARM
+ExtraTurret/Act					DSSWSCAN
+ExtraTurret/Fire				DSRIFLE
+
+//Tesla Coil
+Tesla/Attack					DSTESATK
+Tesla/Loop						DSTESLOP
+
+//Sentry Gun
+NMSentry/Active					DSSENTID
+NMSentry/Death					DSSENTDI
+NMSentry/See					DSSENALR
+NMSentry/Attack					DSSENTFI
+$limit NMSentry/Attack 16
+$rolloff NMSentry/Attack 200 2048
+
+//TechBarrel
+TechBarrel/Explode				DSTEKEXP
+
+//TankCreature
+TankCreature/break				DSBGLASS
+
+//LabGlass
+tubes/break						GLASBK
+
+//Medical Backpack
+MedicalBackpack/Use				MEDBPUSE

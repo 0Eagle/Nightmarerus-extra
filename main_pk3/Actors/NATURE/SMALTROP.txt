@@ -1,0 +1,275 @@
+Actor Small_Trop_1
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU A -1
+		Stop
+	}
+}
+
+Actor Small_Trop_2
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU B -1
+		Stop
+	}
+}
+
+Actor Small_Trop_3
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU C -1
+		Stop
+	}
+}
+
+Actor Small_Trop_4
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU D -1
+		Stop
+	}
+}
+
+Actor Small_Trop_5
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU E -1
+		Stop
+	}
+}
+
+Actor Small_Trop_6
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU F -1
+		Stop
+	}
+}
+
+Actor Small_Trop_7
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU G -1
+		Stop
+	}
+}
+
+Actor Small_Trop_8
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU H -1
+		Stop
+	}
+}
+
+Actor Small_Trop_9
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU I -1
+		Stop
+	}
+}
+
+Actor Small_Trop_10
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU J -1
+		Stop
+	}
+}
+
+Actor Small_Trop_11
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU K -1
+		Stop
+	}
+}
+
+Actor Small_Trop_12
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU L -1
+		Stop
+	}
+}
+
+Actor Small_Trop_13
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU M -1
+		Stop
+	}
+}
+
+Actor Small_Trop_14
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU N -1
+		Stop
+	}
+}
+
+Actor Small_Trop_15
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU O -1
+		Stop
+	}
+}
+
+Actor Small_Trop_16
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU P -1
+		Stop
+	}
+}
+
+Actor Small_Trop_17
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU Q -1
+		Stop
+	}
+}
+
+Actor Small_Trop_18
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU R -1
+		Stop
+	}
+}
+
+Actor Small_Trop_19
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU S -1
+		Stop
+	}
+}
+
+Actor Small_Trop_20
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU T -1
+		Stop
+	}
+}
+
+Actor Small_Trop_21
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU U -1
+		Stop
+	}
+}
+
+Actor Small_Trop_22
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU V -1
+		Stop
+	}
+}
+
+Actor Small_Trop_23
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREU W -1
+		Stop
+	}
+}

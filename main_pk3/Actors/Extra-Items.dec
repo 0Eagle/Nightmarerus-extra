@@ -1,0 +1,437 @@
+Actor MarkerItem : Inventory { Inventory.MaxAmount 1 }
+
+//KEY CARDS
+Actor GreenCard : DoomKey 32757
+{
+//$Category Keys
+//$Title "Green Keycard"
++Inventory.Undroppable
+Inventory.Pickupmessage "Picked up a green keycard."
+Inventory.Icon "STKEYS6"
+Tag "Green keycard"
+States
+	{
+	Spawn:
+		GKEY A 0
+	SpawnLoop:
+		GKEY A 10
+		GKEY B 10 Bright
+		Loop
+	}
+}
+
+Actor OrangeCard : DoomKey 32756
+{
+//$Category Keys
+//$Title "Orange Keycard"
++Inventory.Undroppable
+Inventory.Pickupmessage "Picked up an orange keycard."
+Inventory.Icon "STKEYS8"
+Tag "Orange keycard"
+States
+	{
+	Spawn:
+		OKEY A 0
+	SpawnLoop:
+		OKEY A 10
+		OKEY B 10 Bright
+		Loop
+	}
+}
+
+Actor SilverCard : DoomKey 32755
+{
+//$Category Keys
+//$Title "Silver Keycard"
++Inventory.Undroppable
+Inventory.Pickupmessage "Picked up a silver keycard."
+Inventory.Icon "STKEYS10"
+Tag "Silver keycard"
+States
+	{
+	Spawn:
+		SKEY A 0
+	SpawnLoop:
+		SKEY A 10
+		SKEY B 10 Bright
+		Loop
+	}
+}
+
+Actor PinkCard : DoomKey 32754
+{
+//$Category Keys
+//$Title "Pink Keycard"
++Inventory.Undroppable
+Inventory.Pickupmessage "Picked up a pink keycard."
+Inventory.Icon "STKEYS12"
+Tag "Pink keycard"
+States
+	{
+	Spawn:
+		PKEY A 0
+	SpawnLoop:
+		PKEY A 10
+		PKEY B 10 Bright
+		Loop
+	}
+}
+
+Actor BrownCard : DoomKey 32753
+{
+//$Category Keys
+//$Title "Brown Keycard"
++Inventory.Undroppable
+Inventory.Pickupmessage "Picked up a brown keycard."
+Inventory.Icon "STKEYS14"
+Tag "Brown keycard"
+States
+	{
+	Spawn:
+		BRKY A 0
+	SpawnLoop:
+		BRKY A 10
+		BRKY B 10 Bright
+		Loop
+	}
+}
+
+Actor BlackCard : DoomKey 32752
+{
+//$Category Keys
+//$Title "Black Keycard"
++Inventory.Undroppable
+Inventory.Pickupmessage "Picked up a black keycard."
+Inventory.Icon "STKEYS16"
+Tag "Black keycard"
+States
+	{
+	Spawn:
+		BKKY A 0
+	SpawnLoop:
+		BKKY A 10
+		BKKY B 10 Bright
+		Loop
+	}
+}
+
+//SKULL KEYS
+
+Actor GreenSkull : DoomKey 32751
+{
+//$Category Keys
+//$Title "Green Skull Key"
++Inventory.Undroppable
+Inventory.Pickupmessage "Picked up a green skull key."
+Inventory.Icon "STKEYS7"
+Tag "Green skull key"
+States
+	{
+	Spawn:
+		GSKU A 0
+	SpawnLoop:
+		GSKU A 10
+		GSKU B 10 Bright
+		Loop
+	}
+}
+
+Actor OrangeSkull : DoomKey 32750
+{
+//$Category Keys
+//$Title "Orange Skull Key"
++Inventory.Undroppable
+Inventory.Pickupmessage "Picked up an orange skull key."
+Inventory.Icon "STKEYS9"
+Tag "Orange skull key"
+States
+	{
+	Spawn:
+		OSKU A 0
+	SpawnLoop:
+		OSKU A 10
+		OSKU B 10 Bright
+		Loop
+	}
+}
+
+Actor SilverSkull : DoomKey 32749
+{
+//$Category Keys
+//$Title "Silver Skull Key"
++Inventory.Undroppable
+Inventory.Pickupmessage "Picked up a silver skull key."
+Inventory.Icon "STKEYS11"
+Tag "Silver skull key"
+States
+	{
+	Spawn:
+		SSKU A 0
+	SpawnLoop:
+		SSKU A 10
+		SSKU B 10 Bright
+		Loop
+	}
+}
+
+Actor PinkSkull : DoomKey 32748
+{
+//$Category Keys
+//$Title "Pink Skull Key"
++Inventory.Undroppable
+Inventory.Pickupmessage "Picked up a pink skull key."
+Inventory.Icon "STKEYS13"
+Tag "Pink skull key"
+States
+	{
+	Spawn:
+		PSK2 A 0
+	SpawnLoop:
+		PSK2 A 10
+		PSK2 B 10 Bright
+		Loop
+	}
+}
+
+Actor BrownSkull : DoomKey 32747
+{
+//$Category Keys
+//$Title "Brown Skull Key"
++Inventory.Undroppable
+Inventory.Pickupmessage "Picked up a brown skull key."
+Inventory.Icon "STKEYS15"
+Tag "Brown skull key"
+States
+	{
+	Spawn:
+		BRSK A 0
+	SpawnLoop:
+		BRSK A 10
+		BRSK B 10 Bright
+		Loop
+	}
+}
+
+Actor BlackSkull : DoomKey 32746
+{
+//$Category Keys
+//$Title "Black Skull Key"
++Inventory.Undroppable
+Inventory.Pickupmessage "Picked up a black skull key."
+Inventory.Icon "STKEYS17"
+Tag "Black skull key"
+States
+	{
+	Spawn:
+		BKSK A 0
+	SpawnLoop:
+		BKSK A 10
+		BKSK B 10 Bright
+		Loop
+	}
+}
+//==============================================================================
+Actor HealthBackpack : CustomInventory 32741
+{
+//$Category "Health and Armor"
+//$Sprite MBPKA0
+//$Title "Health Backpack"
++INVENTORY.INVBAR
++INVENTORY.UNDROPPABLE
+Inventory.Amount 100
+Inventory.MaxAmount 100
+Inventory.InterHubAmount 100
+Inventory.RespawnTics 4200
+Inventory.PickupMessage "You got a Health Backpack."
+Inventory.Icon "MBPKB0"
+Tag "Health Pack"
+States
+	{
+	Spawn:
+		MBPK A 0
+		MBPK A 1 A_JumpIf(ARGS[0]!=0,"SpawnLoop")
+		TNT1 A 0 A_ChangeFlag("INVENTORY.BIGPOWERUP",1)
+	SpawnLoop:
+		MBPK A -1
+		Stop
+	Use:
+		TNT1 A 0
+		TNT1 A 0 ACS_ExecuteAlways(Extra_MedicalBackpack,0)
+		Fail
+	}
+}
+//==============================================================================
+Actor SentryGun
+{
+Monster
+Health 250
+Radius 20
+Height 56
+Mass 100000
+Speed 0
+MaxTargetRange 2048
+MinMissileChance 80
+-COUNTKILL
++FRIENDLY
++FLOORCLIP
++NOFEAR
++NOBLOOD
++NOPAIN
++DONTDRAIN
++NORADIUSDMG
++NOICEDEATH
++CANTSEEK
++STANDSTILL
++LOOKALLAROUND
++ALWAYSFAST
++QUICKTORETALIATE
++NEVERRESPAWN
++THRUSPECIES
++MTHRUSPECIES
++DONTHARMCLASS
++DONTHARMSPECIES
++NOTAUTOAIMED
+-SOLID
+DamageFactor 0.25
+DamageFactor "BFGSplash", 0.0
+DamageFactor "UpBFGSplash", 0.0
+DamageFactor "DrainLife", 0.0
+DamageFactor "Poison", 0.0
+DamageFactor "PoisonCloud", 0.0
+Attacksound ""
+Obituary "%o was ventilated by an auto-sentry."
+Tag "Auto-sentry Gun"
+var int user_ammo;
+States
+	{
+	Spawn:
+		TNT1 A 0 
+		TNT1 A 0 A_GiveInventory("IsAnSentryGun",1)
+		TNT1 A 0 A_SetUserVar("user_ammo",400)
+		Goto Idle
+	Idle:
+		SENT AAAAAAAAAAAAAAAA 4 A_Look
+		TNT1 A 0 A_PlaySound("NMSentry/Active")
+		Loop
+	See:
+		SENT AAAAAAAAAAAAAAAA 4 A_Chase
+		TNT1 A 0 A_PlaySound("NMSentry/Active")
+		Loop
+	WrongTarget:
+		TNT1 A 0 A_ClearTarget
+		SENT A 2 A_ChangeFlag(FRIENDLY,1)
+		Goto See
+	Missile:
+		TNT1 A 0 A_GiveInventory("NMSentryGunAlarm",1)
+		SENT AAAAAAAA 2 A_FaceTarget(45)
+	Refire:
+		TNT1 A 0 A_CheckFlag("FRIENDLY","WrongTarget",AAPTR_TARGET)
+		TNT1 A 0 A_CheckFlag("INVULNERABLE","WrongTarget",AAPTR_TARGET)
+		TNT1 A 0 A_CheckFlag("NODAMAGE","WrongTarget",AAPTR_TARGET)
+		TNT1 A 0 A_JumpIfInTargetInventory("IsAnSentryGun",1,"WrongTarget")
+		TNT1 A 0 A_SetUserVar("user_ammo",user_ammo-2)
+		TNT1 A 0 A_JumpIf(user_ammo < 1,"Death")
+		TNT1 A 0 A_PlaySound("NMSentry/Attack",CHAN_WEAPON,1.0,false)
+		SENT B 2 Bright A_CustomBulletAttack(1.0,1.0,1,random(1,5)*25,"SentryGunBulletPuff",2048,CBAF_NORANDOM)
+		SENT A 2 A_FaceTarget
+		TNT1 A 0 A_PlaySound("NMSentry/Attack",CHAN_WEAPON,1.0,false)
+		SENT B 2 Bright A_CustomBulletAttack(1.0,1.0,1,random(1,5)*15,"SentryGunBulletPuff",2048,CBAF_NORANDOM)
+		SENT A 2 A_FaceTarget
+		TNT1 A 0 A_MonsterRefire(0,"See")
+		Loop
+	Death:
+		SENT C 1 A_PlaySound("NMSentry/Death",5)
+		TNT1 A 0 A_PlaySound("weapons/rocklx",6)
+		TNT1 A 0 A_SpawnItem("SentryBoom",0,48)
+		SENT C 525
+		"####" "###########" 2 A_FadeOut(0.1,1)
+		Stop
+	}
+}
+
+Actor NMSentryGunAlarm : CustomInventory
+{
+-COUNTITEM
++NOTIMEFREEZE
++INVENTORY.QUIET
++INVENTORY.UNDROPPABLE
++INVENTORY.ALWAYSPICKUP
++INVENTORY.AUTOACTIVATE
+-INVENTORY.INVBAR
+Inventory.Amount 1
+Inventory.MaxAmount 0
+States
+	{
+	Pickup:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("NMSoundAlarmCooldown",1,"Nop")
+		TNT1 A 0 A_GiveInventory("NMSoundAlarmCooldown",1)
+	Alarm:
+		TNT1 A 0 A_PlaySound("NMSentry/See",5)
+		Stop
+	Nop:
+		TNT1 A 0
+		Stop
+	}
+}
+
+Actor NMSoundAlarmCooldown : PowerDamage
+{
+DamageFactor "nothing", 1.0
+Powerup.duration -5
+}
+
+Actor IsAnSentryGun : Inventory { Inventory.MaxAmount 1 }
+
+Actor SentryGunBulletPuff : BulletPuff
+{
++MTHRUSPECIES
++PUFFGETSOWNER
+DamageType "Bullet"
+}
+
+Actor SentryBoom
+{
+Radius 2
+Height 2
+RenderStyle Add
++DONTBLAST
++NOTELEPORT
++NOINTERACTION
++CLIENTSIDEONLY
++NONETID
+States
+	{
+	Spawn:
+		TNT1 A 0
+		XPL1 ABCDEF 3 Bright
+		Stop
+	}
+}
+
+Actor SentryBox : CustomInventory 32765
+{
+//$Category Ammunition
+//$Sprite SENBA0
+//$Title "Sentry Gun Box"
++COUNTITEM
++INVENTORY.INVBAR
+Inventory.MaxAmount 1
+Inventory.RespawnTics 4200
+Inventory.Icon "SENBB0"
+Inventory.PickupMessage "You picked up a sentry gun!"
+Tag "Sentry Gun Box"
+States
+	{
+	Spawn:
+		SENB A 0
+	SpawnLoop:
+		SENB A -1
+		Stop
+	Use:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("IsAnSentryGun",1)
+		TNT1 A 0 A_SpawnItemEx("SentryGun",56,0,10,0,0,0,0,SXF_SETMASTER,0)
+		Stop
+	}
+}

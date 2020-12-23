@@ -1,0 +1,197 @@
+Actor ExtraCeilingTurret 32767
+{
+//$Category Monsters/Nightmarerus
+//$Sprite TURTA1
+//$Title "Ceiling Turret"
+Monster
+Health 125
+Height 12
+Radius 20
+Mass 10000000
+Speed 0
+PainChance 0
+MinMissileChance 100
+MaxTargetRange 2048
+-SOLID
+-CANPASS
++AMBUSH
++SPAWNCEILING
++CEILINGHUGGER
++NOGRAVITY
++NOBLOOD
++DONTDRAIN
++NOSPLASHALERT
++SEEINVISIBLE
++ALWAYSFAST
++QUICKTORETALIATE
++DONTFALL
++DONTBLAST
++NOTARGET
++NOFEAR
++CANTSEEK
++NOICEDEATH
++NORADIUSDMG
+-COUNTKILL
++RANDOMIZE
++DONTHARMSPECIES
++DONTHARMCLASS
+Species "SS"
+DamageType "SS"
+RadiusDamageFactor 0.25
+DamageFactor "DrainLife", 0.0
+DamageFactor "Poison", 0.0
+DamageFactor "PoisonCloud", 0.0
+SeeSound "ExtraTurret/See"
+ActiveSound "ExtraTurret/Act"
+DeathSound "weapons/rocklx"
+Obituary "%o was shoted by a Ceiling Turret."
+Tag "Ceiling Turret"
+States
+	{
+	Spawn:
+		TURT A 10
+		Goto Idle
+	Idle:
+		TURT A 5 A_Look
+		Loop
+	See:
+		TURT A 2 A_Chase
+		Loop
+	Missile:
+	Pain:
+		TNT1 A 0 A_ChangeFlag(FRIENDLY,0)
+		TNT1 A 0 A_PlaySound("ExtraTurret/Fire",CHAN_WEAPON)
+		TNT1 A 0 A_FaceTarget
+		TURT B 4 Bright A_CustomBulletAttack(8,0,1,random(1,5)*3,"ExtraCeilingTurretBulletPuff",2048,CBAF_NORANDOM)
+		TURT D 3 Bright A_SentinelRefire
+		TURT A 4 A_SentinelRefire
+		Loop
+	Death:
+		BALL A 6 Bright A_Scream
+		BALL BCDE 6 Bright
+		TURT C -1
+		Stop
+	}
+}
+
+Actor ExtraCeilingTurretBulletPuff : BulletPuff
+{
++MTHRUSPECIES
++PUFFGETSOWNER
+DamageType "Bullet"
+}
+//==============================================================================
+Actor TeslaCoil 32766
+{
+//$Category Monsters/Nightmarerus
+//$Sprite TESLA0
+//$Title "Tesla Coil"
+Monster
+Health 250
+Height 56
+Radius 16
+Mass 10000
+Speed 0
+MaxTargetRange 512
+-COUNTKILL
++FLOORCLIP
++NOBLOOD
++CANTSEEK
++DONTDRAIN
++NOICEDEATH
++NORADIUSDMG
++SEEINVISIBLE
++LOOKALLAROUND
++DONTHARMSPECIES
++DONTHARMCLASS
+Species "SS"
+RadiusDamageFactor 0.25
+DamageFactor "DrainLife", 0.0
+DamageFactor "Poison", 0.0
+DamageFactor "PoisonCloud", 0.0
+Obituary "%o was zapped by a tesla coil."
+Tag "Tesla Coil"
+States
+	{
+	Spawn:
+		TESL A 5
+		Goto Idle
+	Idle:
+		TESL A 5 A_Look
+		TNT1 A 0 A_PlaySoundEx("Tesla/Loop","SoundSlot5",1)
+		Loop
+	See:
+		TESL A 1 A_Chase
+		TNT1 A 0 A_PlaySoundEx("Tesla/Loop","SoundSlot5",1)
+		Loop
+	Missile:
+		TESL A 9 A_FaceTarget
+		TESL A 1 Bright
+		TNT1 A 0 A_PlaySound("Tesla/Attack",CHAN_WEAPON,1.0,false)
+		TNT1 A 0 A_SpawnItemEx("TeslaZapper",0,0,60,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TESL A 1 Bright
+		TESL A 59
+		Goto See
+	Death:
+		TNT1 AAA 0 Bright A_StopSoundEx("SoundSlot5")
+		TESL A 1 Bright A_SpawnItemEx("Boom",0,0,60,0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_PlaySound("weapons/rocklx")
+		TESL B -1
+		Stop
+	}
+}
+
+Actor TeslaZapper
+{
+Height 2
+Radius 2
+RenderStyle None
++DONTBLAST
++NOTELEPORT
++NOINTERACTION
++DONTHARMSPECIES
++DONTHARMCLASS
+Species "SS"
+Obituary "%o was zapped by a tesla coil."
+States
+	{
+	Spawn:
+		TNT1 A 1 Nodelay A_FaceTarget
+	Missile:
+		TNT1 AAAAA 0 A_CustomRailgun(2,0,None,"lightblue",RGF_SILENT|RGF_FULLBRIGHT,0,1000,"TeslaZapperPuff")
+		TNT1 AAAAA 0 A_CustomRailgun(2,0,None,"white",RGF_SILENT|RGF_FULLBRIGHT,0,1000,"TeslaZapperPuff")
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor TeslaZapperPuff : BulletPuff
+{
++MTHRUSPECIES
++PUFFGETSOWNER
++DONTHARMSPECIES
+Species "SS"
+DamageType "Electric"
+}
+
+Actor Boom
+{
+Projectile
+Height 8
+Radius 11
+Speed 0
+RenderStyle Add
+Damage (0)
++NOINTERACTION
++CLIENTSIDEONLY
++NONETID
+States
+	{
+	Spawn:
+		TNT1 A 0
+		MISL B 8 Bright
+		MISL C 6 Bright
+		MISL D 4 Bright
+		Stop
+	}
+}

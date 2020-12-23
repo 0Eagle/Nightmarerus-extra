@@ -1,0 +1,707 @@
+Actor Small_Nat_1
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES A -1
+		Stop
+	}
+}
+
+Actor Small_Nat_2
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES B -1
+		Stop
+	}
+}
+
+Actor Small_Nat_3
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES C -1
+		Stop
+	}
+}
+
+Actor Small_Nat_4
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES D -1
+		Stop
+	}
+}
+
+Actor Small_Nat_5
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES E -1
+		Stop
+	}
+}
+
+Actor Small_Nat_6
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES F -1
+		Stop
+	}
+}
+
+Actor Small_Nat_7
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES G -1
+		Stop
+	}
+}
+
+Actor Small_Nat_8
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES H -1
+		Stop
+	}
+}
+
+Actor Small_Nat_9
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES I -1
+		Stop
+	}
+}
+
+Actor Small_Nat_10
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES J -1
+		Stop
+	}
+}
+
+Actor Small_Nat_11
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES K -1
+		Stop
+	}
+}
+
+Actor Small_Nat_12
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES L -1
+		Stop
+	}
+}
+
+Actor Small_Nat_13
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES M -1
+		Stop
+	}
+}
+
+Actor Small_Nat_14
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES N -1
+		Stop
+	}
+}
+
+Actor Small_Nat_15
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES O -1
+		Stop
+	}
+}
+
+Actor Small_Nat_16
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES P -1
+		Stop
+	}
+}
+
+Actor Small_Nat_17
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES Q -1
+		Stop
+	}
+}
+
+Actor Small_Nat_18
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES R -1
+		Stop
+	}
+}
+
+Actor Small_Nat_19
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES S -1
+		Stop
+	}
+}
+
+Actor Small_Nat_20
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES T -1
+		Stop
+	}
+}
+
+Actor Small_Nat_21
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES U -1
+		Stop
+	}
+}
+
+Actor Small_Nat_22
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES V -1
+		Stop
+	}
+}
+
+Actor Small_Nat_23
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES W -1
+		Stop
+	}
+}
+
+Actor Small_Nat_24
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES X -1
+		Stop
+	}
+}
+
+Actor Small_Nat_25
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES Y -1
+		Stop
+	}
+}
+
+Actor Small_Nat_26
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TRES Z -1
+		Stop
+	}
+}
+
+Actor Small_Nat_27
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ A -1
+		Stop
+	}
+}
+
+Actor Small_Nat_28
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ B -1
+		Stop
+	}
+}
+
+Actor Small_Nat_29
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ C -1
+		Stop
+	}
+}
+
+Actor Small_Nat_30
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ E -1
+		Stop
+	}
+}
+
+Actor Small_Nat_31
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ F -1
+		Stop
+	}
+}
+
+Actor Small_Nat_32
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ G -1
+		Stop
+	}
+}
+
+Actor Small_Nat_33
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ H -1
+		Stop
+	}
+}
+
+Actor Small_Nat_34
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ I -1
+		Stop
+	}
+}
+
+Actor Small_Nat_35
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ J -1
+		Stop
+	}
+}
+
+Actor Small_Nat_36
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ K -1
+		Stop
+	}
+}
+
+Actor Small_Nat_37
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ L -1
+		Stop
+	}
+}
+
+Actor Small_Nat_38
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ M -1
+		Stop
+	}
+}
+
+Actor Small_Nat_39
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ N -1
+		Stop
+	}
+}
+
+Actor Small_Nat_40
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ O -1
+		Stop
+	}
+}
+
+Actor Small_Nat_41
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ P -1
+		Stop
+	}
+}
+
+Actor Small_Nat_42
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ Q -1
+		Stop
+	}
+}
+
+Actor Small_Nat_43
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ R -1
+		Stop
+	}
+}
+
+Actor Small_Nat_44
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ S -1
+		Stop
+	}
+}
+
+Actor Small_Nat_45
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ T -1
+		Stop
+	}
+}
+
+Actor Small_Nat_46
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ U -1
+		Stop
+	}
+}
+
+Actor Small_Nat_47
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ V -1
+		Stop
+	}
+}
+
+Actor Small_Nat_48
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ W -1
+		Stop
+	}
+}
+
+Actor Small_Nat_49
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ X -1
+		Stop
+	}
+}
+
+Actor Small_Nat_50
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ Y -1
+		Stop
+	}
+}
+
+Actor Small_Nat_51
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREZ Z -1
+		Stop
+	}
+}
+
+Actor Small_Nat_52
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREV A -1
+		Stop
+	}
+}
+
+Actor Small_Nat_53
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREV B -1
+		Stop
+	}
+}
+
+Actor Small_Nat_54
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREV C -1
+		Stop
+	}
+}
+
+Actor Small_Nat_55
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREV D -1
+		Stop
+	}
+}
+
+Actor Small_Nat_56
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREV E -1
+		Stop
+	}
+}
+
+Actor Small_Nat_57
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREV F -1
+		Stop
+	}
+}
+
+Actor Small_Nat_58
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREV G -1
+		Stop
+	}
+}
+
+Actor Small_Nat_59
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREV H -1
+		Stop
+	}
+}

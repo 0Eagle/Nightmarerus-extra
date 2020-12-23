@@ -1,0 +1,116 @@
+Actor Trop_Rock_1
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREC A -1
+		Stop
+	}
+}
+
+Actor Trop_Rock_2
+{
+Radius 16
+Height 60
++SOLID
+States
+	{
+	Spawn:
+		TREC B -1
+		Stop
+	}
+}
+
+Actor Trop_Rock_3
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREC C -1
+		Stop
+	}
+}
+
+Actor Trop_Rock_4
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREC D -1
+		Stop
+	}
+}
+
+Actor Trop_Rock_5
+{
+Radius 16
+Height 60
++SOLID
+States
+	{
+	Spawn:
+		TREC E -1
+		Stop
+	}
+}
+
+Actor Trop_Rock_6
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREC F -1
+		Stop
+	}
+}
+
+Actor Trop_Rock_7
+{
+Radius 16
+Height 60
++SOLID
+States
+	{
+	Spawn:
+		TREC G -1
+		Stop
+	}
+}
+
+Actor Trop_Rock_8
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREC H -1
+		Stop
+	}
+}
+
+Actor Trop_Rock_9
+{
+Radius 16
+Height 60
++SOLID
+States
+	{
+	Spawn:
+		TREC I -1
+		Stop
+	}
+}

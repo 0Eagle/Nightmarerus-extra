@@ -1,0 +1,311 @@
+Actor Trop_Tree_1
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET A -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_2
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET B -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_3
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET C -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_4
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET D -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_5
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET E -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_6
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET F -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_7
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET G -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_8
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET H -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_9
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET I -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_10
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET J -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_11
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET K -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_12
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET L -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_13
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET M -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_14
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET N -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_15
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET O -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_16
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET P -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_17
+{
+Radius 20
+Height 100
++SOLID
+States
+	{
+	Spawn:
+		TRET Q -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_18
+{
+Radius 16
+Height 50
++SOLID
+States
+	{
+	Spawn:
+		TRET R -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_19
+{
+Radius 16
+Height 50
++SOLID
+States
+	{
+	Spawn:
+		TRET S -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_20
+{
+Radius 16
+Height 50
++SOLID
+States
+	{
+	Spawn:
+		TRET T -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_21
+{
+Radius 16
+Height 50
++SOLID
+States
+	{
+	Spawn:
+		TRET U -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_22
+{
+Radius 16
+Height 50
++SOLID
+States
+	{
+	Spawn:
+		TRET V -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_23
+{
+Radius 16
+Height 50
++SOLID
+States
+	{
+	Spawn:
+		TRET W -1
+		Stop
+	}
+}
+
+Actor Trop_Tree_24
+{
+Radius 16
+Height 50
++SOLID
+States
+	{
+	Spawn:
+		TRET X -1
+		Stop
+	}
+}

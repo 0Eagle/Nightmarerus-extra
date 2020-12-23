@@ -1,0 +1,77 @@
+Actor Arid_Rock_1
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREA A -1
+		Stop
+	}
+}
+
+Actor Arid_Rock_2
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREA B -1
+		Stop
+	}
+}
+
+Actor Arid_Rock_3
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREA C -1
+		Stop
+	}
+}
+
+Actor Arid_Rock_4
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREA D -1
+		Stop
+	}
+}
+
+Actor Arid_Rock_5
+{
+Radius 16
+Height 60
++SOLID
+States
+	{
+	Spawn:
+		TREA E -1
+		Stop
+	}
+}
+
+Actor Arid_Rock_6
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREA F -1
+		Stop
+	}
+}

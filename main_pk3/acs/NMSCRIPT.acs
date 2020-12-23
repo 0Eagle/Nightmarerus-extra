@@ -1,0 +1,136 @@
+#library "NMSCRIPT"
+#include "zcommon.acs"
+#define ExtraBFG_Annihilate			2098
+#define Extra_Enter					2099
+#define Extra_Respawn				2100
+#define Extra_CheckActorMonster		2101
+#define Extra_MedicalBackpack		2102
+
+function int GetAndSetUniqueTID(void)
+{
+	int tid = ActivatorTID();
+	if((tid == 0) || (ThingCount(T_NONE,tid) != 1))
+	{
+		tid = UniqueTID(0,0);
+		Thing_ChangeTID(0,tid);
+	}
+	return tid;
+}
+
+function bool ActorIsAlive(int tid)
+{
+	return ((ClassifyActor(tid) & ACTOR_ALIVE) == ACTOR_ALIVE);
+}
+
+script ExtraBFG_Annihilate (void)
+{
+	if((SetActivator(0,AAPTR_TRACER) == 1) && (ClassifyActor(0) & ACTOR_MONSTER) && (ClassifyActor(0) & ACTOR_ALIVE) && (CheckActorClass(0,"LSDHeresiarch") == false) && (CheckActorClass(0,"LegendaryDoomguy") == false) && (CheckActorClass(0,"LegendaryKrieger") == false) && (CheckActorClass(0,"DeathKnight") == false) && (CheckActorClass(0,"Schabbs") == false) && (CheckActorClass(0,"LegendaryRevival") == false) && (CheckActorClass(0,"LegendaryRevival2") == false) && (CheckActorClass(0,"ResurrectorSummoner") == false))
+	{
+		SetActorFlag(0,"INVULNERABLE",false); 
+		SetActorFlag(0,"NODAMAGE",false);
+		//SetActorFlag(0,"BUDDHA",false);
+		Thing_Damage(0,10000000);
+		if(GetActorProperty(0,APROP_HEALTH) > 0)
+		{
+			SetActorProperty(0,APROP_HEALTH,0);
+			Thing_Damage(0,10000000);
+		}
+		if((!(ClassifyActor(0) & ACTOR_PLAYER)) && (ClassifyActor(0) & ACTOR_MONSTER))
+		{
+			int counter = 0;
+			while((counter < 525) && (CheckFlag(0,"SOLID") == true))
+			{
+				counter++;
+				delay(1);
+			}
+			counter = 0;
+			while((counter < 10 ) && (!(ClassifyActor(0) & ACTOR_PLAYER)) && (ClassifyActor(0) & ACTOR_MONSTER))
+			{
+				GiveInventory("ExtraAnnihilateFadeOut",1);
+				counter++;
+				delay(5);
+			}
+			if((!(ClassifyActor(0) & ACTOR_PLAYER)) && (ClassifyActor(0) & ACTOR_MONSTER))
+			{
+				StopSound(0,CHAN_WEAPON);
+				StopSound(0,CHAN_VOICE);
+				StopSound(0,CHAN_ITEM);
+				StopSound(0,CHAN_BODY);
+				StopSound(0,5);
+				StopSound(0,6);
+				StopSound(0,7);
+				SetActorState(0,"Null");
+			}
+		}
+	}
+}
+
+script "Extra_FaceToTarget" (void)
+{
+	int shooterTID = GetAndSetUniqueTID();
+	int shooterX = GetActorX(0);
+	int shooterY = GetActorY(0);
+	int shooterZ = GetActorZ(0)+GetActorViewHeight(0);
+	int pitch;
+	if(SetActivator(0,AAPTR_TARGET) == 1)
+	{
+		int targetX = GetActorX(0);
+		int targetY = GetActorY(0);
+		int targetZ = GetActorZ(0)+GetActorProperty(0,APROP_Height)/2;
+		int vx = targetX-shooterX;
+		int vy = targetY-shooterY;
+		int vz = targetZ-shooterZ;
+		SetActorPitch(shooterTID,VectorAngle(VectorLength(vx,vy),vz));
+		SetActorAngle(shooterTID,VectorAngle(vx,vy));
+	}
+}
+
+script Extra_Enter ENTER
+{
+	//if(!(CheckActorFloorTexture(0, "TANROCK7")))Exit_Normal(0);//ChangeLevel(map01,PlayerNumber(),CHANGELEVEL_RESETINVENTORY|CHANGELEVEL_NOINTERMISSION);
+	SetPlayerProperty(0, ON, PROP_NOTARGET);
+	delay(5*35);
+	SetPlayerProperty(0, OFF, PROP_NOTARGET);
+}
+
+script Extra_Respawn RESPAWN
+{
+	//if(!(CheckActorFloorTexture(0, "TANROCK7")))Exit_Normal(0);//ChangeLevel(map01,PlayerNumber(),CHANGELEVEL_RESETINVENTORY|CHANGELEVEL_NOINTERMISSION);
+	SetPlayerProperty(0, ON, PROP_NOTARGET);
+	delay(5*35);
+	SetPlayerProperty(0, OFF, PROP_NOTARGET);
+}
+
+script Extra_CheckActorMonster (void)
+{
+	if((!(ClassifyActor(0) & ACTOR_PLAYER)) && (ClassifyActor(0) & ACTOR_MONSTER))
+	{
+		SetResultValue(1);//monster
+	}
+	else
+	{
+		SetResultValue(0);
+	}
+}
+
+function bool Extra_CheckMaxHealth (void)
+{
+	if(GetActorProperty(0,APROP_SpawnHealth) < 100)SetActorProperty(0,APROP_SpawnHealth,100);
+	return (GetActorProperty(0,APROP_Health) < GetActorProperty(0,APROP_SpawnHealth));
+}
+
+Script Extra_MedicalBackpack (void)
+{
+	bool use = false;
+	while(ActorIsAlive(0) && Extra_CheckMaxHealth() && (CheckInventory("HealthBackpack") > 0))
+	{
+		if(use == false)
+		{
+			use = true;
+			PlaySound(0,"MedicalBackpack/Use",CHAN_ITEM);
+		}
+		TakeInventory("HealthBackpack", 1);
+		Healthing(1);
+		delay(1);
+	}
+}

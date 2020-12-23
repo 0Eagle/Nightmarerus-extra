@@ -1,0 +1,203 @@
+Actor Small_Snow_1
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX A -1
+		Stop
+	}
+}
+
+Actor Small_Snow_2
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX B -1
+		Stop
+	}
+}
+
+Actor Small_Snow_3
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX C -1
+		Stop
+	}
+}
+
+Actor Small_Snow_4
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX D -1
+		Stop
+	}
+}
+
+Actor Small_Snow_5
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX E -1
+		Stop
+	}
+}
+
+Actor Small_Snow_6
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX F -1
+		Stop
+	}
+}
+
+Actor Small_Snow_7
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX G -1
+		Stop
+	}
+}
+
+Actor Small_Snow_8
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX H -1
+		Stop
+	}
+}
+
+Actor Small_Snow_9
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX I -1
+		Stop
+	}
+}
+
+Actor Small_Snow_10
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX J -1
+		Stop
+	}
+}
+
+Actor Small_Snow_11
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX K -1
+		Stop
+	}
+}
+
+Actor Small_Snow_12
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX L -1
+		Stop
+	}
+}
+
+Actor Small_Snow_13
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX M -1
+		Stop
+	}
+}
+
+Actor Small_Snow_14
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX N -1
+		Stop
+	}
+}
+
+Actor Small_Snow_15
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX O -1
+		Stop
+	}
+}
+
+Actor Small_Snow_16
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX P -1
+		Stop
+	}
+}
+
+Actor Small_Snow_17
+{
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		TREX Q -1
+		Stop
+	}
+}

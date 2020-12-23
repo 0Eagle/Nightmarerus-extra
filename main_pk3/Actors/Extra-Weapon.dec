@@ -1,0 +1,563 @@
+Actor ExtraBFGBall
+{
+Projectile
+Height 8
+Radius 13
+Speed 18
+Scale 0.55
+RenderStyle Translucent
+Alpha 0.85
+Decal "ExtraBFGLightning"
+Damage 200
++FRIENDLY
++DONTREFLECT
++FORCERADIUSDMG
++FORCEXYBILLBOARD
++THRUSPECIES
++MTHRUSPECIES
++DONTHARMSPECIES
+Species "SS"
+Damagetype "SS"
+Obituary "%o had no chance against Extra BFG."
+SeeSound "weapons/ExtraBFGFire"
+DeathSound ""
+States
+	{
+	Spawn:
+		TNT1 A 0
+	Normal:
+		TNT1 A 0 A_Jump(128,"ExtraBFGSFX")
+		TNT1 A 0 A_AlertMonsters(2048)
+		TNT1 A 0 A_PlaySound("weapons/ExtraBFGBall",6,1.0,1)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),frandom(-12,12),random(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 A 1 Bright A_CustomMissile("ExtraBFGProjectileAttack",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		TNT1 A 0 A_CustomMissile("ExtraAnnihilatorSeeker",0,0,angle+frandom(-90,90),CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch+frandom(-90,90))
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),frandom(-12,12),random(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 B 1 Bright A_CustomMissile("ExtraBFGProjectileAttack",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		TNT1 A 0 A_CustomMissile("ExtraAnnihilatorSeeker",0,0,angle+frandom(-90,90),CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch+frandom(-90,90))
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),frandom(-12,12),random(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 C 1 Bright A_CustomMissile("ExtraBFGProjectileAttack",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		TNT1 A 0 A_CustomMissile("ExtraAnnihilatorSeeker",0,0,angle+frandom(-90,90),CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch+frandom(-90,90))
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),frandom(-12,12),random(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 D 1 Bright A_CustomMissile("ExtraBFGProjectileAttack",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		TNT1 A 0 A_CustomMissile("ExtraAnnihilatorSeeker",0,0,angle+frandom(-90,90),CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch+frandom(-90,90))
+		Loop
+	ExtraBFGSFX:
+		TNT1 A 0 A_AlertMonsters(2048)
+		TNT1 A 0 A_PlaySound("weapons/ExtraBFGBall",6,1.0,1)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGLightningGreen",frandom(-6,6),frandom(-6,6),frandom(-6,6),0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),frandom(-12,12),frandom(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 A 1 Bright A_CustomMissile("ExtraBFGProjectileAttack",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		TNT1 A 0 A_CustomMissile("ExtraAnnihilatorSeeker",0,0,angle+frandom(-90,90),CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch+frandom(-90,90))
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGLightningGreen2",frandom(-6,6),frandom(-6,6),random(-6,6),0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),frandom(-12,12),frandom(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 B 1 Bright A_CustomMissile("ExtraBFGProjectileAttack",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		TNT1 A 0 A_CustomMissile("ExtraAnnihilatorSeeker",0,0,angle+frandom(-90,90),CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch+frandom(-90,90))
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGLightningGreen",frandom(-6,6),frandom(-6,6),random(-6,6),0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),frandom(-12,12),frandom(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 C 1 Bright A_CustomMissile("ExtraBFGProjectileAttack",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		TNT1 A 0 A_CustomMissile("ExtraAnnihilatorSeeker",0,0,angle+frandom(-90,90),CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch+frandom(-90,90))
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGLightningGreen2",frandom(-6,6),frandom(-6,6),random(-6,6),0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),frandom(-12,12),frandom(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 D 1 Bright A_CustomMissile("ExtraBFGProjectileAttack",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		TNT1 A 0 A_CustomMissile("ExtraAnnihilatorSeeker",0,0,angle+random(-90,90),CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch+frandom(-90,90))
+		TNT1 A 0 A_Jump(256,"Normal")
+		Loop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_SetTranslucent(0.75,1)
+		TNT1 A 0 Radius_Quake(5,60,0,10,0)
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,0,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,10,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,20,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,30,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,40,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,50,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,60,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,70,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,80,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,90,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,100,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,110,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,120,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,130,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,140,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,150,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,160,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,170,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,180,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,190,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,200,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,210,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,220,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,230,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,240,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,250,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,260,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,270,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,280,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,290,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,300,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,310,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,320,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,330,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,340,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_CustomMissile("ExtraBFGTracer",0,0,350,CMF_AIMDIRECTION|CMF_TRACKOWNER,frandom(-90,90))
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGLightningGreenSpawner",0,0,15,0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 ABCD 6 Bright A_SpawnItemEx("ExtraBFGShockwave3",0,0,15,0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_Explode(480,240,0,0)
+		TNT1 AAA 0 A_StopSound(6)
+		TNT1 A 0 Radius_Quake(15,20,0,20,0)
+		TNT1 A 0 A_PlaySound("weapons/ExtraBFGExplode",7,1.0,0)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGShockwave",0,0,15,0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 20 A_SpawnItemEx("ExtraBFGEx",0,0,0,0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		Stop
+	}
+}
+
+Actor ExtraBFGBall2 : ExtraBFGBall
+{
+-FRIENDLY
+States
+	{
+	Spawn:
+		TNT1 A 0
+	Normal:
+		TNT1 A 0 A_Jump(128,"ExtraBFGSFX")
+		TNT1 A 0 A_AlertMonsters(2048)
+		TNT1 A 0 A_PlaySound("weapons/ExtraBFGBall",6,1.0,1)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),frandom(-12,12),frandom(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 A 1 Bright A_CustomMissile("ExtraBFGProjectileAttack2",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),frandom(-12,12),frandom(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 B 1 Bright A_CustomMissile("ExtraBFGProjectileAttack2",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),frandom(-12,12),frandom(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 C 1 Bright A_CustomMissile("ExtraBFGProjectileAttack2",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),frandom(-12,12),frandom(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 D 1 Bright A_CustomMissile("ExtraBFGProjectileAttack2",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		Loop
+	ExtraBFGSFX:
+		TNT1 A 0 A_AlertMonsters(2048)
+		TNT1 A 0 A_PlaySound("weapons/ExtraBFGBall",6,1.0,1)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGLightningGreen",frandom(-6,6),frandom(-6,6),frandom(-6,6),0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),frandom(-12,12),frandom(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 A 1 Bright A_CustomMissile("ExtraBFGProjectileAttack2",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGLightningGreen2",frandom(-6,6),frandom(-6,6),frandom(-6,6),0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),frandom(-12,12),frandom(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 B 1 Bright A_CustomMissile("ExtraBFGProjectileAttack2",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGLightningGreen",frandom(-6,6),frandom(-6,6),frandom(-6,6),0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),random(-12,12),frandom(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 C 1 Bright A_CustomMissile("ExtraBFGProjectileAttack2",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGLightningGreen2",frandom(-6,6),frandom(-6,6),frandom(-6,6),0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ExtraBFGTrailParticleGreen",frandom(-12,12),frandom(-12,12),frandom(-12,12),frandom(-2,2),frandom(-2,2),frandom(-2,2),frandom(-20.0,20.0),SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		EGS2 D 1 Bright A_CustomMissile("ExtraBFGProjectileAttack2",4,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_TRACKOWNER,pitch)
+		TNT1 A 0 A_Jump(256,"Normal")
+		Loop
+	}
+}
+
+Actor ExtraBFGProjectileAttack
+{
+Projectile
+Height 3
+Radius 3
+Speed 19
+Damage (0)
+RenderStyle None
++FRIENDLY
++NOTARGET
++THRUACTORS
++MTHRUSPECIES
+Species "SS"
+Damagetype "SS"
+Obituary "%o had no chance against Extra BFG."
+States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_RearrangePointers(AAPTR_DEFAULT, AAPTR_TARGET, AAPTR_DEFAULT, PTROP_NOSAFEGUARDS)
+		TNT1 AA 1 A_LookEx(LOF_NOSOUNDCHECK|LOF_NOSEESOUND,0,1250,0,360,"See")
+		Stop
+	See:
+		TNT1 A 0 A_Stop
+		TNT1 A 2 A_JumpIfTargetInLos("Missile",360,JLOSF_CLOSENOJUMP|JLOSF_DEADNOJUMP|JLOSF_TARGETLOS,1250,10)
+		Stop
+	Missile:
+		TNT1 A 0 ACS_NamedExecuteWithResult("Extra_FaceToTarget")
+		TNT1 A 0
+		TNT1 A 0 A_CustomRailgun(0,0,None,"Green",RGF_SILENT|RGF_FULLBRIGHT,0,2,"ExtraBFGRailTargetPuff",0,0,1250)
+		TNT1 A 0
+		TNT1 A 0 A_RearrangePointers(AAPTR_MASTER, AAPTR_DEFAULT, AAPTR_DEFAULT, PTROP_NOSAFEGUARDS)
+		TNT1 A 0
+		TNT1 A 2 A_CustomMissile("ExtraBFGRailgunSlug",1,0,angle,CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH|CMF_CHECKTARGETDEAD|CMF_TRACKOWNER,pitch)
+		Stop
+	}
+}
+
+Actor ExtraBFGProjectileAttack2 : ExtraBFGProjectileAttack { -FRIENDLY }
+
+Actor ExtraBFGRailTargetPuff
+{
++NODECAL
++NOINTERACTION
++BLOODLESSIMPACT
+States
+	{
+	Spawn:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor ExtraBFGRailgunSlug : FastProjectile
+{
+Height 1
+Radius 1
+Speed 1250
+RenderStyle None
+Damage (8*random(1,8))
++NOTIMEFREEZE
++NODECAL
++DONTREFLECT
++NODAMAGETHRUST
++BLOODLESSIMPACT
++THRUSPECIES
++MTHRUSPECIES
+Species "SS"
+Damagetype "SS"
+States
+	{
+	Spawn:
+		TNT1 A 2
+		Stop
+	Death:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor ExtraBFGTracer : FastProjectile
+{
+Projectile
+Height 4
+Radius 16
+Speed 60
+Damage 50
+RenderStyle None
++NODECAL
++THRUSPECIES
++MTHRUSPECIES
+Species "SS"
+DamageType "SS"
+States
+	{
+	Spawn:
+		TNT1 A 15
+		Stop
+	Death:
+		TNT1 A 1
+		Stop
+	XDeath:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("ExtraCustomSpray")
+		Stop
+	}
+}
+
+Actor ExtraCustomSpray
+{
+Height 1
+Radius 1
+Speed 0
+RenderStyle Add
+Damage (0)
++DROPOFF
++NOGRAVITY
++NOBLOCKMAP
++NOTELEPORT
++ACTIVATEPCROSS
++ACTIVATEIMPACT
++EXTREMEDEATH
+States
+	{
+	Spawn:
+		TNT1 A 0
+		BFE2 A 6 Bright A_SpawnItemEx("GreenParticleSpawnerExtra",0,0,0,0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		BFE2 BCD 6 Bright 
+		Stop
+	}
+}
+
+Actor ExtraAnnihilateFadeOut : CustomInventory
+{
+-COUNTITEM
++INVENTORY.QUIET
++INVENTORY.UNDROPPABLE
++INVENTORY.ALWAYSPICKUP
++INVENTORY.AUTOACTIVATE
+Inventory.Amount 1
+Inventory.MaxAmount 0
+States
+	{
+	Pickup:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(Extra_CheckActorMonster) != 1,"Nop")
+		TNT1 A 0 A_FadeOut(0.1,0)
+		Stop
+	Nop:
+		TNT1 A 0
+		Fail
+	}
+}
+
+Actor ExtraAnnihilatorSeeker
+{
+Projectile
+Height 8
+Radius 4
+Speed 19
+Scale 0.06
+RenderStyle Add
+Alpha 0.45
+Reactiontime 105
+Damage (0)
++FRIENDLY
++SEEKERMISSILE
++HITTRACER
++THRUSPECIES
++MTHRUSPECIES
+Species "SS"
+DamageType "SS"
+States
+	{
+	Spawn:
+		TNT1 A 0
+	SpawnLoop:
+		EBS9 A 1 Bright A_SeekerMissile(25,35,SMF_LOOK|SMF_PRECISE,256,1)
+		TNT1 A 0 A_Countdown
+		Loop
+	Death:
+		EBS9 A 5 Bright ACS_ExecuteAlways(ExtraBFG_Annihilate,0)
+		Stop
+	}
+}
+
+Actor ExtraBFGLightningGreenSpawner
+{
+RenderStyle None
++DONTBLAST
++NOTELEPORT
++DONTSPLASH
++NOINTERACTION
++CLIENTSIDEONLY
++NONETID
+States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("ExtraBFGLightningGreen2",frandom(-6,6),frandom(-6,6),frandom(-6,6),0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		Stop
+	}
+}
+
+Actor ExtraBFGLightningGreen2
+{
+Height 3
+Radius 3
+Scale 0.26
+RenderStyle Add
+Alpha 0.5
++DONTBLAST
++NOTELEPORT
++DONTSPLASH
++NOINTERACTION
++CLIENTSIDEONLY
++NONETID
+States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_CheckSight("Nosfx")
+		TNT1 A 0 A_Jump(256,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72)
+		EGL1 ABCDEFGHIJKLMNOPQR 0 Bright A_Jump(256,"Death")
+		EGL2 ABCDEFGHIJKLMNOPQR 0 Bright A_Jump(256,"Death")
+		EGL3 ABCDEFGHIJKLMNOPQR 0 Bright A_Jump(256,"Death")
+		EGL4 ABCDEFGHIJKLMNOPQR 0 Bright A_Jump(256,"Death")
+		Goto Death
+	Death:
+		"####" "#" 1 Bright
+		Stop
+	Nosfx:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor ExtraBFGLightningGreen : ExtraBFGLightningGreen2 { Scale 0.24 }
+
+Actor ExtraBFGShockwave
+{
+Projectile
+Height 1
+Radius 1
+Speed 0
+Scale 2.5
+RenderStyle Translucent
+Alpha 0.85
+Damage (0)
++NOINTERACTION
++FORCEXYBILLBOARD
++CLIENTSIDEONLY
++NONETID
+States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_CheckSight("Nosfx")
+		EBSW ABCDEFGHIJKLMNOPQR 2 Bright A_FadeOut(0.04,1)
+		Stop
+	Nosfx:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor  ExtraBFGShockwave3 : ExtraBFGShockwave 
+{
+States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_CheckSight("Nosfx")
+		EBSW ABCDEFGHIJKLMNOPQR 1 Bright A_FadeOut(0.04,1)
+		Stop
+	}
+}
+
+Actor ExtraBFGEx
+{
+RenderStyle Add
+Alpha 0.85
++DONTBLAST
++NOTELEPORT
++NONSHOOTABLE
++NOINTERACTION
++CLIENTSIDEONLY
++NONETID
+States
+	{
+	Spawn:
+		TNT1 A 0
+		EGE2 AAAAAABBBBBBCCCCCCDDDDDD 1 Bright A_CustomMissile("ExtraKaboom",0,0,frandom(0,360),CMF_AIMDIRECTION,frandom(0,360))
+		EGE2 EF 6 Bright
+		Stop
+	}
+}
+
+Actor ExtraKaboom
+{
+Projectile
+Height 1
+Radius 1
+Speed 6
+Scale 1.15
+RenderStyle Add
+Alpha 0.75
+Damage (0)
++NOTELEPORT
++NOINTERACTION
++FORCEXYBILLBOARD
++CLIENTSIDEONLY
++NONETID
+States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_CheckSight("Nosfx")
+		EBF9 AABBCDEFGHIJKLM 2 Bright A_FadeOut(0.05,1)
+		Stop
+	Nosfx:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor GreenParticleSpawnerExtra
+{
+RenderStyle None
++DONTBLAST
++NOTELEPORT
++NOINTERACTION
++CLIENTSIDEONLY
++NONETID
+States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_CheckSight("Nosfx")
+		TNT1 A 0 A_SpawnItemEx("ExtraEPSG7",0,0,0,frandom(-4,4),frandom(-4,4),frandom(-4,4),0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ExtraEPSG8",0,0,0,frandom(-4,4),frandom(-4,4),frandom(-4,4),0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ExtraEPSG9",0,0,0,frandom(-4,4),frandom(-4,4),frandom(-4,4),0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ExtraEPSG10",0,0,0,frandom(-4,4),frandom(-4,4),frandom(-4,4),0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ExtraEPSG11",0,0,0,frandom(-4,4),frandom(-4,4),frandom(-4,4),0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		TNT1 A 1 A_SpawnItemEx("ExtraEPSG12",0,0,0,frandom(-4,4),frandom(-4,4),frandom(-4,4),0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		Stop
+	Nosfx:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor EnergyProjectileSparkGreenExtra
+{
+Height 2
+Radius 2
+Mass 0
+RenderStyle Add
+Bouncetype Doom
+BounceFactor 0.6
+Gravity 0.2
+Damage (0)
++MISSILE
++DROPOFF
++NOBLOCKMAP
++NOTELEPORT
++DONTSPLASH
++THRUACTORS
++DOOMBOUNCE
++FORCEXYBILLBOARD
++CLIENTSIDEONLY
++NONETID
+States
+	{
+	Spawn:
+		TNT1 A 0
+	SpawnLoop:
+		EBS9 A 2 Bright A_FadeOut(0.08,1)
+		Loop
+	}
+}
+
+Actor ExtraEPSG7 : EnergyProjectileSparkGreenExtra { Scale 0.040 }
+Actor ExtraEPSG8 : EnergyProjectileSparkGreenExtra { Scale 0.035 }
+Actor ExtraEPSG9 : EnergyProjectileSparkGreenExtra { Scale 0.030 }
+Actor ExtraEPSG10 : EnergyProjectileSparkGreenExtra { Scale 0.025 }
+Actor ExtraEPSG11 : EnergyProjectileSparkGreenExtra { Scale 0.020 }
+Actor ExtraEPSG12 : EnergyProjectileSparkGreenExtra { Scale 0.015 }
+
+Actor ExtraBFGTrailParticleGreen : EnergyProjectileSparkGreenExtra
+{
++NOGRAVITY
+Scale 0.06
+States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_CheckSight("Nosfx")
+	SpawnLoop:
+		EBS9 A 2 Bright A_FadeOut(0.015,1)
+		Loop
+	Nosfx:
+		TNT1 A 1
+		Stop
+	}
+}

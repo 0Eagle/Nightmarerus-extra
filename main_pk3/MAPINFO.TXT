@@ -1,0 +1,303 @@
+map MAP01 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP02
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+	NoJump
+	NoCrouch
+}
+
+map MAP02 "On the border of hell"
+{
+	LevelNum = 2
+	Next = MAP31
+	SKY1 = STARSSKY
+	Music = mapmus02
+	ExitPic = INTER2
+	InterMusic = interm01
+	NoJump
+	NoCrouch
+}
+
+map MAP03 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP04 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP05 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP06 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP07 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP08 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP09 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP10 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP11 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP12 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP13 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP14 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP15 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP16 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP17 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP18 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP19 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP20 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP21 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP22 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP23 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP24 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP25 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP26 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP27 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP28 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP29 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}
+
+map MAP30 "BFG Laboratory"
+{
+	LevelNum = 1
+	Next = MAP01
+	SKY1 = STARSSKY
+	Music = mapmus01
+	ExitPic = INTER1
+	InterMusic = interm01
+}

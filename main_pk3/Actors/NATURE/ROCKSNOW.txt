@@ -1,0 +1,116 @@
+Actor Snow_Rock_1
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREB A -1
+		Stop
+	}
+}
+
+Actor Snow_Rock_2
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREB B -1
+		Stop
+	}
+}
+
+Actor Snow_Rock_3
+{
+Radius 16
+Height 60
++SOLID
+States
+	{
+	Spawn:
+		TREB C -1
+		Stop
+	}
+}
+
+Actor Snow_Rock_4
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREB D -1
+		Stop
+	}
+}
+
+Actor Snow_Rock_5
+{
+Radius 16
+Height 60
++SOLID
+States
+	{
+	Spawn:
+		TREB E -1
+		Stop
+	}
+}
+
+Actor Snow_Rock_6
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREB F -1
+		Stop
+	}
+}
+
+Actor Snow_Rock_7
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREB G -1
+		Stop
+	}
+}
+
+Actor Snow_Rock_8
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREB H -1
+		Stop
+	}
+}
+
+Actor Snow_Rock_9
+{
+Radius 16
+Height 40
++SOLID
+States
+	{
+	Spawn:
+		TREB I -1
+		Stop
+	}
+}

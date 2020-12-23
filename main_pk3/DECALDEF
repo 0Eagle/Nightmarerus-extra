@@ -1,0 +1,14 @@
+DECAL ExtraBFGLightning
+{
+Pic EBD8A0
+Add 1.0
+X-Scale 0.25
+Y-Scale 0.25
+FullBright
+RandomFlipx
+RandomFlipy
+Animator GoAway2
+LowerDecal BFGScorch
+}
+
+GENERATOR SentryGun BulletChip
