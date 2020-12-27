@@ -40,3 +40,6 @@ tubes/break						GLASBK
 
 //Medical Backpack
 MedicalBackpack/Use				MEDBPUSE
+
+//Switch
+switches/extraswitch1			EXTRSWC1
