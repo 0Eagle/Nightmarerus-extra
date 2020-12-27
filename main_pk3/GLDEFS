@@ -1,4 +1,4 @@
-#include "OpenGL/ProjectileLights.gl"
-#include "OpenGL/Brightmaps.gl"
-#include "OpenGL/Items.gl"
-#include "OpenGL/SentryGuns.gl"
+#include "OpenGL/ExtraProjectileLights.gl"
+#include "OpenGL/ExtraBrightmaps.gl"
+#include "OpenGL/ExtraItems.gl"
+#include "OpenGL/ExtraSentryGuns.gl"
