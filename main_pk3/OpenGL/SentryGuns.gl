@@ -1,0 +1,78 @@
+Object ExtraCeilingTurret
+{
+Frame TURTB { light ZOMBIEATK }
+Frame TURTD { light ZOMBIEATK }
+}
+
+object ExtraCeilingTurretBulletPuff
+{
+Frame PUFFA { Light SentryGunPuffLight }
+Frame PUFFB { Light SentryGunPuffLight }
+}
+
+flickerlight2 SentryGunAttackLight1
+{
+color 1.0 0.8 0.2
+size 48
+secondarySize 56
+interval 1
+offset 0 40 0
+}
+
+Object SentryGun
+{
+Frame SENTB { light SentryGunAttackLight1 }
+}
+
+FLICKERLIGHT SentryGunPuffLight
+{
+Color 0.8 0.6 0
+OffSet 0 0 0
+Size 6
+SecondarySize 8
+Chance 0.3
+}
+
+object SentryGunBulletPuff
+{
+Frame PUFFA { Light SentryGunPuffLight }
+Frame PUFFB { Light SentryGunPuffLight }
+}
+
+pointlight SentryGunBoom1
+{
+color 1.0 0.7 0.0
+size 56
+}
+
+flickerlight SentryGunBoom2
+{
+color 1.0 0.7 0.0
+size 64
+secondarySize 72
+chance 0.3
+}
+
+flickerlight SentryGunBoom3
+{
+color 0.5 0.1 0.0
+size 80
+secondarySize 88
+chance 0.3
+}
+
+flickerlight SentryGunBoom4
+{
+color 0.3 0.0 0.0
+size 96
+secondarySize 104
+chance 0.3
+}
+
+object SentryBoom
+{
+Frame XPL1A { light SentryGunBoom1 }
+Frame XPL1B { light SentryGunBoom2 }
+Frame XPL1C { light SentryGunBoom3 }
+Frame XPL1D { light SentryGunBoom4 }
+}

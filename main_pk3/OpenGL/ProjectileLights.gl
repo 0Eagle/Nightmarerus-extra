@@ -1,0 +1,69 @@
+FLICKERLIGHT ExtraBall1
+{
+Color 0 0.8 0
+Size 46
+SecondarySize 62
+Chance 0.2
+}
+
+POINTLIGHT ExtraBallExplode1
+{
+Color 0 0.8 0
+OffSet 0 0 0
+Size 72
+}
+
+POINTLIGHT ExtraBallExplode2
+{
+Color 0 0.8 0
+OffSet 0 0 0
+Size 80
+}
+
+POINTLIGHT ExtraBallExplode3
+{
+Color 0 0.8 0
+OffSet 0 0 0
+Size 90
+}
+
+POINTLIGHT ExtraBallExplode4
+{
+Color 0 0.8 0
+OffSet 0 0 0
+Size 70
+}
+
+POINTLIGHT ExtraBallExplode5
+{
+Color 0 0.8 0
+OffSet 0 0 0
+Size 54
+}
+
+POINTLIGHT ExtraBallExplode6
+{
+Color 0 0.8 0
+OffSet 0 0 0
+Size 32
+}
+
+OBJECT ExtraBFGBall
+{
+Frame CGS1 { Light ExtraBall1 }
+}
+
+OBJECT ExtraBFGBall2
+{
+Frame CGS1 { Light ExtraBall1 }
+}
+
+OBJECT ExtraBFGEx
+{
+Frame EGE2A { Light ExtraBallExplode1 }
+Frame EGE2B { Light ExtraBallExplode2 }
+Frame EGE2C { Light ExtraBallExplode3 }
+Frame EGE2D { Light ExtraBallExplode4 }
+Frame EGE2E { Light ExtraBallExplode5 }
+Frame EGE2F { Light ExtraBallExplode6 }
+}
