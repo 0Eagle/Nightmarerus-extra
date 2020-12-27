@@ -1,0 +1,12 @@
+//Brightmaps
+brightmap texture DOORBRN { map "Brightmaps/BMTEKLOK.png" }
+brightmap texture DOORBLK { map "Brightmaps/BMTEKLOK.png" }
+brightmap texture DOORGRN { map "Brightmaps/BMTEKLOK.png" }
+brightmap texture DOORORG { map "Brightmaps/BMTEKLOK.png" }
+brightmap texture DOORPNK { map "Brightmaps/BMTEKLOK.png" }
+brightmap texture DOORSLV {	map "Brightmaps/BMTEKLOK.png" }
+brightmap texture DOORWHT { map "Brightmaps/BMTEKLOK.png" }
+
+//Switch
+brightmap texture EWAL001A { map "Brightmaps/BMEWAL001A.png" }
+brightmap texture EWAL002B { map "Brightmaps/BMEWAL002B.png" }
