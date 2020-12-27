@@ -1,0 +1,115 @@
+//GREEN KEYS
+pulselight GREENKEY
+{
+color 0.0 1.0 0.0
+size 16
+secondarySize 18
+interval 2.0
+}
+
+Object GreenCard
+{
+Frame GKEY { light GREENKEY }
+}
+
+Object GreenSkull
+{
+Frame GSKU { light GREENKEY }
+}
+
+//ORANGE KEYS
+pulselight ORANGEKEY
+{
+color 1.0 0.5 0.0
+size 16
+secondarySize 18
+interval 2.0
+}
+
+Object OrangeCard
+{
+Frame OKEY { light ORANGEKEY }
+}
+
+Object OrangeSkull
+{
+Frame OSKU { light ORANGEKEY }
+}
+
+//SILVER KEYS
+pulselight SILVERKEY
+{
+color 1.0 1.0 1.0 
+size 16
+secondarySize 18
+interval 2.0
+}
+
+Object SilverCard
+{
+Frame SKEY { light SILVERKEY }
+}
+
+Object SilverSkull
+{
+Frame SSKU { light SILVERKEY }
+}
+
+//PINK KEYS
+pulselight PINKKEY
+{
+color 1.0 0.0 0.5
+size 16
+secondarySize 18
+interval 2.0
+}
+
+Object PinkCard
+{
+Frame PKEY { light PINKKEY }
+}
+
+Object PinkSkull
+{
+Frame PSK2 { light PINKKEY }
+}
+
+//BROWN KEYS
+pulselight BROWNKEY
+{
+color 0.6 0.3 0.0
+size 16
+secondarySize 18
+interval 2.0
+}
+
+Object BrownCard
+{
+Frame BRKY { light BROWNKEY }
+}
+
+Object BrownSkull
+{
+Frame BRSK { light BROWNKEY }
+}
+
+//BLACK KEYS
+pulselight BLACKKEY
+{
+color 1.0 1.0 1.0
+size 16
+secondarySize 18
+interval 2.0
+Subtractive 1
+dontlightself 1
+}
+
+Object BlackCard
+{
+Frame BKKY { light BLACKKEY }
+}
+
+Object BlackSkull
+{
+Frame BKSK { light BLACKKEY }
+}
