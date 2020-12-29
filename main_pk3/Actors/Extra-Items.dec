@@ -249,8 +249,7 @@ States
 	{
 	Spawn:
 		MBPK A 0
-		MBPK A 1 A_JumpIf(ARGS[0]!=0,"SpawnLoop")
-		TNT1 A 0 A_ChangeFlag("INVENTORY.BIGPOWERUP",1)
+		TNT1 A 0 A_JumpIf(ARGS[0]==0,"Norespawn")
 	SpawnLoop:
 		MBPK A -1
 		Stop
@@ -258,6 +257,9 @@ States
 		TNT1 A 0
 		TNT1 A 0 ACS_ExecuteAlways(Extra_MedicalBackpack,0)
 		Fail
+	Norespawn:
+		TNT1 A 0 A_ChangeFlag("INVENTORY.BIGPOWERUP",1)
+		Goto SpawnLoop
 	}
 }
 //==============================================================================

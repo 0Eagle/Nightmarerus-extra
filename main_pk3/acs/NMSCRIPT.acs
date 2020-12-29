@@ -22,6 +22,12 @@ function bool ActorIsAlive(int tid)
 	return ((ClassifyActor(tid) & ACTOR_ALIVE) == ACTOR_ALIVE);
 }
 
+function bool Extra_CheckMaxHealth (void)
+{
+	if(GetActorProperty(0,APROP_SpawnHealth) < 100)SetActorProperty(0,APROP_SpawnHealth,100);
+	return (GetActorProperty(0,APROP_Health) < GetActorProperty(0,APROP_SpawnHealth));
+}
+
 script ExtraBFG_Annihilate (void)
 {
 	if((SetActivator(0,AAPTR_TRACER) == 1) && (ClassifyActor(0) & ACTOR_MONSTER) && (ClassifyActor(0) & ACTOR_ALIVE) && (CheckActorClass(0,"LSDHeresiarch") == false) && (CheckActorClass(0,"LegendaryDoomguy") == false) && (CheckActorClass(0,"LegendaryKrieger") == false) && (CheckActorClass(0,"DeathKnight") == false) && (CheckActorClass(0,"Schabbs") == false) && (CheckActorClass(0,"LegendaryRevival") == false) && (CheckActorClass(0,"LegendaryRevival2") == false) && (CheckActorClass(0,"ResurrectorSummoner") == false))
@@ -70,13 +76,12 @@ script "Extra_FaceToTarget" (void)
 	int shooterTID = GetAndSetUniqueTID();
 	int shooterX = GetActorX(0);
 	int shooterY = GetActorY(0);
-	int shooterZ = GetActorZ(0)+GetActorViewHeight(0);
-	int pitch;
+	int shooterZ = GetActorZ(0)+(GetActorProperty(0,APROP_Height)/2);
 	if(SetActivator(0,AAPTR_TARGET) == 1)
 	{
 		int targetX = GetActorX(0);
 		int targetY = GetActorY(0);
-		int targetZ = GetActorZ(0)+GetActorProperty(0,APROP_Height)/2;
+		int targetZ = GetActorZ(0)+(GetActorProperty(0,APROP_Height)/2);
 		int vx = targetX-shooterX;
 		int vy = targetY-shooterY;
 		int vz = targetZ-shooterZ;
@@ -111,12 +116,6 @@ script Extra_CheckActorMonster (void)
 	{
 		SetResultValue(0);
 	}
-}
-
-function bool Extra_CheckMaxHealth (void)
-{
-	if(GetActorProperty(0,APROP_SpawnHealth) < 100)SetActorProperty(0,APROP_SpawnHealth,100);
-	return (GetActorProperty(0,APROP_Health) < GetActorProperty(0,APROP_SpawnHealth));
 }
 
 Script Extra_MedicalBackpack (void)
