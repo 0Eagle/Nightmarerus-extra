@@ -526,6 +526,7 @@ Health 50
 RenderStyle None
 +DONTBLAST
 +NOTELEPORT
++NOTONAUTOMAP
 +NOINTERACTION
 +CLIENTSIDEONLY
 +NONETID
@@ -543,6 +544,9 @@ States
 
 Actor TankCreature : TankCreatureBase 32764
 {
+//$Category Obstacles/Nightmarerus
+//$Sprite CIATA0
+//$Title "Tank Creature"
 Health 1000
 +SHOOTABLE
 States
@@ -557,12 +561,15 @@ States
 
 Actor TankNotCreature : TankCreatureBase 32763
 {
+//$Category Obstacles/Nightmarerus
+//$Sprite CIATF0
+//$Title "Empty Tank Creature"
 Health 1000
 +SHOOTABLE
 States
 	{
 	Spawn:
-		CIAT A 0
+		CIAT F 0
 	SpawnLoop:
 		CIAT F -1
 		Stop
@@ -571,6 +578,9 @@ States
 
 Actor TankBroken : TankCreatureBase 32762
 {
+//$Category Obstacles/Nightmarerus
+//$Sprite CIATG0
+//$Title "Broken Tank Creature"
 -SOLID
 States
 	{
