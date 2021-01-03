@@ -4,6 +4,7 @@ Actor LSDMusicChanger 30352
 Height 3
 Radius 3
 RenderStyle None
++NOTONAUTOMAP
 +NOINTERACTION
 Tag "Music Changer"
 States
@@ -39,7 +40,7 @@ States
 		TNT1 A 0 A_SetUserVar("user_x",0)
 		TNT1 A 0 A_SetUserVar("user_y",0)
 	Line:
-		TNT1 A 10 A_SpawnItemEx("Zombieman",user_x,user_y,0,0,0,0,0,SXF_SETMASTER|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("LSD_GetTID"))
+		TNT1 A 10 A_SpawnItemEx("Zombieman",user_x,user_y,0,0,0,0,0,SXF_SETMASTER|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
 		TNT1 A 0 A_SetUserVar("user_x",user_x+40+1)
 		TNT1 A 0 A_JumpIf(user_x > 410,"Column")
 		Loop
@@ -83,7 +84,7 @@ States
 		TNT1 A 0 A_SetUserVar("user_x",0)
 		TNT1 A 0 A_SetUserVar("user_y",0)
 	Line:
-		TNT1 A 10 A_SpawnItemEx("ShotgunGuy",user_x,user_y,0,0,0,0,0,SXF_SETMASTER|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("LSD_GetTID"))
+		TNT1 A 10 A_SpawnItemEx("ShotgunGuy",user_x,user_y,0,0,0,0,0,SXF_SETMASTER|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
 		TNT1 A 0 A_SetUserVar("user_x",user_x+40+1)
 		TNT1 A 0 A_JumpIf(user_x > 410,"Column")
 		Loop
@@ -127,7 +128,7 @@ States
 		TNT1 A 0 A_SetUserVar("user_x",0)
 		TNT1 A 0 A_SetUserVar("user_y",0)
 	Line:
-		TNT1 A 10 A_SpawnItemEx("ChaingunGuy",user_x,user_y,0,0,0,0,0,SXF_SETMASTER|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("LSD_GetTID"))
+		TNT1 A 10 A_SpawnItemEx("ChaingunGuy",user_x,user_y,0,0,0,0,0,SXF_SETMASTER|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
 		TNT1 A 0 A_SetUserVar("user_x",user_x+40+1)
 		TNT1 A 0 A_JumpIf(user_x > 410,"Column")
 		Loop
