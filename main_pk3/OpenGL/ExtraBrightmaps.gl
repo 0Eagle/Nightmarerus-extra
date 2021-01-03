@@ -10,3 +10,27 @@ brightmap texture DOORWHT { map "Brightmaps/BMTEKLOK.png" }
 //Switch
 brightmap texture EWAL001A { map "Brightmaps/BMEWAL001A.png" }
 brightmap texture EWAL002B { map "Brightmaps/BMEWAL002B.png" }
+
+brightmap texture NLTBLUE1 { map "Brightmaps/BMNLTBLUE1.png" }
+brightmap texture NLTBLUE2 { map "Brightmaps/BMNLTBLUE2.png" }
+brightmap texture NLTBLUE3 { map "Brightmaps/BMNLTBLUE3.png" }
+brightmap texture NLTBLUE4 { map "Brightmaps/BMNLTBLUE4.png" }
+brightmap texture NLTGREN1 { map "Brightmaps/BMNLTGREN1.png" }
+brightmap texture NLTGREN2 { map "Brightmaps/BMNLTGREN2.png" }
+brightmap texture NLTGREN3 { map "Brightmaps/BMNLTGREN3.png" }
+brightmap texture NLTGREN4 { map "Brightmaps/BMNLTGREN4.png" }
+brightmap texture NLTGREY1 { map "Brightmaps/BMNLTGREY1.png" }
+brightmap texture NLTGREY2 { map "Brightmaps/BMNLTGREY2.png" }
+brightmap texture NLTGREY3 { map "Brightmaps/BMNLTGREY3.png" }
+brightmap texture NLTGREY4 { map "Brightmaps/BMNLTGREY4.png" }
+brightmap texture NLTORNG2 { map "Brightmaps/BMNLTORNG2.png" }
+brightmap texture NLTORNG3 { map "Brightmaps/BMNLTORNG3.png" }
+brightmap texture NLTORNG4 { map "Brightmaps/BMNLTORNG4.png" }
+brightmap texture NLTRED1 { map "Brightmaps/BMNLTRED1.png" }
+brightmap texture NLTRED2 { map "Brightmaps/BMNLTRED2.png" }
+brightmap texture NLTRED3 { map "Brightmaps/BMNLTRED3.png" }
+brightmap texture NLTRED4 { map "Brightmaps/BMNLTRED4.png" }
+brightmap texture NLTYEL1 { map "Brightmaps/BMNLTYEL1.png" }
+brightmap texture NLTYEL2 { map "Brightmaps/BMNLTYEL2.png" }
+brightmap texture NLTYEL3 { map "Brightmaps/BMNLTYEL3.png" }
+brightmap texture NLTYEL4 { map "Brightmaps/BMNLTYEL4.png" }
