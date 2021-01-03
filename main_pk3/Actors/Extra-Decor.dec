@@ -500,11 +500,11 @@ Mass 1000000
 +CANTSEEK
 +DONTBLAST
 +DONTDRAIN
++DONTMORPH
 +NOTAUTOAIMED
 DamageFactor "DrainLife", 0.0
 DamageFactor "Poison", 0.0
 DamageFactor "PoisonCloud", 0.0
-Tag "Experimental Specimen"
 Deathsound "TankCreature/break"
 States
 	{
@@ -549,6 +549,7 @@ Actor TankCreature : TankCreatureBase 32764
 //$Title "Tank Creature"
 Health 1000
 +SHOOTABLE
+Tag "Experimental Specimen"
 States
 	{
 	Spawn:
@@ -566,6 +567,7 @@ Actor TankNotCreature : TankCreatureBase 32763
 //$Title "Empty Tank Creature"
 Health 1000
 +SHOOTABLE
+Tag "Empty Tank Creature"
 States
 	{
 	Spawn:
@@ -582,6 +584,7 @@ Actor TankBroken : TankCreatureBase 32762
 //$Sprite CIATG0
 //$Title "Broken Tank Creature"
 -SOLID
+Tag "Broken Tank Creature"
 States
 	{
 	Spawn:
@@ -676,18 +679,15 @@ States
 	}
 }
 //==============================================================================
-Actor flaskblueA
+Actor NMflaskBase
 {
-mass 1500
-Health 1
-Height 17
-Radius 7
 RenderStyle Translucent
 +SOLID
 +SHOOTABLE
 +NOBLOOD
 +DONTGIB
 +DONTDRAIN
++DONTMORPH
 +NOICEDEATH
 +ACTIVATEMCROSS
 DamageFactor "DrainLife", 0.0
@@ -695,6 +695,20 @@ DamageFactor "Poison", 0.0
 DamageFactor "PoisonCloud", 0.0
 DeathSound "tubes/break"
 Tag "Laboratory Glassware"
+States
+	{
+	Spawn:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor flaskblueA : NMflaskBase
+{
+mass 1500
+Health 1
+Height 17
+Radius 7
 States
 	{
 	Spawn:
@@ -711,25 +725,12 @@ States
 	}
 }
 
-Actor flaskblueB
+Actor flaskblueB : NMflaskBase
 {
 mass 1500
 Health 1
 Height 17
 Radius 6
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -746,25 +747,12 @@ States
 	}
 }
 
-Actor flaskpurpleA
+Actor flaskpurpleA : NMflaskBase
 {
 mass 1500
 Health 1
 Height 17
 Radius 7
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -781,25 +769,12 @@ States
 	}
 }
 
-Actor flaskpurpleB
+Actor flaskpurpleB : NMflaskBase
 {
 mass 1500
 Health 1
 Height 17
 Radius 6
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -816,25 +791,12 @@ States
 	}
 }
 
-Actor flaskredA
+Actor flaskredA : NMflaskBase
 {
 mass 1500
 Health 1
 Height 17
 Radius 7
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -851,25 +813,12 @@ States
 	}
 }
 
-Actor flaskredB
+Actor flaskredB : NMflaskBase
 {
 mass 1500
 Health 1
 Height 17
 Radius 6
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -886,25 +835,12 @@ States
 	}
 }
 
-Actor flaskgreenA
+Actor flaskgreenA : NMflaskBase
 {
 mass 1500
 Health 1
 Height 17
 Radius 7
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -921,25 +857,12 @@ States
 	}
 }
 
-Actor flaskgreenB
+Actor flaskgreenB : NMflaskBase
 {
 mass 1500
 Health 1
 Height 17
 Radius 6
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -956,25 +879,12 @@ States
 	}
 }
 
-Actor flaskyellowA
+Actor flaskyellowA : NMflaskBase
 {
 mass 1500
 Health 1
 Height 17
 Radius 7
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -991,25 +901,12 @@ States
 	}
 }
 
-Actor flaskyellowB
+Actor flaskyellowB : NMflaskBase
 {
 mass 1500
 Health 1
 Height 17
 Radius 6
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -1026,25 +923,12 @@ States
 	}
 }
 
-Actor flaskgreyA
+Actor flaskgreyA : NMflaskBase
 {
 mass 1500
 Health 1
 Height 17
 Radius 7
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -1061,25 +945,12 @@ States
 	}
 }
 
-Actor flaskgreyB
+Actor flaskgreyB : NMflaskBase
 {
 mass 1500
 Health 1
 Height 17
 Radius 6
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -1096,25 +967,12 @@ States
 	}
 }
 
-Actor glassblue
+Actor glassblue : NMflaskBase
 {
 mass 1500
 Health 1
 Height 8
 Radius 3
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -1131,25 +989,12 @@ States
 	}
 }
 
-Actor glasspurple
+Actor glasspurple : NMflaskBase
 {
 mass 1500
 Health 1
 Height 8
 Radius 3
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -1166,25 +1011,12 @@ States
 	}
 }
 
-Actor glassred
+Actor glassred : NMflaskBase
 {
 mass 1500
 Health 1
 Height 8
 Radius 3
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -1201,25 +1033,12 @@ States
 	}
 }
 
-Actor glassgreen
+Actor glassgreen : NMflaskBase
 {
 mass 1500
 Health 1
 Height 8
 Radius 3
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -1236,25 +1055,12 @@ States
 	}
 }
 
-Actor glassyellow
+Actor glassyellow : NMflaskBase
 {
 mass 1500
 Health 1
 Height 8
 Radius 3
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
@@ -1271,25 +1077,12 @@ States
 	}
 }
 
-Actor glassgrey
+Actor glassgrey : NMflaskBase
 {
 mass 1500
 Health 1
 Height 8
 Radius 3
-RenderStyle Translucent
-+SOLID
-+SHOOTABLE
-+NOBLOOD
-+DONTGIB
-+DONTDRAIN
-+NOICEDEATH
-+ACTIVATEMCROSS
-DamageFactor "DrainLife", 0.0
-DamageFactor "Poison", 0.0
-DamageFactor "PoisonCloud", 0.0
-DeathSound "tubes/break"
-Tag "Laboratory Glassware"
 States
 	{
 	Spawn:
