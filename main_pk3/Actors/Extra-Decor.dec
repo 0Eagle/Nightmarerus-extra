@@ -1,3 +1,56 @@
+Actor Bubble
+{
+Projectile
+Height 2
+Radius 2
+Speed 1
+Scale 0.05
+RenderStyle Add
+Alpha 0.25
+ReactionTime 525
++THRUACTORS
++DONTSPLASH
++FORCEXYBILLBOARD
++CLIENTSIDEONLY
+States
+	{
+	Spawn:
+		SBUB A 1
+	Rise:
+		TNT1 A 0 A_JumpIf(waterlevel == 0,"Death")
+		SBUB A 1 A_Jump(32,"Jiggle")
+		Loop
+	Jiggle:
+		TNT1 A 0 A_CountDown
+		SBUB A 0 A_JumpIf(waterlevel == 0, "Death")
+		SBUB A 1 A_SetAngle(random(0,360)) 
+		TNT1 A 0 A_Recoil(0.1)
+		Goto Rise
+	Death:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor BubbleSpawner 16499
+{
+//$Category Decoration
+//$Sprite SBUBA0
+//$Title "Bubble Spawner"
+Height 2
+Radius 2
++NOTONAUTOMAP
++NOINTERACTION
+States
+	{
+	Spawn:
+		TNT1 A 0
+	SpawnLoop:
+		TNT1 A 2 A_SpawnItemEx("Bubble",random(-16,16),0,0,0,0,2,random(0,360),SXF_CLIENTSIDE,128,0)
+		Loop
+	}
+}
+//==============================================================================
 Actor Barrels01 16518
 {
 //$Category Obstacles/Nightmarerus
@@ -517,6 +570,7 @@ States
 
 Actor SeaWeed2 : SeaWeedBase
 {
+scale 0.7
 States
 	{
 	Spawn:
@@ -529,6 +583,7 @@ States
 		
 Actor SeaWeed3 : SeaWeedBase
 {
+scale 0.7
 States
 	{
 	Spawn:

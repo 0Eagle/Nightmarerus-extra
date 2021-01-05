@@ -62,8 +62,15 @@ Sounds: id Software
 Sprites: id Software
 Sprite Edit: BloodyAcid
 
+
 Seaweed
 
 Decorate: Captain Toenail
 Sprites: Exhumed
 Sprite Edit: Captain Toenail
+
+
+Bubbles
+
+Decorate: Captain Toenail
+Sprites: CroTeam

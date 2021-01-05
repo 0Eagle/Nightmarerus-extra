@@ -183,3 +183,6 @@ switch EWAL002B on sound switches/extraswitch1 pic EWAL001A tics 0
 //Водоросли
 warp2 texture CWEDA0
 warp2 texture CWEDB0
+
+//Пузыри
+warp2 texture SBUBA0
