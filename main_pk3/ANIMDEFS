@@ -179,3 +179,7 @@ switch SW1SKULL on sound switches/clunk pic SW2SKULL tics 0
 //Кастомные кнопки
 switch EWAL001A off sound switches/extraswitch1 pic EWAL002B tics 0
 switch EWAL002B on sound switches/extraswitch1 pic EWAL001A tics 0
+
+//Водоросли
+warp2 texture CWEDA0
+warp2 texture CWEDB0
