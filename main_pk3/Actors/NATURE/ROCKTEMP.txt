@@ -1,5 +1,8 @@
-Actor Temp_Rock_1
+Actor Temp_Rock_1 16547
 {
+//$Category Obstacles/Nightmarerus
+//$Sprite TRERD0
+//$Title "Temp Rock 1"
 Radius 16
 Height 40
 +SOLID
@@ -11,8 +14,11 @@ States
 	}
 }
 
-Actor Temp_Rock_2
+Actor Temp_Rock_2 16548
 {
+//$Category Obstacles/Nightmarerus
+//$Sprite TRERB0
+//$Title "Temp Rock 2"
 Radius 16
 Height 60
 +SOLID
@@ -24,8 +30,11 @@ States
 	}
 }
 
-Actor Temp_Rock_3
+Actor Temp_Rock_3 16549
 {
+//$Category Obstacles/Nightmarerus
+//$Sprite TRERC0
+//$Title "Temp Rock 3"
 Radius 16
 Height 40
 +SOLID
@@ -37,8 +46,11 @@ States
 	}
 }
 
-Actor Temp_Rock_4
+Actor Temp_Rock_4 16550
 {
+//$Category Obstacles/Nightmarerus
+//$Sprite TRERD0
+//$Title "Temp Rock 4"
 Radius 16
 Height 60
 +SOLID
@@ -50,8 +62,11 @@ States
 	}
 }
 
-Actor Temp_Rock_5
+Actor Temp_Rock_5 16551
 {
+//$Category Obstacles/Nightmarerus
+//$Sprite TRERE0
+//$Title "Temp Rock 5"
 Radius 16
 Height 40
 +SOLID
@@ -63,8 +78,11 @@ States
 	}
 }
 
-Actor Temp_Rock_6
+Actor Temp_Rock_6 16552
 {
+//$Category Obstacles/Nightmarerus
+//$Sprite TRERF0
+//$Title "Temp Rock 6"
 Radius 16
 Height 40
 +SOLID
@@ -76,8 +94,11 @@ States
 	}
 }
 
-Actor Temp_Rock_7
+Actor Temp_Rock_7 16553
 {
+//$Category Obstacles/Nightmarerus
+//$Sprite TRERG0
+//$Title "Temp Rock 7"
 Radius 16
 Height 40
 +SOLID
@@ -89,8 +110,11 @@ States
 	}
 }
 
-Actor Temp_Rock_8
+Actor Temp_Rock_8 16554
 {
+//$Category Obstacles/Nightmarerus
+//$Sprite TRERH0
+//$Title "Temp Rock 8"
 Radius 16
 Height 60
 +SOLID
@@ -102,8 +126,11 @@ States
 	}
 }
 
-Actor Temp_Rock_9
+Actor Temp_Rock_9 16555
 {
+//$Category Obstacles/Nightmarerus
+//$Sprite TRERI0
+//$Title "Temp Rock 9"
 Radius 16
 Height 40
 +SOLID
@@ -115,8 +142,11 @@ States
 	}
 }
 
-Actor Temp_Rock_10
+Actor Temp_Rock_10 16556
 {
+//$Category Obstacles/Nightmarerus
+//$Sprite TRERJ0
+//$Title "Temp Rock 10"
 Radius 16
 Height 40
 +SOLID
@@ -128,8 +158,11 @@ States
 	}
 }
 
-Actor Temp_Rock_11
+Actor Temp_Rock_11 16557
 {
+//$Category Obstacles/Nightmarerus
+//$Sprite TRERK0
+//$Title "Temp Rock 11"
 Radius 16
 Height 40
 +SOLID
@@ -141,8 +174,11 @@ States
 	}
 }
 
-Actor Temp_Rock_12
+Actor Temp_Rock_12 16558
 {
+//$Category Obstacles/Nightmarerus
+//$Sprite TRERL0
+//$Title "Temp Rock 12"
 Radius 16
 Height 40
 +SOLID

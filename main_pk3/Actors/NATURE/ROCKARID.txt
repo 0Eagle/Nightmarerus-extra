@@ -1,7 +1,10 @@
-Actor Arid_Rock_1
+Actor Arid_Rock_1 16532
 {
-Radius 16
+//$Category Obstacles/Nightmarerus
+//$Sprite TREAA0
+//$Title "Arid Rock 1"
 Height 40
+Radius 16
 +SOLID
 States
 	{
@@ -11,10 +14,13 @@ States
 	}
 }
 
-Actor Arid_Rock_2
+Actor Arid_Rock_2 16533
 {
-Radius 16
+//$Category Obstacles/Nightmarerus
+//$Sprite TREAB0
+//$Title "Arid Rock 2"
 Height 40
+Radius 16
 +SOLID
 States
 	{
@@ -24,10 +30,13 @@ States
 	}
 }
 
-Actor Arid_Rock_3
+Actor Arid_Rock_3 16534
 {
-Radius 16
+//$Category Obstacles/Nightmarerus
+//$Sprite TREAC0
+//$Title "Arid Rock 3"
 Height 40
+Radius 16
 +SOLID
 States
 	{
@@ -37,10 +46,13 @@ States
 	}
 }
 
-Actor Arid_Rock_4
+Actor Arid_Rock_4 16535
 {
-Radius 16
+//$Category Obstacles/Nightmarerus
+//$Sprite TREAD0
+//$Title "Arid Rock 4"
 Height 40
+Radius 16
 +SOLID
 States
 	{
@@ -50,10 +62,13 @@ States
 	}
 }
 
-Actor Arid_Rock_5
+Actor Arid_Rock_5 16536
 {
-Radius 16
+//$Category Obstacles/Nightmarerus
+//$Sprite TREAE0
+//$Title "Arid Rock 5"
 Height 60
+Radius 16
 +SOLID
 States
 	{
@@ -63,10 +78,13 @@ States
 	}
 }
 
-Actor Arid_Rock_6
+Actor Arid_Rock_6 16537
 {
-Radius 16
+//$Category Obstacles/Nightmarerus
+//$Sprite TREAF0
+//$Title "Arid Rock 6"
 Height 40
+Radius 16
 +SOLID
 States
 	{
