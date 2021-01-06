@@ -773,6 +773,18 @@ States
 	}
 }
 
+Actor SeaWeed19 : SeaWeedBase
+{
+States
+	{
+	Spawn:
+		CWED T 0
+	SpawnLoop:
+		CWED T -1
+		Stop
+	}
+}
+
 Actor SeaWeed_Random : RandomSpawner 16530
 {
 //$Category Decoration/Vegetation
@@ -796,6 +808,187 @@ DropItem "SeaWeed15", 256, 10
 DropItem "SeaWeed16", 256, 10
 DropItem "SeaWeed17", 256, 10
 DropItem "SeaWeed18", 256, 10
+DropItem "SeaWeed19", 256, 10
+}
+//==============================================================================
+Actor FlowersBase
+{
+Radius 20
+Height 16
+-SOLID
+States
+	{
+	Spawn:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor Flowers1 : FlowersBase
+{
+Scale 0.8
+States
+	{
+	Spawn:
+		FLWR A 0
+	SpawnLoop:
+		FLWR A -1
+		Stop
+	}
+}
+
+Actor Flowers2 : FlowersBase
+{
+Scale 0.7
+States
+	{
+	Spawn:
+		FLWR B 0
+	SpawnLoop:
+		FLWR B -1
+		Stop
+	}
+}
+
+Actor Flowers3 : FlowersBase
+{
+States
+	{
+	Spawn:
+		FLWR C 0
+	SpawnLoop:
+		FLWR C -1
+		Stop
+	}
+}
+
+Actor Flowers4 : FlowersBase
+{
+States
+	{
+	Spawn:
+		FLWR D 0
+	SpawnLoop:
+		FLWR D -1
+		Stop
+	}
+}
+
+Actor Flowers5 : FlowersBase
+{
+States
+	{
+	Spawn:
+		FLWR E 0
+	SpawnLoop:
+		FLWR E -1
+		Stop
+	}
+}
+
+Actor Flowers6 : FlowersBase
+{
+States
+	{
+	Spawn:
+		FLWR F 0
+	SpawnLoop:
+		FLWR F -1
+		Stop
+	}
+}
+
+Actor Flowers7 : FlowersBase
+{
+States
+	{
+	Spawn:
+		FLWR G 0
+	SpawnLoop:
+		FLWR G -1
+		Stop
+	}
+}
+
+Actor Flowers8 : FlowersBase
+{
+Scale 0.6
+States
+	{
+	Spawn:
+		FLWR H 0
+	SpawnLoop:
+		FLWR H -1
+		Stop
+	}
+}
+
+Actor Flowers9 : FlowersBase
+{
+Scale 0.7
+States
+	{
+	Spawn:
+		FLWR I 0
+	SpawnLoop:
+		FLWR I -1
+		Stop
+	}
+}
+
+Actor Flowers10 : FlowersBase
+{
+States
+	{
+	Spawn:
+		FLWR J 0
+	SpawnLoop:
+		FLWR J -1
+		Stop
+	}
+}
+
+Actor Flowers11 : FlowersBase
+{
+States
+	{
+	Spawn:
+		FLWR K 0
+	SpawnLoop:
+		FLWR K -1
+		Stop
+	}
+}
+
+Actor Flowers12 : FlowersBase
+{
+States
+	{
+	Spawn:
+		FLWR L 0
+	SpawnLoop:
+		FLWR L -1
+		Stop
+	}
+}
+
+Actor Flowers_Random : RandomSpawner 16531
+{
+//$Category Decoration/Vegetation
+//$Sprite FLWRI0
+//$Title "Flowers Random"
+DropItem "Flowers1", 256, 10
+DropItem "Flowers2", 256, 10
+DropItem "Flowers3", 256, 10
+DropItem "Flowers4", 256, 10
+DropItem "Flowers5", 256, 10
+DropItem "Flowers6", 256, 10
+DropItem "Flowers7", 256, 10
+DropItem "Flowers8", 256, 10
+DropItem "Flowers9", 256, 10
+DropItem "Flowers10", 256, 10
+DropItem "Flowers11", 256, 10
+DropItem "Flowers12", 256, 10
 }
 //==============================================================================
 Actor TankCreatureBase
