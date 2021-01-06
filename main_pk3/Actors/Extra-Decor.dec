@@ -2038,18 +2038,18 @@ Actor Temp_Rock_Random : RandomSpawner 32731
 //$Category Obstacles/Nightmarerus
 //$Sprite TRERD0
 //$Title "Temp Rock Random"
-DropItem "Temp_Rock_1", 256, 9
-DropItem "Temp_Rock_2", 256, 9
-DropItem "Temp_Rock_3", 256, 9
-DropItem "Temp_Rock_4", 256, 9
-DropItem "Temp_Rock_5", 256, 8
-DropItem "Temp_Rock_6", 256, 8
-DropItem "Temp_Rock_7", 256, 8
-DropItem "Temp_Rock_8", 256, 8
-DropItem "Temp_Rock_9", 256, 8
-DropItem "Temp_Rock_10", 256, 8
-DropItem "Temp_Rock_11", 256, 8
-DropItem "Temp_Rock_12", 256, 8
+DropItem "Temp_Rock_1", 256, 10
+DropItem "Temp_Rock_2", 256, 10
+DropItem "Temp_Rock_3", 256, 10
+DropItem "Temp_Rock_4", 256, 10
+DropItem "Temp_Rock_5", 256, 10
+DropItem "Temp_Rock_6", 256, 10
+DropItem "Temp_Rock_7", 256, 10
+DropItem "Temp_Rock_8", 256, 10
+DropItem "Temp_Rock_9", 256, 10
+DropItem "Temp_Rock_10", 256, 10
+DropItem "Temp_Rock_11", 256, 10
+DropItem "Temp_Rock_12", 256, 10
 }
 
 Actor Snow_Rock_Random : RandomSpawner 32730
@@ -2057,15 +2057,15 @@ Actor Snow_Rock_Random : RandomSpawner 32730
 //$Category Obstacles/Nightmarerus
 //$Sprite TREBD0
 //$Title "Snow Rock Random"
-DropItem "Snow_Rock_1", 256, 12
-DropItem "Snow_Rock_2", 256, 11
-DropItem "Snow_Rock_3", 256, 11
-DropItem "Snow_Rock_4", 256, 11
-DropItem "Snow_Rock_5", 256, 11
-DropItem "Snow_Rock_6", 256, 11
-DropItem "Snow_Rock_7", 256, 11
-DropItem "Snow_Rock_8", 256, 11
-DropItem "Snow_Rock_9", 256, 11
+DropItem "Snow_Rock_1", 256, 10
+DropItem "Snow_Rock_2", 256, 10
+DropItem "Snow_Rock_3", 256, 10
+DropItem "Snow_Rock_4", 256, 10
+DropItem "Snow_Rock_5", 256, 10
+DropItem "Snow_Rock_6", 256, 10
+DropItem "Snow_Rock_7", 256, 10
+DropItem "Snow_Rock_8", 256, 10
+DropItem "Snow_Rock_9", 256, 10
 }
 
 Actor Trop_Rock_Random : RandomSpawner 32729
@@ -2073,15 +2073,15 @@ Actor Trop_Rock_Random : RandomSpawner 32729
 //$Category Obstacles/Nightmarerus
 //$Sprite TRECA0
 //$Title "Trop Rock Random"
-DropItem "Trop_Rock_1", 256, 12
-DropItem "Trop_Rock_2", 256, 11
-DropItem "Trop_Rock_3", 256, 11
-DropItem "Trop_Rock_4", 256, 11
-DropItem "Trop_Rock_5", 256, 11
-DropItem "Trop_Rock_6", 256, 11
-DropItem "Trop_Rock_7", 256, 11
-DropItem "Trop_Rock_8", 256, 11
-DropItem "Trop_Rock_9", 256, 11
+DropItem "Trop_Rock_1", 256, 10
+DropItem "Trop_Rock_2", 256, 10
+DropItem "Trop_Rock_3", 256, 10
+DropItem "Trop_Rock_4", 256, 10
+DropItem "Trop_Rock_5", 256, 10
+DropItem "Trop_Rock_6", 256, 10
+DropItem "Trop_Rock_7", 256, 10
+DropItem "Trop_Rock_8", 256, 10
+DropItem "Trop_Rock_9", 256, 10
 }
 
 Actor Arid_Rock_Random : RandomSpawner 32728
@@ -2089,11 +2089,10 @@ Actor Arid_Rock_Random : RandomSpawner 32728
 //$Category Obstacles/Nightmarerus
 //$Sprite TREAA0
 //$Title "Arid Rock Random"
-DropItem "Arid_Rock_1", 256, 18
-DropItem "Arid_Rock_1", 256, 18
-DropItem "Arid_Rock_1", 256, 16
-DropItem "Arid_Rock_1", 256, 16
-DropItem "Arid_Rock_1", 256, 16
-DropItem "Arid_Rock_1", 256, 16
-DropItem "Arid_Rock_6", 256, 16
+DropItem "Arid_Rock_1", 256, 10
+DropItem "Arid_Rock_2", 256, 10
+DropItem "Arid_Rock_3", 256, 10
+DropItem "Arid_Rock_4", 256, 10
+DropItem "Arid_Rock_5", 256, 10
+DropItem "Arid_Rock_6", 256, 10
 }
