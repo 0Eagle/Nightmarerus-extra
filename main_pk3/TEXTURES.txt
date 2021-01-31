@@ -1169,39 +1169,39 @@ Texture "N_CYER02", 64, 64
 	Patch "N_CYER02", 0, 0
 }
 
-Texture "panel1", 64, 64
+Texture "panel01", 64, 64
 {
-	Patch "panel1", 0, 0
+	Patch "panel01", 0, 0
 }
 
-Texture "panel2", 64, 64
+Texture "panel02", 64, 64
 {
-	Patch "panel2", 0, 0
+	Patch "panel02", 0, 0
 }
 
-Texture "panel3", 64, 64
+Texture "panel03", 64, 64
 {
-	Patch "panel3", 0, 0
+	Patch "panel03", 0, 0
 }
 
-Texture "panel4", 64, 64
+Texture "panel04", 64, 64
 {
-	Patch "panel4", 0, 0
+	Patch "panel04", 0, 0
 }
 
-Texture "panel5", 64, 64
+Texture "panel05", 64, 64
 {
-	Patch "panel5", 0, 0
+	Patch "panel05", 0, 0
 }
 
-Texture "panel6", 64, 64
+Texture "panel06", 64, 64
 {
-	Patch "panel6", 0, 0
+	Patch "panel06", 0, 0
 }
 
-Texture "panel7", 64, 64
+Texture "panel07", 64, 64
 {
-	Patch "panel7", 0, 0
+	Patch "panel07", 0, 0
 }
 
 Texture "pwflat1", 64, 64
