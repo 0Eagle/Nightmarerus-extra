@@ -269,6 +269,11 @@ Texture "dmdfeck", 64, 64
 	Patch "dmdfeck", 0, 0
 }
 
+Texture "dmdfeckg", 64, 64
+{
+	Patch "dmdfeckg", 0, 0
+}
+
 Texture "dmdmflat", 64, 64
 {
 	Patch "dmdmflat", 0, 0
