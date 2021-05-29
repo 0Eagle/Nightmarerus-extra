@@ -1,6 +1,6 @@
 Actor Arid_Rock_1 16532
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREAA0
 //$Title "Arid Rock 1"
 Height 40
@@ -16,7 +16,7 @@ States
 
 Actor Arid_Rock_2 16533
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREAB0
 //$Title "Arid Rock 2"
 Height 40
@@ -32,7 +32,7 @@ States
 
 Actor Arid_Rock_3 16534
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREAC0
 //$Title "Arid Rock 3"
 Height 40
@@ -48,7 +48,7 @@ States
 
 Actor Arid_Rock_4 16535
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREAD0
 //$Title "Arid Rock 4"
 Height 40
@@ -64,7 +64,7 @@ States
 
 Actor Arid_Rock_5 16536
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREAE0
 //$Title "Arid Rock 5"
 Height 60
@@ -80,7 +80,7 @@ States
 
 Actor Arid_Rock_6 16537
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREAF0
 //$Title "Arid Rock 6"
 Height 40

@@ -1,6 +1,6 @@
 Actor Snow_Rock_1 16538
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREBA0
 //$Title "Snow Rock 1"
 Radius 16
@@ -16,7 +16,7 @@ States
 
 Actor Snow_Rock_2 16539
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREBB0
 //$Title "Snow Rock 2"
 Radius 16
@@ -32,7 +32,7 @@ States
 
 Actor Snow_Rock_3 16540
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREBC0
 //$Title "Snow Rock 3"
 Radius 16
@@ -48,7 +48,7 @@ States
 
 Actor Snow_Rock_4 16541
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREBD0
 //$Title "Snow Rock 4"
 Radius 16
@@ -64,7 +64,7 @@ States
 
 Actor Snow_Rock_5 16542
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREBE0
 //$Title "Snow Rock 5"
 Radius 16
@@ -80,7 +80,7 @@ States
 
 Actor Snow_Rock_6 16543
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREBF0
 //$Title "Snow Rock 6"
 Radius 16
@@ -96,7 +96,7 @@ States
 
 Actor Snow_Rock_7 16544
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREBG0
 //$Title "Snow Rock 7"
 Radius 16
@@ -112,7 +112,7 @@ States
 
 Actor Snow_Rock_8 16545
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREBH0
 //$Title "Snow Rock 8"
 Radius 16
@@ -128,7 +128,7 @@ States
 
 Actor Snow_Rock_9 16546
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREBI0
 //$Title "Snow Rock 9"
 Radius 16

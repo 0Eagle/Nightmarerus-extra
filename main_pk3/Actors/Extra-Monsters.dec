@@ -1,6 +1,6 @@
 Actor ExtraCeilingTurret 32767
 {
-//$Category Monsters/Nightmarerus
+//$Category Monsters/Extra
 //$Sprite TURTA1
 //$Title "Ceiling Turret"
 Monster
@@ -83,7 +83,7 @@ DamageType "Bullet"
 //==============================================================================
 Actor TeslaCoil 32766
 {
-//$Category Monsters/Nightmarerus
+//$Category Monsters/Extra
 //$Sprite TESLA0
 //$Title "Tesla Coil"
 Monster

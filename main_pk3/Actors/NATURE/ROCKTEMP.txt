@@ -1,6 +1,6 @@
 Actor Temp_Rock_1 16547
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRERD0
 //$Title "Temp Rock 1"
 Radius 16
@@ -16,7 +16,7 @@ States
 
 Actor Temp_Rock_2 16548
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRERB0
 //$Title "Temp Rock 2"
 Radius 16
@@ -32,7 +32,7 @@ States
 
 Actor Temp_Rock_3 16549
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRERC0
 //$Title "Temp Rock 3"
 Radius 16
@@ -48,7 +48,7 @@ States
 
 Actor Temp_Rock_4 16550
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRERD0
 //$Title "Temp Rock 4"
 Radius 16
@@ -64,7 +64,7 @@ States
 
 Actor Temp_Rock_5 16551
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRERE0
 //$Title "Temp Rock 5"
 Radius 16
@@ -80,7 +80,7 @@ States
 
 Actor Temp_Rock_6 16552
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRERF0
 //$Title "Temp Rock 6"
 Radius 16
@@ -96,7 +96,7 @@ States
 
 Actor Temp_Rock_7 16553
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRERG0
 //$Title "Temp Rock 7"
 Radius 16
@@ -112,7 +112,7 @@ States
 
 Actor Temp_Rock_8 16554
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRERH0
 //$Title "Temp Rock 8"
 Radius 16
@@ -128,7 +128,7 @@ States
 
 Actor Temp_Rock_9 16555
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRERI0
 //$Title "Temp Rock 9"
 Radius 16
@@ -144,7 +144,7 @@ States
 
 Actor Temp_Rock_10 16556
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRERJ0
 //$Title "Temp Rock 10"
 Radius 16
@@ -160,7 +160,7 @@ States
 
 Actor Temp_Rock_11 16557
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRERK0
 //$Title "Temp Rock 11"
 Radius 16
@@ -176,7 +176,7 @@ States
 
 Actor Temp_Rock_12 16558
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRERL0
 //$Title "Temp Rock 12"
 Radius 16

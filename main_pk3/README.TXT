@@ -1,6 +1,5 @@
 Original maps by NightmareRus!
 Additional mapping, scripting by Eagle.
-//To Fuck his mommy, fapping gey porno, To penetrate in his ass big things and other achievements by P2nches!!!
 
 
 Locket Marker Textures

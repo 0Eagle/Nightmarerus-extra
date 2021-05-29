@@ -53,7 +53,7 @@ States
 //==============================================================================
 Actor Barrels01 16518
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite BARLA0
 //$Title "Barrel 1"
 Height 42
@@ -70,7 +70,7 @@ States
 
 Actor Barrels02 16519
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite BARLB0
 //$Title "Barrel 2"
 Height 42
@@ -87,7 +87,7 @@ States
 
 Actor Barrels03 16520
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite BARLC0
 //$Title "Barrel 3"
 Height 42
@@ -104,7 +104,7 @@ States
 
 Actor Barrels04 16521
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite BARLD0
 //$Title "Barrel 4"
 Height 42
@@ -121,7 +121,7 @@ States
 
 Actor Barrels05 16522
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite BARLE0
 //$Title "Barrel 5"
 Height 42
@@ -138,7 +138,7 @@ States
 
 Actor Barrels06 16523
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite BARLF0
 //$Title "Barrel 6"
 Height 42
@@ -155,7 +155,7 @@ States
 
 Actor Barrels07 16524
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite BARLG0
 //$Title "Barrel 7"
 Height 42
@@ -172,7 +172,7 @@ States
 
 Actor Barrels08 16525
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite BARLH0
 //$Title "Barrel 8"
 Height 42
@@ -189,7 +189,7 @@ States
 
 Actor Barrels09 16526
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite BARLI0
 //$Title "Barrel 9"
 Height 42
@@ -206,7 +206,7 @@ States
 
 Actor Barrels10 16527
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite BARLK0
 //$Title "Barrel 10"
 Height 42
@@ -223,7 +223,7 @@ States
 
 Actor Barrels11 16528
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite BARLM0
 //$Title "Barrel 11"
 Height 42
@@ -240,7 +240,7 @@ States
 
 Actor Barrels12 16529
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite BARLN0
 //$Title "Barrel 12"
 Height 42
@@ -257,7 +257,7 @@ States
 //==============================================================================
 Actor PottedPlant01 16500
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTA0
 //$Title "Potted Plant 1"
 Radius 20
@@ -273,7 +273,7 @@ States
 
 Actor PottedPlant02 16501
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTB0
 //$Title "Potted Plant 2"
 Radius 20
@@ -289,7 +289,7 @@ States
 
 Actor PottedPlant03 16502
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTC0
 //$Title "Potted Plant 3"
 Radius 20
@@ -305,7 +305,7 @@ States
 
 Actor PottedPlant04 16503
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTD0
 //$Title "Potted Plant 4"
 Radius 20
@@ -321,7 +321,7 @@ States
 
 Actor PottedPlant05 16504
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTE0
 //$Title "Potted Plant 5"
 Radius 20
@@ -337,7 +337,7 @@ States
 
 Actor PottedPlant06 16505
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTF0
 //$Title "Potted Plant 6"
 Radius 20
@@ -353,7 +353,7 @@ States
 
 Actor PottedPlant07 16506
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTG0
 //$Title "Potted Plant 7"
 Height 42
@@ -369,7 +369,7 @@ States
 
 Actor PottedPlant08 16507
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTH0
 //$Title "Potted Plant 8"
 Radius 20
@@ -385,7 +385,7 @@ States
 
 Actor PottedPlant09 16508
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTI0
 //$Title "Potted Plant 9"
 Radius 20
@@ -401,7 +401,7 @@ States
 
 Actor PottedPlant10 16509
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTJ0
 //$Title "Potted Plant 10"
 Height 42
@@ -417,7 +417,7 @@ States
 
 Actor PottedPlant11 16510
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTK0
 //$Title "Potted Plant 11"
 Radius 20
@@ -433,7 +433,7 @@ States
 
 Actor PottedPlant12 16511
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTL0
 //$Title "Potted Plant 12"
 Height 42
@@ -449,7 +449,7 @@ States
 
 Actor PottedPlant13 16512
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTM0
 //$Title "Potted Plant 13"
 Radius 20
@@ -465,7 +465,7 @@ States
 
 Actor PottedPlant14 16513
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTN0
 //$Title "Potted Plant 14"
 Radius 10
@@ -481,7 +481,7 @@ States
 
 Actor PottedPlant15 16514
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTO0
 //$Title "Potted Plant 15"
 Radius 20
@@ -497,7 +497,7 @@ States
 
 Actor PottedPlant16 16515
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTP0
 //$Title "Potted Plant 16"
 Radius 20
@@ -513,7 +513,7 @@ States
 
 Actor PottedPlant17 16516
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTQ0
 //$Title "Potted Plant 17"
 Radius 20
@@ -529,7 +529,7 @@ States
 
 Actor PottedPlant18 16517
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite PLNTR0
 //$Title "Potted Plant 18"
 Radius 20
@@ -1048,7 +1048,7 @@ States
 
 Actor TankCreature : TankCreatureBase 32764
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite CIATA0
 //$Title "Tank Creature"
 Health 1000
@@ -1066,7 +1066,7 @@ States
 
 Actor TankNotCreature : TankCreatureBase 32763
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite CIATF0
 //$Title "Empty Tank Creature"
 Health 1000
@@ -1084,7 +1084,7 @@ States
 
 Actor TankBroken : TankCreatureBase 32762
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite CIATG0
 //$Title "Broken Tank Creature"
 -SOLID
@@ -1138,7 +1138,7 @@ States
 
 Actor TechBarrelGrey : TechBarrelBase 32761
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite BARTA0
 //$Title "Tech Barrel Grey"
 Tag "Tech Barrel"
@@ -1154,7 +1154,7 @@ States
 
 Actor TechBarrelTan : TechBarrelBase 32760
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite BARTB0
 //$Title "Tech Barrel Tan"
 States
@@ -1169,7 +1169,7 @@ States
 
 Actor TechBarrelGreen : TechBarrelBase 32759
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite BARTC0
 //$Title "Tech Barrel Green"
 States
@@ -1184,7 +1184,7 @@ States
 //==============================================================================
 Actor PlasmaGlobe 32758
 {
-//$Category Decoration/Nightmarerus
+//$Category Decoration/Extra
 //$Sprite PLOBA0
 //$Title "Plasma Globe"
 Radius 16
@@ -1721,7 +1721,7 @@ States
 
 Actor LabGlassSpawner : RandomSpawner 32745
 {
-//$Category Decoration/Nightmarerus
+//$Category Decoration/Extra
 //$Sprite FLKSA0
 //$Title "Laboratory Glassware"
 DropItem "flaskblueA", 256, 6
@@ -1746,7 +1746,7 @@ DropItem "glassgrey", 256, 5
 //=================================================================================
 Actor ExtraComputer 32744
 {
-//$Category Decoration/Nightmarerus
+//$Category Decoration/Extra
 //$Sprite EPC1A1
 //$Title "Personal Computer"
 Health 100
@@ -1797,7 +1797,7 @@ States
 
 Actor Small_Nat_Random : RandomSpawner 32739
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRESF0
 //$Title "Small Nat Random"
 DropItem "Small_Nat_1", 256, 10
@@ -1863,7 +1863,7 @@ DropItem "Small_Nat_59", 256, 10
 
 Actor Small_Trop_Random : RandomSpawner 32738
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREUA0
 //$Title "Small Trop Random"
 DropItem "Small_Trop_1", 256, 10
@@ -1893,7 +1893,7 @@ DropItem "Small_Trop_23", 256, 10
 
 Actor Snow_Tree_Random : RandomSpawner 32737
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREWA0
 //$Title "Snow Tree Random"
 DropItem "Snow_Tree_1", 256, 10
@@ -1921,7 +1921,7 @@ DropItem "Snow_Tree_21", 256, 10
 
 Actor Small_Snow_Random : RandomSpawner 32536
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREXC0
 //$Title "Small Snow Random"
 DropItem "Small_Snow_1", 256, 10
@@ -1945,7 +1945,7 @@ DropItem "Small_Snow_17", 256, 10
 
 Actor Dead_Tree_Random : RandomSpawner 32735
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRE2K0
 //$Title "Dead Tree Random"
 DropItem "Dead_Tree_1", 256, 10
@@ -1970,7 +1970,7 @@ DropItem "Dead_Tree_18", 256, 10
 
 Actor Temp_Tree_Random : RandomSpawner 32734
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREEL0
 //$Title "Temp Tree Random"
 DropItem "Temp_Tree_1", 256, 10
@@ -1993,7 +1993,7 @@ DropItem "Temp_Tree_16", 256, 10
 
 Actor Trop_Tree_Random : RandomSpawner 32733
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRETE0
 //$Title "Trop Tree Random"
 DropItem "Trop_Tree_1", 256, 10
@@ -2024,7 +2024,7 @@ DropItem "Trop_Tree_24", 256, 10
 
 Actor Arid_Tree_Random : RandomSpawner 32732
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREFC0
 //$Title "Arid Tree Random"
 DropItem "Arid_Tree_1", 256, 20
@@ -2035,7 +2035,7 @@ DropItem "Arid_Tree_4", 256, 20
 
 Actor Temp_Rock_Random : RandomSpawner 32731
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRERD0
 //$Title "Temp Rock Random"
 DropItem "Temp_Rock_1", 256, 10
@@ -2054,7 +2054,7 @@ DropItem "Temp_Rock_12", 256, 10
 
 Actor Snow_Rock_Random : RandomSpawner 32730
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREBD0
 //$Title "Snow Rock Random"
 DropItem "Snow_Rock_1", 256, 10
@@ -2070,7 +2070,7 @@ DropItem "Snow_Rock_9", 256, 10
 
 Actor Trop_Rock_Random : RandomSpawner 32729
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TRECA0
 //$Title "Trop Rock Random"
 DropItem "Trop_Rock_1", 256, 10
@@ -2086,7 +2086,7 @@ DropItem "Trop_Rock_9", 256, 10
 
 Actor Arid_Rock_Random : RandomSpawner 32728
 {
-//$Category Obstacles/Nightmarerus
+//$Category Obstacles/Extra
 //$Sprite TREAA0
 //$Title "Arid Rock Random"
 DropItem "Arid_Rock_1", 256, 10
