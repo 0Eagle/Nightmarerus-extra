@@ -1,11 +1,18 @@
-Original maps by NightmareRus!
-Additional mapping, scripting by Eagle.
+Map01: NightmareRus, Eagle.
+Map02: Raymen, Dank, DF7Z, Naze Illusionist (Nazo), Lister.
 
 
 Locket Marker Textures
 
 Author: id Software, MagicWazard, Blue Shadow (alternate pink skull)
 Brightmaps: Virtue
+
+Textures
+
+CARP1, DESKD, HOLOB - Diabolus Ex
+LIGHT07 -  Doom 3 for Doom(Textures)
+MACH01, MACH02 - Hell On Earth Starter Pack/Extermination Day
+DOOR_B89 - Blade Of Agony
 
 
 Deployable SentryGun
