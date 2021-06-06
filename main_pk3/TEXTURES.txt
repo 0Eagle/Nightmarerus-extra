@@ -1512,6 +1512,14 @@ Texture "SUPPS16G", 128, 16
 	}
 }
 
+Texture "SUPPS08G", 128, 8
+{
+	Patch "SUPPS08V", 0, 0
+	{
+		Rotate 90
+	}
+}
+
 Texture "LMPLSD", 64, 64
 {
 	Patch "LMPLSD", 0, 0
