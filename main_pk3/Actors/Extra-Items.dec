@@ -318,6 +318,7 @@ States
 	See:
 		SENT AAAAAAAAAAAAAAAA 4 A_Chase
 		TNT1 A 0 A_PlaySound("NMSentry/Active")
+		TNT1 A 0 A_ClearTarget
 		Loop
 	WrongTarget:
 		TNT1 A 0 A_ClearTarget
@@ -411,15 +412,11 @@ States
 	}
 }
 
-Actor SentryBox : CustomInventory 32765
+Actor SentryBox : CustomInventory
 {
-//$Category Ammunition
-//$Sprite SENBA0
-//$Title "Sentry Gun Box"
-+COUNTITEM
+-COUNTITEM
 +INVENTORY.INVBAR
 Inventory.MaxAmount 1
-Inventory.RespawnTics 4200
 Inventory.Icon "SENBB0"
 Inventory.PickupMessage "You picked up a sentry gun!"
 Tag "Sentry Gun Box"
@@ -434,6 +431,32 @@ States
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("IsAnSentryGun",1)
 		TNT1 A 0 A_SpawnItemEx("SentryGun",56,0,10,0,0,0,0,SXF_SETMASTER,0)
+		Stop
+	}
+}
+
+Actor SentryBoxSpawner : CustomInventory 32765
+{
+//$Category Ammunition
+//$Sprite SENBA0
+//$Title "Sentry Gun Box"
++COUNTITEM
+-INVENTORY.INVBAR
+Inventory.MaxAmount 1
+Inventory.RespawnTics 4200
+Inventory.Icon "SENBB0"
+Inventory.PickupMessage "You picked up a sentry gun!"
+Tag "Sentry Gun Box"
+States
+	{
+	Spawn:
+		SENB A 0
+	SpawnLoop:
+		SENB A -1
+		Stop
+	PickUp:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("SentryBox",1)
 		Stop
 	}
 }
