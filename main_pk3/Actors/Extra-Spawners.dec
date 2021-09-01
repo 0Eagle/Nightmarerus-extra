@@ -230,16 +230,16 @@ States
 	{
 	Spawn:
 		TNT1 A 4
-		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0))
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0)
 		TNT1 A 1
 		Wait
 	External:
 		TNT1 A 1 A_SpawnItemEx("SentryBox",0,0,8,0,0,0,0,SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
-		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
 		Stop
 	Include:
-		TNT1 A 1 A_SpawnItemEx("NMSentryBox",0,0,8,0,0,0,0,SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
-		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem"))
+		TNT1 A 1 A_SpawnItemEx("ExtraSentryBox",0,0,8,0,0,0,0,SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
 		Stop
 	}
 }
