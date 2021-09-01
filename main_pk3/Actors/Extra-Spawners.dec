@@ -156,9 +156,6 @@ States
 
 Actor ExtraChaingunGuySpawner : ExtraMapSpawnerBase
 {
-//$Category Monsters/Extra
-//$Sprite TNT1A0
-//$Title "Special ChaingunGuy Spawner"
 Height 56
 Radius 20
 Args 0,0,0,0,120011
@@ -166,7 +163,6 @@ States
 	{
 	Spawn:
 		TNT1 A 4
-		//TNT1 A 1 A_SetArg(4,120011)
 		TNT1 A 1 A_SpawnItemEx("ChaingunGuy",0,0,0,30,0,0,0,SXF_SETMASTER|SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
 		Goto Death
 	Death:
@@ -175,12 +171,28 @@ States
 	}
 }
 
+Actor ExtraNaziSpawner : ExtraMapSpawnerBase 32740
+{
+//$Category Monsters/Extra
+//$Sprite SSWVA1
+//$Title "Special WolfensteinSS Spawner"
+Height 56
+Radius 20
+Args 0,0,0,0,271007
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 A_SpawnItemEx("WolfensteinSS",0,0,0,0,0,0,0,SXF_SETMASTER|SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
+		Goto Death
+	Death:
+		TNT1 A 5 A_Die
+		Stop
+	}
+}
 
 Actor ExtraCyberdemonSpawner : ExtraMapSpawnerBase
 {
-//$Category Monsters/Extra
-//$Sprite TNT1A0
-//$Title "Special Cyberdemon Spawner"
 Height 110
 Radius 40
 Args 0,0,0,0,260009
@@ -188,7 +200,6 @@ States
 	{
 	Spawn:
 		TNT1 A 4
-		//TNT1 A 1 A_SetArg(4,260009)
 		TNT1 A 1 A_SpawnItemEx("Cyberdemon",0,0,0,0,0,0,0,SXF_SETMASTER|SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
 		Goto Death
 	Death:
