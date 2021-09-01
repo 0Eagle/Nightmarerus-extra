@@ -39,8 +39,10 @@ Actor BubbleSpawner 16499
 //$Title "Bubble Spawner"
 Height 2
 Radius 2
+RenderStyle None
 +NOTONAUTOMAP
 +NOINTERACTION
++MOVEWITHSECTOR
 States
 	{
 	Spawn:
