@@ -161,11 +161,12 @@ Actor ExtraChaingunGuySpawner : ExtraMapSpawnerBase
 //$Title "Special ChaingunGuy Spawner"
 Height 56
 Radius 20
+Args 0,0,0,0,120011
 States
 	{
 	Spawn:
 		TNT1 A 4
-		TNT1 A 1 A_SetArg(4,120011)
+		//TNT1 A 1 A_SetArg(4,120011)
 		TNT1 A 1 A_SpawnItemEx("ChaingunGuy",0,0,0,30,0,0,0,SXF_SETMASTER|SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
 		Goto Death
 	Death:
@@ -182,15 +183,63 @@ Actor ExtraCyberdemonSpawner : ExtraMapSpawnerBase
 //$Title "Special Cyberdemon Spawner"
 Height 110
 Radius 40
+Args 0,0,0,0,260009
 States
 	{
 	Spawn:
 		TNT1 A 4
-		TNT1 A 1 A_SetArg(4,260009)
+		//TNT1 A 1 A_SetArg(4,260009)
 		TNT1 A 1 A_SpawnItemEx("Cyberdemon",0,0,0,0,0,0,0,SXF_SETMASTER|SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
 		Goto Death
 	Death:
 		TNT1 A 5 A_Die
+		Stop
+	}
+}
+
+Actor ExtraResetFlagDROPPED : CustomInventory
+{
+-COUNTITEM
++NOTIMEFREEZE
++INVENTORY.QUIET
+-INVENTORY.INVBAR
++INVENTORY.ALWAYSPICKUP
++INVENTORY.AUTOACTIVATE
+Inventory.Amount 1
+Inventory.MaxAmount 0
+States
+	{
+	Pickup:
+		TNT1 A 0
+		TNT1 A 0 A_ChangeFlag(DROPPED,0)
+		TNT1 A 0 A_ChangeFlag("INVENTORY.NEVERRESPAWN",0)
+		Stop
+	}
+}
+
+Actor ExtraSentryBoxSpawner 32765
+{
+//$Category Ammunition
+//$Sprite SENBA0
+//$Title "Sentry Gun Box"
++RANDOMIZE
++NOINTERACTION
++MOVEWITHSECTOR
+var int user_tid;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0))
+		TNT1 A 1
+		Wait
+	External:
+		TNT1 A 1 A_SpawnItemEx("SentryBox",0,0,8,0,0,0,0,SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem"))
+		Stop
+	Include:
+		TNT1 A 1 A_SpawnItemEx("NMSentryBox",0,0,8,0,0,0,0,SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem"))
 		Stop
 	}
 }

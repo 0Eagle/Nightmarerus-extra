@@ -9,10 +9,28 @@
 function int GetAndSetUniqueTID(void)
 {
 	int tid = ActivatorTID();
-	if((tid == 0) || (ThingCount(T_NONE,tid) != 1))
+	if(tid == 0)
 	{
 		tid = UniqueTID(0,0);
 		Thing_ChangeTID(0,tid);
+	}
+	else if(ThingCount(T_NONE,tid) > 1)
+	{
+		tid = UniqueTID(0,0);
+		Thing_ChangeTID(0,tid);
+	}
+	else
+	{
+		Thing_ChangeTID(0,0);
+		if(!IsTIDUsed(tid))
+		{
+			Thing_ChangeTID(0,tid);
+		}
+		else
+		{
+			tid = UniqueTID(0,0);
+			Thing_ChangeTID(0,tid);
+		}
 	}
 	return tid;
 }
@@ -26,6 +44,43 @@ function bool Extra_CheckMaxHealth (void)
 {
 	if(GetActorProperty(0,APROP_SpawnHealth) < 100)SetActorProperty(0,APROP_SpawnHealth,100);
 	return (GetActorProperty(0,APROP_Health) < GetActorProperty(0,APROP_SpawnHealth));
+}
+//==============================================================================
+script "Extra_SelectItemSpawn" (void)
+{
+	if(StrICmp(Strparam(l:"Item412026"),"0") == 0)
+	{
+		SetActorState(0,"Include");
+	}
+	else
+	{
+		SetActorState(0,"External");
+	}
+}
+
+script "Extra_GetTID" (void)
+{
+	int tid = UniqueTID(0,0);
+	SetUserVariable(0,"user_tid",tid);
+	SetResultValue(tid);
+}
+
+script "Extra_SetupItem" (void)
+{
+	str name;
+	if(StrICmp(Strparam(l:"Item412026"),"0") == 0)
+	{
+		name = Strparam(l:"EXTRA_SENTRYGUNBOX_NAME");
+	}
+	else
+	{
+		name = Strparam(l:"EXTERNAL_SENTRYGUNBOX_NAME");
+	}
+	int tid = GetUserVariable(0,"user_tid");
+	if((tid != 0) && !(ClassifyActor(tid) & ACTOR_MONSTER) && !(ClassifyActor(tid) & ACTOR_PLAYER) && CheckActorClass(tid,name))
+	{
+		GiveActorInventory(tid,"ExtraResetFlagDROPPED",1);
+	}
 }
 
 script ExtraBFG_Annihilate (void)
@@ -90,22 +145,6 @@ script "Extra_FaceToTarget" (void)
 	}
 }
 
-script Extra_Enter ENTER
-{
-	//if(!(CheckActorFloorTexture(0, "TANROCK7")))Exit_Normal(0);//ChangeLevel(map01,PlayerNumber(),CHANGELEVEL_RESETINVENTORY|CHANGELEVEL_NOINTERMISSION);
-	SetPlayerProperty(0, ON, PROP_NOTARGET);
-	delay(5*35);
-	SetPlayerProperty(0, OFF, PROP_NOTARGET);
-}
-
-script Extra_Respawn RESPAWN
-{
-	//if(!(CheckActorFloorTexture(0, "TANROCK7")))Exit_Normal(0);//ChangeLevel(map01,PlayerNumber(),CHANGELEVEL_RESETINVENTORY|CHANGELEVEL_NOINTERMISSION);
-	SetPlayerProperty(0, ON, PROP_NOTARGET);
-	delay(5*35);
-	SetPlayerProperty(0, OFF, PROP_NOTARGET);
-}
-
 script Extra_CheckActorMonster (void)
 {
 	if((!(ClassifyActor(0) & ACTOR_PLAYER)) && (ClassifyActor(0) & ACTOR_MONSTER))
@@ -132,4 +171,18 @@ Script Extra_MedicalBackpack (void)
 		Healthing(1);
 		delay(1);
 	}
+}
+
+script Extra_Enter ENTER
+{
+	SetPlayerProperty(0, ON, PROP_NOTARGET);
+	delay(5*35);
+	SetPlayerProperty(0, OFF, PROP_NOTARGET);
+}
+
+script Extra_Respawn RESPAWN
+{
+	SetPlayerProperty(0, ON, PROP_NOTARGET);
+	delay(5*35);
+	SetPlayerProperty(0, OFF, PROP_NOTARGET);
 }
