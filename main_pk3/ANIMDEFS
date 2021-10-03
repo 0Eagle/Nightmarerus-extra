@@ -29,6 +29,12 @@ texture WFALL1
 	pic WFALL3 tics 4
 	pic WFALL4 tics 4
 
+texture FBFALL1
+	pic FBFALL1 tics 4
+	pic FBFALL2 tics 4
+	pic FBFALL3 tics 4
+	pic FBFALL4 tics 4
+
 flat fan1
 	pic fan1 tics 1
 	pic fan2 tics 1
