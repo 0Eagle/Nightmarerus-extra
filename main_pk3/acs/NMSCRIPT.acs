@@ -35,6 +35,11 @@ function int GetAndSetUniqueTID(void)
 	return tid;
 }
 
+function bool ActorIsMonster(int tid)
+{
+	return ((ClassifyActor(tid) & ACTOR_MONSTER) == ACTOR_MONSTER);
+}
+
 function bool ActorIsAlive(int tid)
 {
 	return ((ClassifyActor(tid) & ACTOR_ALIVE) == ACTOR_ALIVE);
@@ -85,33 +90,31 @@ script "Extra_SetupItem" (void)
 
 script ExtraBFG_Annihilate (void)
 {
-	if((SetActivator(0,AAPTR_TRACER) == 1) && (ClassifyActor(0) & ACTOR_MONSTER) && (ClassifyActor(0) & ACTOR_ALIVE) && (CheckActorClass(0,"LSDHeresiarch") == false) && (CheckActorClass(0,"LegendaryDoomguy") == false) && (CheckActorClass(0,"LegendaryKrieger") == false) && (CheckActorClass(0,"DeathKnight") == false) && (CheckActorClass(0,"Schabbs") == false) && (CheckActorClass(0,"LegendaryRevival") == false) && (CheckActorClass(0,"LegendaryRevival2") == false) && (CheckActorClass(0,"ResurrectorSummoner") == false))
+	if((SetActivator(0,AAPTR_TRACER) == 1) && (ClassifyActor(0) & ACTOR_MONSTER) && (ClassifyActor(0) & ACTOR_ALIVE) && !CheckFlag(0,"NODAMAGE") && !((CheckFlag(0,"BOSS") && CheckFlag(0,"NOFEAR") && CheckFlag(0,"NOICEDEATH") && CheckFlag(0,"NOCLIP") && CheckFlag(0,"NOTIMEFREEZE")) || (CheckFlag(0,"BOSS") && CheckFlag(0,"NOFEAR") && CheckFlag(0,"NOICEDEATH") && CheckFlag(0,"GHOST") && CheckFlag(0,"NOTIMEFREEZE"))) && (GetActorProperty(0,APROP_DamageFactor) > 0.01) && !CheckActorClass(0,"WolfensteinSS"))
 	{
-		SetActorFlag(0,"INVULNERABLE",false); 
-		SetActorFlag(0,"NODAMAGE",false);
-		//SetActorFlag(0,"BUDDHA",false);
+		SetActorProperty(0,APROP_Invulnerable,0);
 		Thing_Damage(0,10000000);
 		if(GetActorProperty(0,APROP_HEALTH) > 0)
 		{
 			SetActorProperty(0,APROP_HEALTH,0);
 			Thing_Damage(0,10000000);
 		}
-		if((!(ClassifyActor(0) & ACTOR_PLAYER)) && (ClassifyActor(0) & ACTOR_MONSTER))
+		if(ActorIsMonster(0))
 		{
 			int counter = 0;
-			while((counter < 525) && (CheckFlag(0,"SOLID") == true))
+			while((counter < 525) && CheckFlag(0,"SOLID"))
 			{
 				counter++;
 				delay(1);
 			}
 			counter = 0;
-			while((counter < 10 ) && (!(ClassifyActor(0) & ACTOR_PLAYER)) && (ClassifyActor(0) & ACTOR_MONSTER))
+			while((counter < 10) && ActorIsMonster(0))
 			{
 				GiveInventory("ExtraAnnihilateFadeOut",1);
 				counter++;
 				delay(5);
 			}
-			if((!(ClassifyActor(0) & ACTOR_PLAYER)) && (ClassifyActor(0) & ACTOR_MONSTER))
+			if(ActorIsMonster(0))
 			{
 				StopSound(0,CHAN_WEAPON);
 				StopSound(0,CHAN_VOICE);
@@ -147,7 +150,7 @@ script "Extra_FaceToTarget" (void)
 
 script Extra_CheckActorMonster (void)
 {
-	if((!(ClassifyActor(0) & ACTOR_PLAYER)) && (ClassifyActor(0) & ACTOR_MONSTER))
+	if(ActorIsMonster(0))
 	{
 		SetResultValue(1);//monster
 	}
@@ -162,7 +165,7 @@ Script Extra_MedicalBackpack (void)
 	bool use = false;
 	while(ActorIsAlive(0) && Extra_CheckMaxHealth() && (CheckInventory("HealthBackpack") > 0))
 	{
-		if(use == false)
+		if(!use)
 		{
 			use = true;
 			PlaySound(0,"MedicalBackpack/Use",CHAN_ITEM);
