@@ -1,10 +1,3 @@
-//Scripts
-const int ExtraBFG_Annihilate = 2098;
-const int Extra_Enter = 2099;
-const int Extra_Respawn = 2100;
-const int Extra_CheckActorMonster = 2101;
-const int Extra_MedicalBackpack = 2102;
-//=================================================================================
 #include "Actors/Extra-Weapon.dec"
 #include "Actors/Extra-Decor.dec"
 #include "Actors/Extra-Items.dec"

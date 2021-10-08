@@ -1,11 +1,14 @@
 #library "NMSCRIPT"
 #include "zcommon.acs"
-#define ExtraBFG_Annihilate			2098
-#define Extra_Enter					2099
-#define Extra_Respawn				2100
-#define Extra_CheckActorMonster		2101
-#define Extra_MedicalBackpack		2102
-
+//==============================================================================
+#define INT_MAX		2147483647
+//==============================================================================
+int Music_priority = 0;
+int MusicVolume = 1.0;
+int MusicNumPlaying = -1;
+int MapMusicChangerPulse = 0;
+int MusicChangerPulse = 0;
+//==============================================================================
 function int GetAndSetUniqueTID(void)
 {
 	int tid = ActivatorTID();
@@ -88,7 +91,7 @@ script "Extra_SetupItem" (void)
 	}
 }
 
-script ExtraBFG_Annihilate (void)
+script "ExtraBFG_Annihilate" (void)
 {
 	if((SetActivator(0,AAPTR_TRACER) == 1) && (ClassifyActor(0) & ACTOR_MONSTER) && (ClassifyActor(0) & ACTOR_ALIVE) && !CheckFlag(0,"NODAMAGE") && !((CheckFlag(0,"BOSS") && CheckFlag(0,"NOFEAR") && CheckFlag(0,"NOICEDEATH") && CheckFlag(0,"NOCLIP") && CheckFlag(0,"NOTIMEFREEZE")) || (CheckFlag(0,"BOSS") && CheckFlag(0,"NOFEAR") && CheckFlag(0,"NOICEDEATH") && CheckFlag(0,"GHOST") && CheckFlag(0,"NOTIMEFREEZE"))) && (GetActorProperty(0,APROP_DamageFactor) > 0.01) && !CheckActorClass(0,"WolfensteinSS"))
 	{
@@ -148,7 +151,7 @@ script "Extra_FaceToTarget" (void)
 	}
 }
 
-script Extra_CheckActorMonster (void)
+script "Extra_CheckActorMonster" (void)
 {
 	if(ActorIsMonster(0))
 	{
@@ -160,7 +163,7 @@ script Extra_CheckActorMonster (void)
 	}
 }
 
-Script Extra_MedicalBackpack (void)
+Script "Extra_MedicalBackpack" (void)
 {
 	bool use = false;
 	while(ActorIsAlive(0) && Extra_CheckMaxHealth() && (CheckInventory("HealthBackpack") > 0))
@@ -175,15 +178,154 @@ Script Extra_MedicalBackpack (void)
 		delay(1);
 	}
 }
+//==============================================================================
+//Music Changer
+script "Extra_CoolDownMusicChanger" (void)
+{
+	delay(1);
+	if(MapMusicChangerPulse > 0)MapMusicChangerPulse--;
+	if(MusicChangerPulse > 0)MusicChangerPulse--;
+	restart;
+}
 
-script Extra_Enter ENTER
+Script "Extra_PulseMusicChanger" (void)
+{
+	if(MapMusicChangerPulse != 350)
+	{
+		MapMusicChangerPulse = 350;//10 секунд.
+	}
+}
+
+Script "Extra_CheckMusicChanger" (void)
+{
+	if(MapMusicChangerPulse < 1)
+	{
+		SetUserVariable(0,"user_music",0);
+	}
+}
+
+Script "Extra_StartMusic" (int mNum, int priority)
+{
+	if(ActorIsAlive(0) && (CheckInventory("ExtraMusicScriptRun") < 1))
+	{
+		GiveInventory("ExtraMusicScriptRun",random(1,INT_MAX));
+		int CheckNum = CheckInventory("ExtraMusicScriptRun");
+		if(mNum >= 0)
+		{
+			while(ActorIsAlive(0) && (CheckInventory("ExtraMusicScriptRun") == CheckNum))//Ожидание старта.
+			{
+				if(MusicChangerPulse < 1)
+				{
+					Music_priority = 0;
+				}
+				if(ActorIsAlive(0) && (GetUservariable(0,"user_music") == 0) && (Music_priority < priority))
+				{
+					SetUserVariable(0,"user_music",1);
+					Music_priority = priority;
+					priority++;
+					//Цикл уменьшения громкости предыдущего трека.
+					while((MusicNumPlaying != mNum) && (MusicVolume >= 0.015625) && ActorIsAlive(0) && (GetUservariable(0,"user_music") == 1) && (Music_priority < priority) && (CheckInventory("ExtraMusicScriptRun") == CheckNum))
+					{
+						if(MusicChangerPulse != 350)
+						{
+							MusicChangerPulse = 350;//10 секунд.
+						}
+						MusicVolume -= 0.015625;
+						ACS_NamedExecuteWithResult("Extra_VolumeMusic",MusicVolume);
+						delay(1);
+					}
+					//Цикл форсирования трека.
+					while(ActorIsAlive(0) && (GetUservariable(0,"user_music") == 1) && (Music_priority < priority) && (CheckInventory("ExtraMusicScriptRun") == CheckNum))
+					{
+						if(MusicChangerPulse != 350)
+						{
+							MusicChangerPulse = 350;//10 секунд.
+						}
+						MusicNumPlaying = mNum;
+						MusicVolume = 1.0;
+						ACS_NamedExecuteWithResult("Extra_StartMusicCS",mNum,MusicVolume);
+						delay(35);
+					}
+					if(CheckInventory("ExtraMusicScriptRun") == CheckNum)
+					{
+						if(!ActorIsAlive(0))
+						{
+							MusicNumPlaying = -1;
+							MusicVolume = 1.0;
+							ACS_NamedExecuteWithResult("Extra_StopMusicCS",MusicVolume);
+							Music_priority = 0;
+						}
+						SetUserVariable(0,"user_music",0);
+						break;
+					}
+					else
+					{
+						if(GetCVAR("Extra_debug"))log(s:"Extra_StartMusic CheckNum false");
+						SetUserVariable(0,"user_music",0);
+						break;
+					}
+				}
+				delay(70);
+			}
+			TakeInventory("ExtraMusicScriptRun",INT_MAX);
+		}
+	}
+}
+
+Script "Extra_VolumeMusic" (int Volume) CLIENTSIDE//set volume music
+{
+	if(GetUserCvar(ConsolePlayerNumber(),"extra_localmusic") == 0)
+	{
+		if(GetUserCvar(ConsolePlayerNumber(),"extra_music") == 1)
+		{
+			SetMusicVolume(Volume);
+		}
+		else
+		{
+			SetMusicVolume(1.0);
+		}
+	}
+}
+
+Script "Extra_StartMusicCS" (int mNum, int Volume) CLIENTSIDE
+{
+	if(GetUserCvar(ConsolePlayerNumber(),"extra_localmusic") == 0)
+	{
+		if(GetUserCvar(ConsolePlayerNumber(),"extra_music") == 1)
+		{
+			SetMusic(StrParam(l:"Prefix_LSDMusicName",i:mNum),0);
+			SetMusicVolume(Volume);
+		}
+		else
+		{
+			SetMusic("*",0);
+			SetMusicVolume(1.0);
+		}
+	}
+}
+
+Script "Extra_StopMusicCS" (int Volume) CLIENTSIDE//set default music
+{
+	if(GetUserCvar(ConsolePlayerNumber(),"extra_localmusic") == 0)
+	{
+		SetMusic("*",0);
+		SetMusicVolume(Volume);
+	}
+}
+//==============================================================================
+Script "Extra_OPEN" OPEN
+{
+	ACS_NamedExecuteAlways("Extra_CoolDownMusicChanger",0);
+}
+
+script "Extra_Enter" ENTER
 {
 	SetPlayerProperty(0, ON, PROP_NOTARGET);
 	delay(5*35);
 	SetPlayerProperty(0, OFF, PROP_NOTARGET);
 }
 
-script Extra_Respawn RESPAWN
+script "Extra_Respawn" RESPAWN
 {
 	SetPlayerProperty(0, ON, PROP_NOTARGET);
 	delay(5*35);

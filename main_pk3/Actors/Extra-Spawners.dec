@@ -1,16 +1,26 @@
-Actor LSDMusicChanger 30352
+Actor MusicChangerSpawner 30352 //ARGS[4] - music num, ARGS[3] - priority
 {
-//$Title "LSD Music Changer"
+//$Title "Music Changer"
 Height 3
 Radius 3
 RenderStyle None
++RANDOMIZE
 +NOTONAUTOMAP
 +NOINTERACTION
++SERVERSIDEONLY
 Tag "Music Changer"
 States
 	{
 	Spawn:
+		TNT1 A 4
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0)
 		TNT1 A 1
+		Wait
+	External:
+		TNT1 A 1 A_SpawnItemEx("LSDMusicChanger",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERSPECIAL,0)
+		Stop
+	Include:
+		TNT1 A 1 A_SpawnItemEx("ExtraMusicChanger",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERSPECIAL,0)
 		Stop
 	}
 }
@@ -48,11 +58,11 @@ States
 	}
 }
 
-Actor LSDZombiemanSpawner : ExtraMapSpawnerBase 30345
+Actor 40ZombiemanSpawner : ExtraMapSpawnerBase 30345
 {
 //$Category Monsters/Extra
 //$Sprite POSSA1
-//$Title "Zombieman Spawner"
+//$Title "40 Zombieman Spawner"
 Height 56
 Radius 20
 States
@@ -77,11 +87,11 @@ States
 	}
 }
 
-Actor LSDShotgunGuySpawner : ExtraMapSpawnerBase 30346
+Actor 40ShotgunGuySpawner : ExtraMapSpawnerBase 30346
 {
 //$Category Monsters/Extra
 //$Sprite SPOSA1
-//$Title "ShotgunGuy Spawner"
+//$Title "40 ShotgunGuy Spawner"
 Height 56
 Radius 20
 States
@@ -106,11 +116,11 @@ States
 	}
 }
 
-Actor LSDChaingunGuySpawner : ExtraMapSpawnerBase 30347
+Actor 40ChaingunGuySpawner : ExtraMapSpawnerBase 30347
 {
 //$Category Monsters/Extra
 //$Sprite CPOSA1
-//$Title "ChaingunGuy Spawner"
+//$Title "40 ChaingunGuy Spawner"
 Height 56
 Radius 20
 States
@@ -147,9 +157,6 @@ States
 	Spawn:
 		TNT1 A 4
 		TNT1 A 1 A_SpawnItemEx("ZombieMan",0,0,0,0,0,0,0,SXF_SETMASTER|SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
-		Goto Death
-	Death:
-		TNT1 A 5 A_Die
 		Stop
 	}
 }
@@ -164,9 +171,6 @@ States
 	Spawn:
 		TNT1 A 4
 		TNT1 A 1 A_SpawnItemEx("ChaingunGuy",0,0,0,30,0,0,0,SXF_SETMASTER|SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
-		Goto Death
-	Death:
-		TNT1 A 5 A_Die
 		Stop
 	}
 }
@@ -184,9 +188,6 @@ States
 	Spawn:
 		TNT1 A 4
 		TNT1 A 1 A_SpawnItemEx("WolfensteinSS",0,0,0,0,0,0,0,SXF_SETMASTER|SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
-		Goto Death
-	Death:
-		TNT1 A 5 A_Die
 		Stop
 	}
 }
@@ -201,9 +202,6 @@ States
 	Spawn:
 		TNT1 A 4
 		TNT1 A 1 A_SpawnItemEx("Cyberdemon",0,0,0,0,0,0,0,SXF_SETMASTER|SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
-		Goto Death
-	Death:
-		TNT1 A 5 A_Die
 		Stop
 	}
 }
@@ -236,6 +234,7 @@ Actor ExtraSentryBoxSpawner 32765
 +RANDOMIZE
 +NOINTERACTION
 +MOVEWITHSECTOR
++SERVERSIDEONLY
 var int user_tid;
 States
 	{

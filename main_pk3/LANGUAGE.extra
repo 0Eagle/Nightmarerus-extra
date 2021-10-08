@@ -2,3 +2,4 @@
 Item412026 = 0;//SentryBox
 EXTRA_SENTRYGUNBOX_NAME = "ExtraSentryBox";
 EXTERNAL_SENTRYGUNBOX_NAME = "SentryBox";
+Prefix_LSDMusicName = "LSDM_";

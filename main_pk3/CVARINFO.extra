@@ -1,0 +1,3 @@
+SERVER noarchive bool extra_debug = FALSE;
+USER noarchive bool extra_localmusic = FALSE;
+USER bool extra_music = TRUE;
