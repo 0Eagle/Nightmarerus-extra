@@ -300,7 +300,7 @@ States
 	{
 	Pickup:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(Extra_CheckActorMonster) != 1,"Nop")
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("Extra_CheckActorMonster") != 1,"Nop")
 		TNT1 A 0 A_FadeOut(0.1,0)
 		Stop
 	Nop:
@@ -336,7 +336,7 @@ States
 		TNT1 A 0 A_Countdown
 		Loop
 	Death:
-		EBS9 A 5 Bright ACS_ExecuteAlways(ExtraBFG_Annihilate,0)
+		EBS9 A 5 Bright ACS_NamedExecuteAlways("ExtraBFG_Annihilate",0)
 		Stop
 	}
 }
@@ -347,6 +347,7 @@ RenderStyle None
 +DONTBLAST
 +NOTELEPORT
 +DONTSPLASH
++NOTONAUTOMAP
 +NOINTERACTION
 +CLIENTSIDEONLY
 +NONETID
@@ -486,6 +487,7 @@ Actor GreenParticleSpawnerExtra
 RenderStyle None
 +DONTBLAST
 +NOTELEPORT
++NOTONAUTOMAP
 +NOINTERACTION
 +CLIENTSIDEONLY
 +NONETID
