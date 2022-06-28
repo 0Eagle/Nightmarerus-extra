@@ -24,7 +24,7 @@ States
 		Stop
 	}
 }
-
+//==============================================================================
 Actor ExtraMapSpawnerBase
 {
 Health 2147483647
@@ -43,6 +43,7 @@ Speed 0
 +NOPAIN
 +RANDOMIZE
 +NOTONAUTOMAP
++NOKILLSCRIPTS
 +SERVERSIDEONLY
 var int user_x;
 var int user_y;
@@ -143,7 +144,7 @@ States
 		Goto Death
 	}
 }
-//==============================================================================
+
 Actor ExtraZombieManSpawner : ExtraMapSpawnerBase 32742
 {
 //$Category Monsters/Extra
@@ -205,18 +206,169 @@ States
 	}
 }
 
+Actor NMDesertHornetSpawner : LSDExtraSpawner
+{
+Height 32
+Radius 16
+Args 0,0,0,0,161006
+var int user_amount;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 A_JumpIf(ARGS[3] > 0,"SpawnLoop")
+		TNT1 A 0 A_SetArg(3,25)
+	SpawnLoop:
+		TNT1 A 10 A_LookEx(LOF_NOSEESOUND,0,200,0,360,"Missile")
+		Loop
+	Missile:
+		TNT1 A 0 A_ChangeFlag(AMBUSH,0)
+		TNT1 A 0 A_SetUserVar("user_amount",user_amount+1)
+		TNT1 A 0 A_JumpIf(user_amount > ARGS[3],"Death")
+		TNT1 A 35 A_SpawnItemEx("LostSoul",0,0,0,20,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
+		Loop
+	Death:
+		TNT1 A 4 A_Die
+		TNT1 A 1 Thing_ChangeTID(0,0)
+		Stop
+	}
+}
+
+Actor NMDarkCybruiserSpawner : LSDExtraSpawner
+{
+Height 64
+Radius 24
+Args 0,0,0,0,230014
+var int user_amount;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 A_JumpIf(ARGS[3] > 0,"SpawnLoop")
+		TNT1 A 0 A_SetArg(3,10)
+	SpawnLoop:
+		TNT1 A 10 A_LookEx(LOF_NOSEESOUND,0,200,0,360,"Missile")
+		Loop
+	Missile:
+		TNT1 A 0 A_ChangeFlag(AMBUSH,0)
+		TNT1 A 0 A_SetUserVar("user_amount",user_amount+1)
+		TNT1 A 0 A_JumpIf(user_amount > ARGS[3],"Death")
+		TNT1 A 15 A_SpawnItemEx("NMTeleportFogExtraSpawner",0,0,8,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 90 A_SpawnItemEx("BaronOfHell",0,0,0,20,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
+		Loop
+	Death:
+		TNT1 A 4 A_Die
+		TNT1 A 1 Thing_ChangeTID(0,0)
+		Stop
+	}
+}
+
+Actor NMLegendaryLurkerSpawner : LSDExtraSpawner
+{
+Height 56
+Radius 30
+Args 0,0,0,0,150008
+var int user_amount;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 A_JumpIf(ARGS[3] > 0,"SpawnLoop")
+		TNT1 A 0 A_SetArg(3,10)
+	SpawnLoop:
+		TNT1 A 10 A_LookEx(LOF_NOSEESOUND,0,200,0,360,"Missile")
+		Loop
+	Missile:
+		TNT1 A 0 A_ChangeFlag(AMBUSH,0)
+		TNT1 A 0 A_SetUserVar("user_amount",user_amount+1)
+		TNT1 A 0 A_JumpIf(user_amount > ARGS[3],"Death")
+		TNT1 A 15 A_SpawnItemEx("NMTeleportFogExtraSpawner",0,0,8,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 90 A_SpawnItemEx("Spectre",0,0,0,20,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
+		Loop
+	Death:
+		TNT1 A 4 A_Die
+		TNT1 A 1 Thing_ChangeTID(0,0)
+		Stop
+	}
+}
+
+Actor NMRocketDogeSpawner : LSDExtraSpawner
+{
+Radius 0
+Height 0
+Args 0,0,0,0,141003
+var int user_x;
+var int user_y;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 0 A_SetUserVar("user_x",0)
+		TNT1 A 0 A_SetUserVar("user_y",0)
+	Line:
+		TNT1 A 10 A_SpawnItemEx("Demon",user_x,user_y,0,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,tid)
+		TNT1 A 0 A_SetUserVar("user_x",user_x+40+1)
+		TNT1 A 0 A_JumpIf(user_x > 410,"Column")
+		Loop
+	Column:
+		TNT1 A 0 A_SetUserVar("user_x",0)
+		TNT1 A 0 A_SetUserVar("user_y",user_y+40+1)
+		TNT1 A 0 A_JumpIf(user_y > 410,"Death")
+		Goto Line
+	Death:
+		TNT1 A 4 A_Die
+		TNT1 A 1 Thing_ChangeTID(0,0)
+		Stop
+	}
+}
+
+Actor NMCopterPatrolSpawner : LSDExtraSpawner
+{
+Height 56
+Radius 16
+var int user_amount;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 A_JumpIf(ARGS[3] > 0,"SpawnLoop")
+		TNT1 A 0 A_SetArg(3,25)
+	SpawnLoop:
+		TNT1 A 10 A_LookEx(LOF_NOSEESOUND,0,200,0,360,"Missile")
+		Loop
+	Missile:
+		TNT1 A 0 A_ChangeFlag(AMBUSH,0)
+		TNT1 A 0 A_SetUserVar("user_amount",user_amount+1)
+		TNT1 A 0 A_JumpIf(user_amount > ARGS[3],"Death")
+		TNT1 A 1 A_Jump(256,"Spawn1","Spawn2")
+	Spawn1:
+		//CopterPatrol
+		TNT1 A 1 A_SetArg(4,161001)
+		TNT1 A 34 A_SpawnItemEx("LostSoul",0,0,0,20,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
+		Goto Missile
+	Spawn2:
+		//CopterPatrol2
+		TNT1 A 1 A_SetArg(4,161002)
+		TNT1 A 34 A_SpawnItemEx("LostSoul",0,0,0,20,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
+		Goto Missile
+	Death:
+		TNT1 A 4 A_Die
+		TNT1 A 1 Thing_ChangeTID(0,0)
+		Stop
+	}
+}
+//==============================================================================
 Actor ExtraResetFlagDROPPED : CustomInventory
 {
--COUNTITEM
 +NOTIMEFREEZE
 +INVENTORY.QUIET
--INVENTORY.INVBAR
-+INVENTORY.ALWAYSPICKUP
-+INVENTORY.AUTOACTIVATE
 Inventory.Amount 1
 Inventory.MaxAmount 0
 States
 	{
+	Spawn:
+		TNT1 A 1
+		Stop
 	Pickup:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag(DROPPED,0)
@@ -249,6 +401,31 @@ States
 	Include:
 		TNT1 A 1 A_SpawnItemEx("ExtraSentryBox",0,0,8,0,0,0,0,SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
 		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	}
+}
+//==============================================================================
+Actor NMExtraSpawnerFX
+{
+RenderStyle None
++NOCLIP
++NOTONAUTOMAP
++NOINTERACTION
+States
+	{
+	Spawn:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor NMTeleportFogExtraSpawner : NMExtraSpawnerFX
+{
+States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItemEx("TeleportFog",0,0,0,0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
 		Stop
 	}
 }

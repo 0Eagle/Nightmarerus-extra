@@ -357,13 +357,8 @@ States
 
 Actor NMSentryGunAlarm : CustomInventory
 {
--COUNTITEM
 +NOTIMEFREEZE
 +INVENTORY.QUIET
-+INVENTORY.UNDROPPABLE
-+INVENTORY.ALWAYSPICKUP
-+INVENTORY.AUTOACTIVATE
--INVENTORY.INVBAR
 Inventory.Amount 1
 Inventory.MaxAmount 0
 States
@@ -383,6 +378,7 @@ States
 
 Actor NMSoundAlarmCooldown : PowerDamage
 {
++INVENTORY.AUTOACTIVATE
 DamageFactor "nothing", 1.0
 Powerup.duration -5
 }
