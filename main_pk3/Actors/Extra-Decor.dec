@@ -52,18 +52,17 @@ States
 
 Actor ExtraMapMusicChanger : CustomInventory
 {
--COUNTITEM
 +NOTIMEFREEZE
 +INVENTORY.QUIET
--INVENTORY.INVBAR
--INVENTORY.ALWAYSPICKUP
-+INVENTORY.AUTOACTIVATE
 +SERVERSIDEONLY
-inventory.amount 1
-inventory.maxamount 0
+Inventory.Amount 1
+Inventory.MaxAmount 0
 Tag "Get Music"
 States
 	{
+	Spawn:
+		TNT1 A 1
+		Stop
 	Pickup:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("ExtraMusicScriptRun",1,"Nop")
