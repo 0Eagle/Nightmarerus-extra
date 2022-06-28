@@ -34,12 +34,14 @@ Speed 0
 +SHOOTABLE
 +THRUACTORS
 +NOBLOCKMAP
-+NOINTERACTION
++NOGRAVITY
++DONTSPLASH
 +MOVEWITHSECTOR
 +RELATIVETOFLOOR
 +DONTBLAST
 +NOTARGET
-+NODAMAGE
++DONTGIB
+//+NODAMAGE
 +NOPAIN
 +RANDOMIZE
 +NOTONAUTOMAP
@@ -53,7 +55,8 @@ States
 		TNT1 A 4
 		Stop
 	Death:
-		TNT1 A 4
+		TNT1 A 4 A_Die
+		TNT1 A 1 Thing_ChangeTID(0,0)
 		Stop
 	}
 }
@@ -79,11 +82,8 @@ States
 	Column:
 		TNT1 A 0 A_SetUserVar("user_x",0)
 		TNT1 A 0 A_SetUserVar("user_y",user_y+40+1)
-		TNT1 A 0 A_JumpIf(user_y > 410,"Control")
+		TNT1 A 0 A_JumpIf(user_y > 410,"Death")
 		Goto Line
-	Control:
-		TNT1 A 5
-		Goto Death
 	}
 }
 
@@ -108,11 +108,8 @@ States
 	Column:
 		TNT1 A 0 A_SetUserVar("user_x",0)
 		TNT1 A 0 A_SetUserVar("user_y",user_y+40+1)
-		TNT1 A 0 A_JumpIf(user_y > 410,"Control")
+		TNT1 A 0 A_JumpIf(user_y > 410,"Death")
 		Goto Line
-	Control:
-		TNT1 A 5
-		Goto Death
 	}
 }
 
@@ -130,18 +127,15 @@ States
 		TNT1 A 0 A_SetUserVar("user_x",0)
 		TNT1 A 0 A_SetUserVar("user_y",0)
 	Line:
-		TNT1 A 10 A_SpawnItemEx("ChaingunGuy",user_x,user_y,0,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
+		TNT1 A 10 A_SpawnItemEx("ChaingunGuy",user_x,user_y,0,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,tid)
 		TNT1 A 0 A_SetUserVar("user_x",user_x+40+1)
 		TNT1 A 0 A_JumpIf(user_x > 410,"Column")
 		Loop
 	Column:
 		TNT1 A 0 A_SetUserVar("user_x",0)
 		TNT1 A 0 A_SetUserVar("user_y",user_y+40+1)
-		TNT1 A 0 A_JumpIf(user_y > 410,"Control")
+		TNT1 A 0 A_JumpIf(user_y > 410,"Death")
 		Goto Line
-	Control:
-		TNT1 A 5
-		Goto Death
 	}
 }
 
@@ -156,7 +150,7 @@ States
 	{
 	Spawn:
 		TNT1 A 4
-		TNT1 A 1 A_SpawnItemEx("ZombieMan",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG,0,0)
+		TNT1 A 1 A_SpawnItemEx("ZombieMan",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG,0,tid)
 		Stop
 	}
 }
@@ -170,7 +164,7 @@ States
 	{
 	Spawn:
 		TNT1 A 4
-		TNT1 A 1 A_SpawnItemEx("ChaingunGuy",0,0,0,30,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG,0,0)
+		TNT1 A 1 A_SpawnItemEx("ChaingunGuy",0,0,0,30,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG,0,tid)
 		Stop
 	}
 }
@@ -187,7 +181,7 @@ States
 	{
 	Spawn:
 		TNT1 A 4
-		TNT1 A 1 A_SpawnItemEx("WolfensteinSS",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG,0,0)
+		TNT1 A 1 A_SpawnItemEx("WolfensteinSS",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG,0,tid)
 		Stop
 	}
 }
@@ -201,22 +195,24 @@ States
 	{
 	Spawn:
 		TNT1 A 4
-		TNT1 A 1 A_SpawnItemEx("Cyberdemon",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG,0,0)
+		TNT1 A 1 A_SpawnItemEx("Cyberdemon",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG,0,tid)
 		Stop
 	}
 }
 
-Actor NMDesertHornetSpawner : LSDExtraSpawner
+Actor NMDesertHornetSpawner : ExtraMapSpawnerBase 32727
 {
+//$Category Monsters/Extra
 Height 32
 Radius 16
 Args 0,0,0,0,161006
++SEEINVISIBLE
 var int user_amount;
 States
 	{
 	Spawn:
 		TNT1 A 4
-		TNT1 A 1 A_JumpIf(ARGS[3] > 0,"SpawnLoop")
+		TNT1 A 1 A_JumpIf((ARGS[3] > 0) && (ARGS[3] < 1000),"SpawnLoop")
 		TNT1 A 0 A_SetArg(3,25)
 	SpawnLoop:
 		TNT1 A 10 A_LookEx(LOF_NOSEESOUND,0,200,0,360,"Missile")
@@ -225,26 +221,25 @@ States
 		TNT1 A 0 A_ChangeFlag(AMBUSH,0)
 		TNT1 A 0 A_SetUserVar("user_amount",user_amount+1)
 		TNT1 A 0 A_JumpIf(user_amount > ARGS[3],"Death")
-		TNT1 A 35 A_SpawnItemEx("LostSoul",0,0,0,20,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
+		TNT1 A 35 A_SpawnItemEx("LostSoul",0,0,0,20,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,tid)
 		Loop
-	Death:
-		TNT1 A 4 A_Die
-		TNT1 A 1 Thing_ChangeTID(0,0)
-		Stop
 	}
 }
 
-Actor NMDarkCybruiserSpawner : LSDExtraSpawner
+Actor NMDarkCybruiserSpawner : ExtraMapSpawnerBase 32726
 {
+//$Category Monsters/Extra
+//$Title "Special DarkCybruiser Spawner Spawner"
 Height 64
 Radius 24
 Args 0,0,0,0,230014
++SEEINVISIBLE
 var int user_amount;
 States
 	{
 	Spawn:
 		TNT1 A 4
-		TNT1 A 1 A_JumpIf(ARGS[3] > 0,"SpawnLoop")
+		TNT1 A 1 A_JumpIf((ARGS[3] > 0) && (ARGS[3] < 1000),"SpawnLoop")
 		TNT1 A 0 A_SetArg(3,10)
 	SpawnLoop:
 		TNT1 A 10 A_LookEx(LOF_NOSEESOUND,0,200,0,360,"Missile")
@@ -256,24 +251,23 @@ States
 		TNT1 A 15 A_SpawnItemEx("NMTeleportFogExtraSpawner",0,0,8,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 90 A_SpawnItemEx("BaronOfHell",0,0,0,20,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
 		Loop
-	Death:
-		TNT1 A 4 A_Die
-		TNT1 A 1 Thing_ChangeTID(0,0)
-		Stop
 	}
 }
 
-Actor NMLegendaryLurkerSpawner : LSDExtraSpawner
+Actor NMLegendaryLurkerSpawner : ExtraMapSpawnerBase 32725
 {
+//$Category Monsters/Extra
+//$Title "Special LegendaryLurker Spawner Spawner"
 Height 56
 Radius 30
 Args 0,0,0,0,150008
++SEEINVISIBLE
 var int user_amount;
 States
 	{
 	Spawn:
 		TNT1 A 4
-		TNT1 A 1 A_JumpIf(ARGS[3] > 0,"SpawnLoop")
+		TNT1 A 1 A_JumpIf((ARGS[3] > 0) && (ARGS[3] < 1000),"SpawnLoop")
 		TNT1 A 0 A_SetArg(3,10)
 	SpawnLoop:
 		TNT1 A 10 A_LookEx(LOF_NOSEESOUND,0,200,0,360,"Missile")
@@ -285,15 +279,13 @@ States
 		TNT1 A 15 A_SpawnItemEx("NMTeleportFogExtraSpawner",0,0,8,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 90 A_SpawnItemEx("Spectre",0,0,0,20,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
 		Loop
-	Death:
-		TNT1 A 4 A_Die
-		TNT1 A 1 Thing_ChangeTID(0,0)
-		Stop
 	}
 }
 
-Actor NMRocketDogeSpawner : LSDExtraSpawner
+Actor NMRocketDogeSpawner : ExtraMapSpawnerBase 32724
 {
+//$Category Monsters/Extra
+//$Title "Special RocketDoge Spawner Spawner"
 Radius 0
 Height 0
 Args 0,0,0,0,141003
@@ -315,23 +307,22 @@ States
 		TNT1 A 0 A_SetUserVar("user_y",user_y+40+1)
 		TNT1 A 0 A_JumpIf(user_y > 410,"Death")
 		Goto Line
-	Death:
-		TNT1 A 4 A_Die
-		TNT1 A 1 Thing_ChangeTID(0,0)
-		Stop
 	}
 }
 
-Actor NMCopterPatrolSpawner : LSDExtraSpawner
+Actor NMCopterPatrolSpawner : ExtraMapSpawnerBase 32723
 {
+//$Category Monsters/Extra
+//$Title "Special CopterPatrol Spawner Spawner"
 Height 56
 Radius 16
++SEEINVISIBLE
 var int user_amount;
 States
 	{
 	Spawn:
 		TNT1 A 4
-		TNT1 A 1 A_JumpIf(ARGS[3] > 0,"SpawnLoop")
+		TNT1 A 1 A_JumpIf((ARGS[3] > 0) && (ARGS[3] < 1000),"SpawnLoop")
 		TNT1 A 0 A_SetArg(3,25)
 	SpawnLoop:
 		TNT1 A 10 A_LookEx(LOF_NOSEESOUND,0,200,0,360,"Missile")
@@ -351,10 +342,6 @@ States
 		TNT1 A 1 A_SetArg(4,161002)
 		TNT1 A 34 A_SpawnItemEx("LostSoul",0,0,0,20,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,0)
 		Goto Missile
-	Death:
-		TNT1 A 4 A_Die
-		TNT1 A 1 Thing_ChangeTID(0,0)
-		Stop
 	}
 }
 //==============================================================================
