@@ -1084,9 +1084,11 @@ Mass 1000000
 +DONTDRAIN
 +DONTMORPH
 +NOTAUTOAIMED
+DamageFactor "BFGSplash", 0.0
 DamageFactor "DrainLife", 0.0
 DamageFactor "Poison", 0.0
 DamageFactor "PoisonCloud", 0.0
+DamageFactor 0.1
 Deathsound "TankCreature/break"
 States
 	{
@@ -1132,7 +1134,7 @@ Actor TankCreature : TankCreatureBase 32764
 //$Category Obstacles/Extra
 //$Sprite CIATA0
 //$Title "Tank Creature"
-Health 1000
+Health 100
 +SHOOTABLE
 Tag "Experimental Specimen"
 States
@@ -1150,7 +1152,7 @@ Actor TankNotCreature : TankCreatureBase 32763
 //$Category Obstacles/Extra
 //$Sprite CIATF0
 //$Title "Empty Tank Creature"
-Health 1000
+Health 100
 +SHOOTABLE
 Tag "Empty Tank Creature"
 States
