@@ -289,8 +289,6 @@ Actor NMRocketDogeSpawner : ExtraMapSpawnerBase 32724
 Radius 0
 Height 0
 Args 0,0,0,0,141003
-var int user_x;
-var int user_y;
 States
 	{
 	Spawn:
@@ -389,6 +387,25 @@ States
 		TNT1 A 1 A_SpawnItemEx("ExtraSentryBox",0,0,8,0,0,0,0,SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
 		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
 		Stop
+	}
+}
+//==============================================================================
+Actor ExtraMapSpot : ExtraMapSpawnerBase 32722
+{
+//$Category ZDoom
+//$Title "Extra Mapspot"
+Height 8
+Radius 8
+RenderStyle None
+CameraHeight 0
+-SHOOTABLE
+States
+	{
+	Spawn:
+		TNT1 A 0
+	SpawnLoop:
+		TNT1 A 1
+		Loop
 	}
 }
 //==============================================================================

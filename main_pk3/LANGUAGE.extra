@@ -3,3 +3,5 @@ Item412026 = 0;//SentryBox
 EXTRA_SENTRYGUNBOX_NAME = "ExtraSentryBox";
 EXTERNAL_SENTRYGUNBOX_NAME = "SentryBox";
 Prefix_LSDMusicName = "LSDM_";
+ExtraSpawnType_1 = "Revenant";
+ExtraSpawnType_2 = "Cyberdemon";
