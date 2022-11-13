@@ -43,3 +43,6 @@ MedicalBackpack/Use				MEDBPUSE
 
 //Switch
 switches/extraswitch1			EXTRSWC1
+
+//Drop
+mapworld/waterdrip				droplet1

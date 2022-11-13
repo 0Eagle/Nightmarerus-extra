@@ -1,3 +1,116 @@
+Actor ExtraHeartsInTank 16568
+{
+//$Category Decoration
+//$Sprite HERTA0
+//$Title "Hearts In Tank"
+Radius 16
+Height 56
++SOLID
+States
+	{
+	Spawn:
+		HERT ABC 4 Bright
+		Loop
+	}
+}
+//==============================================================================
+Actor ExtraSurgeryCrab 16569
+{
+//$Category Decoration
+//$Sprite HERTA0
+//$Title "Surgery Crab"
++SOLID
++SPAWNCEILING
++NOGRAVITY
+Radius 20
+Height 16
+States
+	{
+	Spawn:
+		CRAB A -1
+		Stop
+	}
+}
+//==============================================================================
+Actor ExtraWaterDripCyan 16570
+{
+//$Category Decoration
+//$Sprite CDRPA0
+//$Title "Drip Cyan"
+Height 1
+Renderstyle Translucent
+Alpha 0.8
++NOBLOCKMAP
++SPAWNCEILING
++NOGRAVITY
+States
+	{
+	Spawn:
+		CDRP A 10
+		CDRP BC 8
+		CDRP D 8 A_SpawnItemEx("ExtraWaterDropOnFloorCyan",0,0,-8,0,0,0,0,0,0,0)
+		CDRP D 0 A_SetTics(random(0,35))
+		Loop
+	}
+}
+
+Actor ExtraWaterDropOnFloorCyan
+{
+Height 4
+Radius 4
+Mass 100
+Gravity 1
+Renderstyle Translucent
+Alpha 0.8
+ReactionTime 175
++NOBLOCKMAP
++NOTELEPORT
++CORPSE
+DeathSound "mapworld/waterdrip"
+States
+	{
+	Spawn:
+		CDRP E 0
+	SpawnLoop:
+		CDRP E 1 A_CountDown
+		Loop
+	Death:
+		CDRP E 1
+		Stop
+	Crash:
+		DRIP A 6 A_Scream
+		DRIP BC 4
+		DRIP D 4
+		DRIP EF 4
+		DRIP G 4
+		DRIP H 4
+		DRIP AAAAAAAAAAA 1 A_FadeOut(0.1,1)
+		Stop
+	}
+}
+
+Actor ExtraWaterDripBlue : ExtraWaterDripCyan 16571
+{
+//$Category Decoration
+//$Sprite CDRPA0
+//$Title "Drip Blue"
+Translation "0:255=%[0.001,0.001,0.02]:[0.1,0.1,2.0]"
+States
+	{
+	Spawn:
+		CDRP A 10
+		CDRP BC 8
+		CDRP D 8 A_SpawnItemEx("ExtraWaterDropOnFloorBlue",0,0,-8,0,0,0,0,0,0,0)
+		CDRP D 0 A_SetTics(random(0,35))
+		Loop
+	}
+}
+
+Actor ExtraWaterDropOnFloorBlue : ExtraWaterDropOnFloorCyan
+{
+Translation "0:255=%[0.001,0.001,0.02]:[0.1,0.1,2.0]"
+}
+//==============================================================================
 Actor ExtraMusicChanger
 {
 Health 1
