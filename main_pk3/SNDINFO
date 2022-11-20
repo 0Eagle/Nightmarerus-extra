@@ -1,4 +1,5 @@
 Sounds/HealthChamberActivated	HLTCHAMB
+$pitchshift Sounds/HealthChamberActivated 0
 
 ambient2 hum
 $rolloff ambient2 256 1024
@@ -16,6 +17,9 @@ $rolloff weapons/ExtraBFGFire 400 2200
 ExtraTurret/See					DSALARM
 ExtraTurret/Act					DSSWSCAN
 ExtraTurret/Fire				DSRIFLE
+$pitchshift ExtraTurret/See 0
+$pitchshift ExtraTurret/Act 0
+$pitchshift ExtraTurret/Fire 0
 
 //Tesla Coil
 Tesla/Attack					DSTESATK
@@ -28,21 +32,34 @@ NMSentry/See					DSSENALR
 NMSentry/Attack					DSSENTFI
 $limit NMSentry/Attack 16
 $rolloff NMSentry/Attack 200 2048
+$pitchshift NMSentry/Active 0
+$pitchshift NMSentry/Death 0
+$pitchshift NMSentry/See 0
+$pitchshift NMSentry/Attack 0
 
 //TechBarrel
 TechBarrel/Explode				DSTEKEXP
+$pitchshift TechBarrel/Explode 2
 
 //TankCreature
 TankCreature/break				DSBGLASS
+$pitchshift TankCreature/break 4
 
 //LabGlass
 tubes/break						GLASBK
+$pitchshift tubes/break 4
 
 //Medical Backpack
 MedicalBackpack/Use				MEDBPUSE
+$pitchshift MedicalBackpack/Use 0
 
 //Switch
 switches/extraswitch1			EXTRSWC1
+$pitchshift switches/extraswitch1 2
 
 //Drop
-mapworld/waterdrip				droplet1
+mapworld/waterdrip1				droplet1
+mapworld/waterdrip2				droplet2
+mapworld/waterdrip3				droplet3
+$Random mapworld/waterdrip { mapworld/waterdrip1 mapworld/waterdrip2 mapworld/waterdrip3 }
+$pitchshift mapworld/waterdrip 0

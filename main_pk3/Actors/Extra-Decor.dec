@@ -73,6 +73,7 @@ States
 		CDRP E 0
 	SpawnLoop:
 		CDRP E 1 A_CountDown
+		TNT1 A 0 A_JumpIf(waterlevel > 0, "Death")
 		Loop
 	Death:
 		CDRP E 1
