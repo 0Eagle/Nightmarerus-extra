@@ -2,3 +2,4 @@
 #include "OpenGL/ExtraBrightmaps.gl"
 #include "OpenGL/ExtraItems.gl"
 #include "OpenGL/ExtraSentryGuns.gl"
+#include "OpenGL/ExtraDecorLights.gl"

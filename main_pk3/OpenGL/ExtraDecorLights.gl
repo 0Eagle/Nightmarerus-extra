@@ -1,0 +1,33 @@
+//Wall torch
+flickerlight2 ExtraWALLTORCH2
+{
+color 1.0 0.7 0.0
+size 24
+secondarySize 28
+interval 0.1
+offset 0 24 0
+}
+
+object ZWallTorch
+{
+frame WLTRA { light ExtraWALLTORCH2 }
+frame WLTRB { light ExtraWALLTORCH2 }
+frame WLTRC { light ExtraWALLTORCH2 }
+frame WLTRD { light ExtraWALLTORCH2 }
+frame WLTRE { light ExtraWALLTORCH2 }
+frame WLTRF { light ExtraWALLTORCH2 }
+frame WLTRG { light ExtraWALLTORCH2 }
+frame WLTRH { light ExtraWALLTORCH2 }
+}
+
+Object ZWallTorchUnlit
+{
+frame WLTRA { light ExtraWALLTORCH2 }
+frame WLTRB { light ExtraWALLTORCH2 }
+frame WLTRC { light ExtraWALLTORCH2 }
+frame WLTRD { light ExtraWALLTORCH2 }
+frame WLTRE { light ExtraWALLTORCH2 }
+frame WLTRF { light ExtraWALLTORCH2 }
+frame WLTRG { light ExtraWALLTORCH2 }
+frame WLTRH { light ExtraWALLTORCH2 }
+}

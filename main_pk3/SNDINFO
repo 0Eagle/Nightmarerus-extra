@@ -63,3 +63,7 @@ mapworld/waterdrip2				droplet2
 mapworld/waterdrip3				droplet3
 $Random mapworld/waterdrip { mapworld/waterdrip1 mapworld/waterdrip2 mapworld/waterdrip3 }
 $pitchshift mapworld/waterdrip 0
+
+//Wall Torch
+ExtraWallTorch/Ignite			WALTRCH1
+$pitchshift ExtraWallTorch/Ignite 3

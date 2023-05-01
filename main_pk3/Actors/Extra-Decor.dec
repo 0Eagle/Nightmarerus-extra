@@ -1,3 +1,31 @@
+Actor ExtraWallTorch : SwitchableDecoration 16572
+{
++NOBLOCKMAP
++NOGRAVITY
++FIXMAPTHINGPOS
+Radius 6.5
+States
+{
+	Active:
+		WLTR A 0 Bright A_PlaySound("ExtraWallTorch/Ignite")
+	Spawn:
+		WLTR ABCDEFGH 5 Bright
+		Loop
+	Inactive:
+		WLTR I -1
+		Stop
+	}
+}
+
+Actor ExtraWallTorchUnlit : ExtraWallTorch 16573
+{
+States
+	{
+	Spawn:
+		Goto Super::Inactive
+	}
+}
+//==============================================================================
 Actor ExtraHeartsInTank 16568
 {
 //$Category Decoration
