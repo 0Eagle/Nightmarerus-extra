@@ -1,5 +1,8 @@
 Actor ExtraWallTorch : SwitchableDecoration 16572
 {
+//$Category Decoration
+//$Sprite WLTRA0
+//$Title "Wall Torch"
 +NOBLOCKMAP
 +NOGRAVITY
 +FIXMAPTHINGPOS
@@ -19,6 +22,9 @@ States
 
 Actor ExtraWallTorchUnlit : ExtraWallTorch 16573
 {
+//$Category Decoration
+//$Sprite WLTRI0
+//$Title "Wall Torch Unlit"
 States
 	{
 	Spawn:

@@ -8,7 +8,7 @@ interval 0.1
 offset 0 24 0
 }
 
-object ZWallTorch
+object ExtraWallTorch
 {
 frame WLTRA { light ExtraWALLTORCH2 }
 frame WLTRB { light ExtraWALLTORCH2 }
@@ -20,7 +20,7 @@ frame WLTRG { light ExtraWALLTORCH2 }
 frame WLTRH { light ExtraWALLTORCH2 }
 }
 
-Object ZWallTorchUnlit
+Object ExtraWallTorchUnlit
 {
 frame WLTRA { light ExtraWALLTORCH2 }
 frame WLTRB { light ExtraWALLTORCH2 }
