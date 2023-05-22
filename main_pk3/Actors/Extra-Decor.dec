@@ -1270,9 +1270,19 @@ States
 	{
 	Spawn:
 		TNT1 A 0
+		TNT1 A 0 A_CheckRange(1000,"Smallsfx")
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("Flaskshard1",0,0,random(3,65),frandom(-5,5),frandom(-5,5),frandom(1,2),0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,30)
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("Flaskshard2",0,0,random(3,65),frandom(-5,5),frandom(-5,5),frandom(1,2),0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,30)
 		TNT1 A 1 A_SpawnDebris("Blood",false)
+		Stop
+	Smallsfx:
+		TNT1 A 0 A_CheckRange(2000,"Nosfx")
+		TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("Flaskshard1",0,0,random(3,65),frandom(-5,5),frandom(-5,5),frandom(1,2),0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,30)
+		TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("Flaskshard2",0,0,random(3,65),frandom(-5,5),frandom(-5,5),frandom(1,2),0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,30)
+		TNT1 A 1 A_SpawnDebris("Blood",false)
+		Stop
+	Nosfx:
+		TNT1 A 1
 		Stop
 	}
 }
@@ -1854,10 +1864,10 @@ States
 
 Actor flaskshard1
 {
-Radius 2
 Height 4
-speed 2
-mass 1
+Radius 4
+Speed 2
+Mass 1
 RenderStyle Translucent
 Alpha 0.6
 +MISSILE
@@ -1883,30 +1893,30 @@ States
 		TSR1 D 4 A_Jump(24,"DeathB")
 		Loop
 	DeathA:
-		TSR1 C 5 A_Jump(80,"DeathA2")
-		TNT1 A 1
+		TSR1 C 5
+		TSR1 C 1 A_Jump(80,"DeathA2")
 		Stop
 	DeathB:
-		TSR1 D 5 A_Jump(80,"DeathB2")
-		TNT1 A 1
+		TSR1 D 5
+		TSR1 D 1 A_Jump(80,"DeathB2")
 		Stop
 	DeathA2:
-		TSR1 C 3 A_Jump(24,"DeathA2")
-		TNT1 A 1
+		TSR1 C 3
+		TSR1 C 1 A_Jump(24,"DeathA2")
 		Stop
 	DeathB2:
-		TSR1 D 5 A_Jump(24,"DeathB2")
-		TNT1 A 1
+		TSR1 D 3
+		TSR1 D 1 A_Jump(24,"DeathB2")
 		Stop
 	}
 }
 
 Actor flaskshard2
 {
-Radius 2
 Height 4
-speed 2
-mass 1
+Radius 4
+Speed 2
+Mass 1
 RenderStyle Translucent
 Alpha 0.6
 +MISSILE
@@ -1932,20 +1942,20 @@ States
 		TSR2 C 4 A_Jump(24,"DeathB")
 		Loop
 	DeathA:
-		TSR2 C 5 A_Jump(80,"DeathA2")
-		TNT1 A 1
+		TSR2 C 5
+		TSR2 C 1 A_Jump(80,"DeathA2")
 		Stop
 	DeathB:
-		TSR2 D 5 A_Jump(80,"DeathB2")
-		TNT1 A 1
+		TSR2 D 5
+		TSR2 D 1 A_Jump(80,"DeathB2")
 		Stop
 	DeathA2:
-		TSR2 C 3 A_Jump(24,"DeathA2")
-		TNT1 A 1
+		TSR2 C 3
+		TSR2 C 1 A_Jump(24,"DeathA2")
 		Stop
 	DeathB2:
-		TSR2 D 5 A_Jump(24,"DeathB2")
-		TNT1 A 1
+		TSR2 D 3
+		TSR2 D 1 A_Jump(24,"DeathB2")
 		Stop
 	}
 }
