@@ -1257,7 +1257,7 @@ Actor TankCreatureEx
 Height 70
 Radius 16
 Speed 0
-Health 50
+Health 25
 RenderStyle None
 +DONTBLAST
 +NOTELEPORT
