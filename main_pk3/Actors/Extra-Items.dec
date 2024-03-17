@@ -1,4 +1,6 @@
 Actor MarkerItem : Inventory { Inventory.MaxAmount 1 }
+Actor ExtraHealthChamberCoolDown : PowerDamage { +NOTIMEFREEZE -INVENTORY.INVBAR +INVENTORY.UNDROPPABLE +INVENTORY.ALWAYSPICKUP +INVENTORY.AUTOACTIVATE DamageFactor "nothing", 1.0 Powerup.duration -5 }
+Actor ExtraArmorChamberCoolDown : PowerDamage { +NOTIMEFREEZE -INVENTORY.INVBAR +INVENTORY.UNDROPPABLE +INVENTORY.ALWAYSPICKUP +INVENTORY.AUTOACTIVATE DamageFactor "nothing", 1.0 Powerup.duration -5 }
 
 //KEY CARDS
 Actor GreenCard : DoomKey 32757
@@ -338,17 +340,17 @@ States
 		TNT1 A 0 A_SetUserVar("user_ammo",user_ammo-2)
 		TNT1 A 0 A_JumpIf(user_ammo < 1,"Death")
 		TNT1 A 0 A_PlaySound("NMSentry/Attack",CHAN_WEAPON,1.0,false)
-		SENT B 2 Bright A_CustomBulletAttack(1.0,1.0,1,random(1,5)*25,"SentryGunBulletPuff",2048,CBAF_NORANDOM)
+		SENT B 2 Bright A_CustomBulletAttack(1.0,1.0,1,random(1,5)*25,"Extra_BulletPuff",2048,CBAF_NORANDOM)
 		SENT A 2 A_FaceTarget(45)
 		TNT1 A 0 A_PlaySound("NMSentry/Attack",CHAN_WEAPON,1.0,false)
-		SENT B 2 Bright A_CustomBulletAttack(1.0,1.0,1,random(1,5)*15,"SentryGunBulletPuff",2048,CBAF_NORANDOM)
+		SENT B 2 Bright A_CustomBulletAttack(1.0,1.0,1,random(1,5)*15,"Extra_BulletPuff",2048,CBAF_NORANDOM)
 		SENT A 2 A_FaceTarget(45)
 		TNT1 A 0 A_MonsterRefire(0,"See")
 		Loop
 	Death:
 		SENT C 1 A_PlaySound("NMSentry/Death",5)
 		TNT1 A 0 A_PlaySound("weapons/rocklx",6)
-		TNT1 A 0 A_SpawnItemEx("SentryBoom",0,0,48,0,0,0,0,SXF_CLIENTSIDE,0)
+		TNT1 A 0 A_SpawnItemEx("ExtraSentryBoom",0,0,48,0,0,0,0,SXF_CLIENTSIDE,0)
 		SENT C 525
 		"####" "###########" 2 A_FadeOut(0.1,1)
 		Stop
@@ -385,20 +387,14 @@ Powerup.duration -5
 
 Actor IsAnSentryGun : Inventory { Inventory.MaxAmount 1 }
 
-Actor SentryGunBulletPuff : BulletPuff
-{
-+MTHRUSPECIES
-+PUFFGETSOWNER
-DamageType "Bullet"
-}
-
-Actor SentryBoom
+Actor ExtraSentryBoom
 {
 Radius 2
 Height 2
 RenderStyle Add
 +DONTBLAST
 +NOTELEPORT
++THRUACTORS
 +NOINTERACTION
 +CLIENTSIDEONLY
 +NONETID
@@ -431,6 +427,487 @@ States
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("IsAnSentryGun",1)
 		TNT1 A 0 A_SpawnItemEx("SentryGun",56,0,10,0,0,0,0,SXF_SETMASTER,0)
+		Stop
+	}
+}
+//==============================================================================
+Actor Extra_Bonus1 : Inventory
+{
+Height 8
+Radius 8
+Inventory.Amount 1
+Inventory.MaxAmount 32767
+Inventory.InterHubAmount 0
+Inventory.PickupMessage "You picked up a food token!"
+States
+	{
+	Spawn:
+		FDT1 A 0
+	SpawnLoop:
+		FDT1 A 6300
+		Stop
+	}
+}
+
+Actor Extra_Bonus2 : Extra_Bonus1
+{
+States
+	{
+	Spawn:
+		FDT2 A 0
+	SpawnLoop:
+		FDT2 A 6300
+		Stop
+	}
+}
+//==============================================================================
+Actor Extra_RepairedArmor : BasicArmorBonus
+{
++COUNTITEM
++INVENTORY.ALWAYSPICKUP
+Height 16
+Radius 20
+Armor.SavePercent 33.335
+Armor.SaveAmount 1
+Armor.MaxSaveAmount 32767
+Inventory.PickupMessage "Repaired armor"
+Inventory.Icon "ARM1A0"
+States
+	{
+	Spawn:
+		TNT1 A 1
+		Stop
+	}
+}
+//==============================================================================
+Actor Extra_MonsterShield : PowerProtection
+{
++NOPAIN
++DONTRIP
++DONTBLAST
++DONTMORPH
++NOTELEOTHER
++DONTSQUASH
++NORADIUSDMG
++INVENTORY.UNDROPPABLE
+DamageFactor "Falling", 0.0
+DamageFactor "Normal", 0.01
+}
+
+Actor Extra_ShieldSphereGiver : PowerupGiver
+{
++NOTIMEFREEZE
++INVENTORY.QUIET
+-INVENTORY.INVBAR
++INVENTORY.ALWAYSPICKUP
++INVENTORY.AUTOACTIVATE
+Powerup.Type "Extra_MonsterShield"
+Powerup.Mode Reflective
+Powerup.Color "40 80 FF", 0.1
+Powerup.duration -5
+}
+
+Actor Extra_MonsterPower : PowerDamage
+{
++NOTIMEFREEZE
+-INVENTORY.INVBAR
++INVENTORY.ALWAYSPICKUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.UNDROPPABLE
+DamageFactor "Normal", 4.0
+}
+
+Actor Extra_PowerSphereGiver : PowerupGiver
+{
++NOTIMEFREEZE
++INVENTORY.QUIET
+-INVENTORY.INVBAR
++INVENTORY.ALWAYSPICKUP
++INVENTORY.AUTOACTIVATE
+Powerup.Type "Extra_MonsterPower"
+Powerup.Color "FF 80 40", 0.1
+Powerup.duration -5
+}
+//==============================================================================
+Actor Extra_RuneDrain : PowerDrain
+{
++NOTIMEFREEZE
+-INVENTORY.INVBAR
++INVENTORY.ALWAYSPICKUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.HUBPOWER
++INVENTORY.UNDROPPABLE
+Powerup.Strength 0.5
+Powerup.duration 2147483645
+}
+
+Actor Extra_RuneRegeneration : PowerRegeneration
+{
++NOTIMEFREEZE
+-INVENTORY.INVBAR
++INVENTORY.ALWAYSPICKUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.HUBPOWER
++INVENTORY.UNDROPPABLE
+Powerup.Strength 5
+Powerup.duration 2147483645
+}
+Actor Extra_RuneReflection : PowerReflection
+{
++NOTIMEFREEZE
+-INVENTORY.INVBAR
++INVENTORY.ALWAYSPICKUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.HUBPOWER
++INVENTORY.UNDROPPABLE
+DamageFactor "Normal", 0.5
+Powerup.duration 2147483645
+}
+Actor Extra_HighJump : PowerHighJump
+{
++NOTIMEFREEZE
+-INVENTORY.INVBAR
++INVENTORY.ALWAYSPICKUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.HUBPOWER
++INVENTORY.UNDROPPABLE
+Powerup.Strength 2
+Powerup.duration 2147483645
+}
+Actor Extra_RuneSpeed25 : PowerSpeed
+{
++NOTIMEFREEZE
+-INVENTORY.INVBAR
++INVENTORY.ALWAYSPICKUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.HUBPOWER
++INVENTORY.UNDROPPABLE
+Speed 2
+Powerup.duration 2147483645
+}
+
+Actor Extra_RuneIncreaseDamage : PowerDamage
+{
++NOTIMEFREEZE
+-INVENTORY.INVBAR
++INVENTORY.ALWAYSPICKUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.HUBPOWER
++INVENTORY.UNDROPPABLE
+Powerup.duration 2147483645
+DamageFactor "Normal", 2
+}
+
+Actor Extra_RuneHalfDamage : PowerProtection
+{
++NOTIMEFREEZE
+-INVENTORY.INVBAR
++INVENTORY.ALWAYSPICKUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.HUBPOWER
++INVENTORY.UNDROPPABLE
+Powerup.duration 2147483645
+DamageFactor "Normal", 0.5
+ActiveSound "Extra_Rune/Protection"
+}
+
+Actor Extra_RuneDoubleFiringSpeed : PowerDoubleFiringSpeed
+{
++NOTIMEFREEZE
+-INVENTORY.INVBAR
++INVENTORY.ALWAYSPICKUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.HUBPOWER
++INVENTORY.UNDROPPABLE
+Powerup.Duration 2147483645
+}
+//==============================================================================
+Actor Extra_DrainRune : CustomInventory
+{
++INVENTORY.INVBAR
++INVENTORY.BIGPOWERUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.HUBPOWER
++INVENTORY.UNTOSSABLE
+Inventory.Amount 1
+Inventory.MaxAmount 1
+Inventory.InterHubAmount 1
+Inventory.PickupMessage "Drain Rune"
+Inventory.PickupSound "Extra_Rune/Pickup"
+Inventory.UseSound "Extra_Rune/Use"
+Inventory.PickupFlash "PickupFlash"
+Inventory.Icon "DRARE0"
+Tag "Drain Rune"
+States
+	{
+	Spawn:
+		TNT1 A 0
+	SpawnLoop:
+		DRAR ABCD 6 Bright
+		Loop
+	Use:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("Extra_RuneDrain",1)
+		Fail
+	}
+}
+//==============================================================================
+Actor Extra_RageRune : CustomInventory
+{
++INVENTORY.INVBAR
++INVENTORY.BIGPOWERUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.UNTOSSABLE
+Inventory.Amount 1
+Inventory.MaxAmount 1
+Inventory.InterHubAmount 1
+Inventory.PickupMessage "Rage Rune"
+Inventory.PickupSound "Extra_Rune/Pickup"
+Inventory.UseSound "Extra_Rune/Use"
+Inventory.PickupFlash "PickupFlash"
+Inventory.Icon "RAGRI0"
+Tag "Rage Rune"
+States
+	{
+	Spawn:
+		TNT1 A 0
+	SpawnLoop:
+		RAGR ABCDEFGH 6 Bright
+		Loop
+	Use:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("Extra_RuneDoubleFiringSpeed",1)
+		Fail
+	}
+}
+//==============================================================================
+Actor Extra_Fly : PowerupGiver
+{
++FLOATBOB
++INVENTORY.INVBAR
++INVENTORY.HUBPOWER
++INVENTORY.UNTOSSABLE
+Inventory.Amount 1
+Inventory.MaxAmount 1
+Inventory.InterHubAmount 1
+Powerup.Type "PowerFlight"
+Powerup.Duration -60
+Inventory.PickupMessage "The Wings of Wrath"
+Inventory.PickupFlash "PickupFlash"
+Inventory.Icon "ARTISOAR"
+Tag "The Wings of Wrath"
+States
+	{
+	Spawn:
+		TNT1 A 0
+	SpawnLoop:
+		SOAR ABCB 5 Bright
+		Loop
+	}
+}
+//==============================================================================
+Actor Extra_SpreadRune : Inventory
+{
++NOTIMEFREEZE
++FLOATBOB
++INVENTORY.INVBAR
++INVENTORY.BIGPOWERUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.UNTOSSABLE
+Inventory.Icon "SPRRE0"
+Inventory.Amount 1
+Inventory.MaxAmount 1
+Inventory.InterHubAmount 1
+Inventory.PickupMessage "Spread Rune"
+Inventory.PickupFlash "PickupFlash"
+Tag "Spread Rune"
+States
+	{
+	Spawn:
+		TNT1 A 0
+	SpawnLoop:
+		SPRR ABCD 6 Bright
+		Loop
+	}
+}
+//==============================================================================
+Actor Extra_RegenerationRune : CustomInventory
+{
++INVENTORY.INVBAR
++INVENTORY.BIGPOWERUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.UNTOSSABLE
+Inventory.Amount 1
+Inventory.MaxAmount 1
+Inventory.InterHubAmount 1
+Inventory.PickupMessage "Regeneration Rune"
+Inventory.PickupSound "Extra_Rune/Pickup"
+Inventory.UseSound "Extra_Rune/Use"
+Inventory.PickupFlash "PickupFlash"
+Inventory.Icon "REGRC0"
+Tag "Regeneration Rune"
+States
+	{
+	Spawn:
+		TNT1 A 0
+	SpawnLoop:
+		REGR AB 6 Bright
+		Loop
+	Use:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("Extra_RuneRegeneration",1)
+		Fail
+	}
+}
+//==============================================================================
+Actor Extra_ReflectionRune : CustomInventory
+{
++FLOATBOB
++INVENTORY.INVBAR
++INVENTORY.BIGPOWERUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.UNTOSSABLE
+Inventory.Amount 1
+Inventory.MaxAmount 1
+Inventory.InterHubAmount 1
+Inventory.PickupMessage "Reflection Rune"
+Inventory.PickupSound "Extra_Rune/Pickup"
+Inventory.UseSound "Extra_Rune/Use"
+Inventory.PickupFlash "PickupFlash"
+Inventory.Icon "REFRC0"
+Tag "Reflection Rune"
+States
+	{
+	Spawn:
+		TNT1 A 0
+	SpawnLoop:
+		REFR BA 6 Bright
+		Loop
+	Use:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("Extra_RuneReflection",1)
+		Fail
+	}
+}
+//==============================================================================
+Actor Extra_HighJumpRune : CustomInventory
+{
+Scale 0.7
++INVENTORY.INVBAR
++INVENTORY.BIGPOWERUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.UNTOSSABLE
+Inventory.Amount 1
+Inventory.MaxAmount 1
+Inventory.InterHubAmount 1
+Inventory.PickupMessage "HighJump Rune"
+Inventory.PickupSound "Extra_Rune/Pickup"
+Inventory.UseSound "Extra_Rune/Use"
+Inventory.PickupFlash "PickupFlash"
+Inventory.Icon "HIJRE0"
+Tag "HighJump Rune"
+States
+	{
+	Spawn:
+		TNT1 A 0
+	SpawnLoop:
+		HIJR ABCD 6 Bright
+		Loop
+	Use:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("Extra_HighJump",1)
+		Fail
+	}
+}
+//==============================================================================
+Actor Extra_HasteRune : CustomInventory
+{
++FLOATBOB
++INVENTORY.INVBAR
++INVENTORY.BIGPOWERUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.UNTOSSABLE
+Inventory.Amount 1
+Inventory.MaxAmount 1
+Inventory.InterHubAmount 1
+Inventory.PickupMessage "Haste Rune"
+Inventory.PickupSound "Extra_Rune/Pickup"
+Inventory.UseSound "Extra_Rune/Use"
+Inventory.PickupFlash "PickupFlash"
+Inventory.Icon "HASRE0"
+Tag "Haste Rune"
+States
+	{
+	Spawn:
+		TNT1 A 0
+	SpawnLoop:
+		HASR ABCD 6 Bright
+		Loop
+	Use:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("Extra_RuneSpeed25",1)
+		Fail
+	}
+}
+//==============================================================================
+Actor Extra_StrengthRune : CustomInventory
+{
++INVENTORY.INVBAR
++INVENTORY.BIGPOWERUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.UNTOSSABLE
+Inventory.Amount 1
+Inventory.MaxAmount 1
+Inventory.InterHubAmount 1
+Inventory.PickupMessage "Strength Rune"
+Inventory.PickupSound "Extra_Rune/Pickup"
+Inventory.UseSound "Extra_Rune/Use"
+Inventory.PickupFlash "PickupFlash"
+Inventory.Icon "STRRF0"
+Tag "Strength Rune"
+States
+	{
+	Spawn:
+		TNT1 A 0
+	SpawnLoop:
+		STRR ABCD 6 Bright
+		Loop
+	Use:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("Extra_RuneIncreaseDamage",1)
+		Fail
+	}
+}
+//==============================================================================
+Actor Extra_ResistanceRune : CustomInventory
+{
++INVENTORY.INVBAR
++INVENTORY.BIGPOWERUP
++INVENTORY.AUTOACTIVATE
++INVENTORY.UNTOSSABLE
+Inventory.Amount 1
+Inventory.MaxAmount 1
+Inventory.InterHubAmount 1
+Inventory.PickupMessage "Resistance Rune"
+Inventory.PickupSound "Extra_Rune/Pickup"
+Inventory.UseSound "Extra_Rune/Use"
+Inventory.PickupFlash "PickupFlash"
+Inventory.Icon "RESRI0"
+Tag "Resistance Rune"
+States
+	{
+	Spawn:
+		TNT1 A 0
+	SpawnLoop:
+		RESR ABCDEFGH 6 Bright
+		Loop
+	Use:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("Extra_RuneHalfDamage",1)
+		Fail
+	Held:
+		TNT1 A 1 Thing_ChangeTID(0,0)
+		TNT1 A -1
 		Stop
 	}
 }

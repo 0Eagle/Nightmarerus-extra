@@ -17,7 +17,7 @@ States
 		TNT1 A 1
 		Wait
 	External:
-		TNT1 A 1 A_SpawnItemEx("LSDMusicChanger",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERSPECIAL,0)
+		TNT1 A 10 ACS_NamedExecuteAlways("Extra_MusicChangerSpawner",0,ARGS[2],ARGS[3],ARGS[4])
 		Stop
 	Include:
 		TNT1 A 1 A_SpawnItemEx("ExtraMusicChanger",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERSPECIAL,0)
@@ -181,8 +181,43 @@ States
 	{
 	Spawn:
 		TNT1 A 4
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0)
+		TNT1 A 1
+		Wait
+	External:
 		TNT1 A 1 A_SpawnItemEx("WolfensteinSS",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG,0,tid)
 		Stop
+	Include:
+		TNT1 A 1 A_SpawnItemEx("ExtraSSSoldiersSpawner_BlueShield",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG,0,tid)
+		Stop
+	}
+}
+
+Actor ExtraSSSoldiersSpawner_BlueShield : ExtraMapSpawnerBase
+{
+Height 56
+Radius 20
++SEEINVISIBLE
++NOKILLSCRIPTS
+var int user_tid;
+var int user_amount;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1
+	SpawnLoop:
+		TNT1 A 10 A_LookEx(LOF_NOSEESOUND,0,1000,0,360,"Missile")
+		Loop
+	Missile:
+		TNT1 A 0 A_ChangeFlag(AMBUSH,0)
+		TNT1 A 0 A_SetUserVar("user_amount",user_amount+1)
+		TNT1 A 0 A_JumpIf(user_amount > 50,"Death")
+		TNT1 A 35
+		TNT1 A 15 A_SpawnItemEx("NMTeleportFogExtraSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 1 A_SpawnItemEx("WolfensteinSS",0,0,0,20,0,0,0,SXF_TRANSFERPOINTERS|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 0 ACS_NamedExecuteAlways("Extra_GivePowerups",0,user_tid,1)
+		Goto Missile
 	}
 }
 
@@ -286,9 +321,10 @@ Actor NMRocketDogeSpawner : ExtraMapSpawnerBase 32724
 {
 //$Category Monsters/Extra
 //$Title "Special RocketDoge Spawner Spawner"
-Radius 0
-Height 0
-Args 0,0,0,0,141003
+//$Sprite SARGA1
+Height 56
+Radius 30
+Args 0,0,0,141003,141003
 States
 	{
 	Spawn:
@@ -297,13 +333,13 @@ States
 		TNT1 A 0 A_SetUserVar("user_y",0)
 	Line:
 		TNT1 A 10 A_SpawnItemEx("Demon",user_x,user_y,0,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_NOCHECKPOSITION,0,tid)
-		TNT1 A 0 A_SetUserVar("user_x",user_x+40+1)
-		TNT1 A 0 A_JumpIf(user_x > 410,"Column")
+		TNT1 A 0 A_SetUserVar("user_x",user_x+64)
+		TNT1 A 0 A_JumpIf(user_x >= 640,"Column")
 		Loop
 	Column:
 		TNT1 A 0 A_SetUserVar("user_x",0)
-		TNT1 A 0 A_SetUserVar("user_y",user_y+40+1)
-		TNT1 A 0 A_JumpIf(user_y > 410,"Death")
+		TNT1 A 0 A_SetUserVar("user_y",user_y+64)
+		TNT1 A 0 A_JumpIf(user_y >= 640,"Death")
 		Goto Line
 	}
 }
@@ -368,6 +404,7 @@ Actor ExtraSentryBoxSpawner 32765
 //$Sprite SENBA0
 //$Title "Sentry Gun Box"
 +RANDOMIZE
++THRUACTORS
 +NOINTERACTION
 +MOVEWITHSECTOR
 +SERVERSIDEONLY
@@ -380,19 +417,410 @@ States
 		TNT1 A 1
 		Wait
 	External:
-		TNT1 A 1 A_SpawnItemEx("SentryBox",0,0,8,0,0,0,0,SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 1 A_SetArg(4,412026)//SentryBox
+		TNT1 A 1 A_SpawnItemEx("Backpack",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
 		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
 		Stop
 	Include:
-		TNT1 A 1 A_SpawnItemEx("ExtraSentryBox",0,0,8,0,0,0,0,SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 1 A_SpawnItemEx("ExtraSentryBox",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
 		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	}
+}
+
+Actor BFG100500Spawner 16574
+{
+//$Category Weapons/Extra
+//$Sprite BFUGA0
+//$Title "BFG 100500"
++RANDOMIZE
++THRUACTORS
++NOINTERACTION
++MOVEWITHSECTOR
++SERVERSIDEONLY
+var int user_tid;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0)
+		TNT1 A 1
+		Wait
+	External:
+		TNT1 A 1 A_SetArg(4,300708)//BFG2704
+		TNT1 A 1 A_SpawnItemEx("BFG9000",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	Include:
+		TNT1 A 1 A_SpawnItemEx("BFG100500",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	}
+}
+
+Actor Extra_NuclearMissileLauncherSpawner 16575
+{
+//$Category Weapons/Extra
+//$Sprite XNUKP0
+//$Title "Nuclear Missile Launcher"
++RANDOMIZE
++THRUACTORS
++NOINTERACTION
++MOVEWITHSECTOR
++SERVERSIDEONLY
+var int user_tid;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0)
+		TNT1 A 1
+		Wait
+	External:
+		TNT1 A 1 A_SetArg(4,300809)//NuclearMissileLauncher
+		TNT1 A 1 A_SpawnItemEx("BFG9000",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	Include:
+		TNT1 A 1 A_SpawnItemEx("Extra_NuclearMissileLauncher",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	}
+}
+
+Actor Extra_DrainRuneSpawner 32718
+{
+//$Category Powerups/Extra
+//$Sprite DRARA0
+//$Title "Drain Rune"
++RANDOMIZE
++THRUACTORS
++NOINTERACTION
++MOVEWITHSECTOR
++SERVERSIDEONLY
+var int user_tid;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0)
+		TNT1 A 1
+		Wait
+	External:
+		TNT1 A 1 A_SetArg(4,411024)//DrainRune
+		TNT1 A 1 A_SpawnItemEx("InvulnerabilitySphere",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	Include:
+		TNT1 A 1 A_SpawnItemEx("Extra_DrainRune",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	}
+}
+
+Actor Extra_RageRuneSpawner 32717
+{
+//$Category Powerups/Extra
+//$Sprite RAGRA0
+//$Title "Rage Rune"
++RANDOMIZE
++THRUACTORS
++NOINTERACTION
++MOVEWITHSECTOR
++SERVERSIDEONLY
+var int user_tid;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0)
+		TNT1 A 1
+		Wait
+	External:
+		TNT1 A 1 A_SetArg(4,411025)//RageRune
+		TNT1 A 1 A_SpawnItemEx("InvulnerabilitySphere",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	Include:
+		TNT1 A 1 A_SpawnItemEx("Extra_RageRune",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	}
+}
+
+Actor Extra_FlySpawner 32716
+{
+//$Category Powerups/Extra
+//$Sprite ARTISOAR
+//$Title "The Wings of Wrath"
++RANDOMIZE
++THRUACTORS
++NOINTERACTION
++MOVEWITHSECTOR
++SERVERSIDEONLY
+var int user_tid;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0)
+		TNT1 A 1
+		Wait
+	External:
+		TNT1 A 1 A_SetArg(4,415002)//LSDFly
+		TNT1 A 1 A_SpawnItemEx("RadSuit",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	Include:
+		TNT1 A 1 A_SpawnItemEx("Extra_Fly",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	}
+}
+
+Actor Extra_SpreadRuneSpawner 32715
+{
+//$Category Powerups/Extra
+//$Sprite SPRRA0
+//$Title "Spread Rune"
++RANDOMIZE
++THRUACTORS
++NOINTERACTION
++MOVEWITHSECTOR
++SERVERSIDEONLY
+var int user_tid;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0)
+		TNT1 A 1
+		Wait
+	External:
+		TNT1 A 1 A_SetArg(4,411026)//SpreadRune
+		TNT1 A 1 A_SpawnItemEx("InvulnerabilitySphere",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	Include:
+		TNT1 A 1 A_SpawnItemEx("Extra_SpreadRune",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	}
+}
+
+Actor Extra_RegenerationRuneSpawner 32714
+{
+//$Category Powerups/Extra
+//$Sprite REGRA0
+//$Title "Regeneration Rune"
++RANDOMIZE
++THRUACTORS
++NOINTERACTION
++MOVEWITHSECTOR
++SERVERSIDEONLY
+var int user_tid;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0)
+		TNT1 A 1
+		Wait
+	External:
+		TNT1 A 1 A_SetArg(4,411020)//LifeRune
+		TNT1 A 1 A_SpawnItemEx("InvulnerabilitySphere",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	Include:
+		TNT1 A 1 A_SpawnItemEx("Extra_RegenerationRune",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	}
+}
+
+Actor Extra_ReflectionRuneSpawner 32713
+{
+//$Category Powerups/Extra
+//$Sprite REFRA0
+//$Title "Reflection Rune"
++RANDOMIZE
++THRUACTORS
++NOINTERACTION
++MOVEWITHSECTOR
++SERVERSIDEONLY
+var int user_tid;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0)
+		TNT1 A 1
+		Wait
+	External:
+		TNT1 A 1 A_SetArg(4,411028)//ReflectionRune
+		TNT1 A 1 A_SpawnItemEx("InvulnerabilitySphere",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	Include:
+		TNT1 A 1 A_SpawnItemEx("Extra_ReflectionRune",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	}
+}
+
+Actor Extra_HighJumpRuneSpawner 32712
+{
+//$Category Powerups/Extra
+//$Sprite HIJRA0
+//$Title "HighJump Rune"
++RANDOMIZE
++THRUACTORS
++NOINTERACTION
++MOVEWITHSECTOR
++SERVERSIDEONLY
+var int user_tid;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0)
+		TNT1 A 1
+		Wait
+	External:
+		TNT1 A 1 A_SetArg(4,411029)//HighJumpRune
+		TNT1 A 1 A_SpawnItemEx("InvulnerabilitySphere",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	Include:
+		TNT1 A 1 A_SpawnItemEx("Extra_ReflectionRune",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	}
+}
+
+Actor Extra_HasteRuneSpawner 32711
+{
+//$Category Powerups/Extra
+//$Sprite HASRA0
+//$Title "Haste Rune"
++RANDOMIZE
++THRUACTORS
++NOINTERACTION
++MOVEWITHSECTOR
++SERVERSIDEONLY
+var int user_tid;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0)
+		TNT1 A 1
+		Wait
+	External:
+		TNT1 A 1 A_SetArg(4,411021)//SpeedRune
+		TNT1 A 1 A_SpawnItemEx("InvulnerabilitySphere",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	Include:
+		TNT1 A 1 A_SpawnItemEx("Extra_HasteRune",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	}
+}
+
+Actor Extra_StrengthRuneSpawner 32710
+{
+//$Category Powerups/Extra
+//$Sprite STRRA0
+//$Title "Strength Rune"
++RANDOMIZE
++THRUACTORS
++NOINTERACTION
++MOVEWITHSECTOR
++SERVERSIDEONLY
+var int user_tid;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0)
+		TNT1 A 1
+		Wait
+	External:
+		TNT1 A 1 A_SetArg(4,411026)//SpreadRune
+		TNT1 A 1 A_SpawnItemEx("InvulnerabilitySphere",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	Include:
+		TNT1 A 1 A_SpawnItemEx("Extra_StrengthRune",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	}
+}
+
+Actor Extra_ResistanceRuneSpawner 32709
+{
+//$Category Powerups/Extra
+//$Sprite RESRA0
+//$Title "Resistance Rune"
++RANDOMIZE
++THRUACTORS
++NOINTERACTION
++MOVEWITHSECTOR
++SERVERSIDEONLY
+var int user_tid;
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 1 ACS_NamedExecuteAlways("Extra_SelectItemSpawn",0)
+		TNT1 A 1
+		Wait
+	External:
+		TNT1 A 1 A_SetArg(4,411022)//LegendaryRune
+		TNT1 A 1 A_SpawnItemEx("InvulnerabilitySphere",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	Include:
+		TNT1 A 1 A_SpawnItemEx("Extra_ResistanceRune",0,0,8,0,0,0,0,SXF_TRANSFERSPECIAL|SXF_NOCHECKPOSITION,0,ACS_NamedExecuteWithResult("Extra_GetTID"))
+		TNT1 A 10 ACS_NamedExecuteWithResult("Extra_SetupItem")
+		Stop
+	}
+}
+//==============================================================================
+Actor ExtraCellPackSpawner : ExtraMapSpawnerBase
+{
+Height 16
+Radius 20
+Args 0,0,0,0,428001
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 0 A_SpawnItemEx("NMItemTeleportFogExtraSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 1 A_SpawnItemEx("CellPack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL,0,0)
+		Stop
+	}
+}
+
+Actor ExtraRocketBoxSpawner : ExtraMapSpawnerBase
+{
+Height 16
+Radius 20
+Args 0,0,0,0,426001
+States
+	{
+	Spawn:
+		TNT1 A 4
+		TNT1 A 0 A_SpawnItemEx("NMItemTeleportFogExtraSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 1 A_SpawnItemEx("RocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL,0,0)
 		Stop
 	}
 }
 //==============================================================================
 Actor ExtraMapSpot : ExtraMapSpawnerBase 32722
 {
-//$Category ZDoom
+//$Category ZDoom/Extra
 //$Title "Extra Mapspot"
 Height 8
 Radius 8
@@ -413,8 +841,9 @@ Actor NMExtraSpawnerFX
 {
 RenderStyle None
 +NOCLIP
-+NOTONAUTOMAP
++THRUACTORS
 +NOINTERACTION
++NOTONAUTOMAP
 States
 	{
 	Spawn:
@@ -430,6 +859,17 @@ States
 	Spawn:
 		TNT1 A 0
 		TNT1 A 1 A_SpawnItemEx("TeleportFog",0,0,0,0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
+		Stop
+	}
+}
+
+Actor NMItemTeleportFogExtraSpawner : NMExtraSpawnerFX
+{
+States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItemEx("ItemFog",0,0,0,0,0,0,0,SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,0)
 		Stop
 	}
 }

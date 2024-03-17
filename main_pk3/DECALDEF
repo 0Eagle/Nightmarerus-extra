@@ -12,3 +12,24 @@ LowerDecal BFGScorch
 }
 
 GENERATOR SentryGun BulletChip
+
+
+decal Extra_Scorch
+{
+pic XSCORCH3
+shade "00 00 00"
+x-scale 0.5
+y-scale 0.5
+randomflipx
+randomflipy
+}
+
+decal Extra_BigScorch
+{
+pic XSCORCH3
+shade "00 00 00"
+x-scale 0.75
+y-scale 0.75
+randomflipx
+randomflipy
+}

@@ -1,7 +1,13 @@
+//==============================================================================
+//Scripts for Extra Map pack made by Eagle.
+//You MAY use parts of this code as long as you give credits.
+//But don't be lame and don't copy/past it and call it your own!
+//==============================================================================
 #library "NMSCRIPT"
 #include "zcommon.acs"
 //==============================================================================
 #define INT_MAX		2147483647
+#define SHORT_MAX	32767
 //==============================================================================
 int Music_priority = 0;
 int MusicVolume = 1.0;
@@ -9,6 +15,39 @@ int MusicNumPlaying = -1;
 int MapMusicChangerPulse = 0;
 int MusicChangerPulse = 0;
 //==============================================================================
+function int integer(int num)
+{
+	if(num < 0)
+	{
+		return -((-num) & 0xFFFF0000);
+	}
+	return (num & 0xFFFF0000);
+}
+
+function int to_int(int num)
+{
+	if(num < 0)return (num / 65536);
+	return (num >> 16);
+}
+
+function int square(int x)
+{
+	return x * x;
+}
+
+function int clamp(int surce, int minimum, int maximum)
+{
+	if(surce < minimum)
+	{
+		return minimum;
+	}
+	else if(surce > maximum)
+	{
+		return maximum;
+	}
+	return surce;
+}
+
 function int GetAndSetUniqueTID(void)
 {
 	int tid = ActivatorTID();
@@ -38,6 +77,11 @@ function int GetAndSetUniqueTID(void)
 	return tid;
 }
 
+function bool ActorIsPlayer(int tid)
+{
+	return ((ClassifyActor(tid) & ACTOR_PLAYER) == ACTOR_PLAYER);
+}
+
 function bool ActorIsMonster(int tid)
 {
 	return ((ClassifyActor(tid) & ACTOR_MONSTER) == ACTOR_MONSTER);
@@ -48,12 +92,130 @@ function bool ActorIsAlive(int tid)
 	return ((ClassifyActor(tid) & ACTOR_ALIVE) == ACTOR_ALIVE);
 }
 
+function bool isAlive(int tid)
+{
+	return ((GetActorProperty(tid,APROP_Health) > 0) || ((ClassifyActor(tid) & ACTOR_ALIVE) == ACTOR_ALIVE));
+}
+
+function bool ActorIsExists(int tid)
+{
+	return (ClassifyActor(tid) != ACTOR_NONE);
+}
+
+function bool IsGameTypeSinglePlayer(void)
+{
+	return (SinglePlayer() || (GameType() == GAME_SINGLE_PLAYER));
+}
+
 function bool Extra_CheckMaxHealth (void)
 {
 	if(GetActorProperty(0,APROP_SpawnHealth) < 100)SetActorProperty(0,APROP_SpawnHealth,100);
 	return (GetActorProperty(0,APROP_Health) < GetActorProperty(0,APROP_SpawnHealth));
 }
+
+//Вычисление расстояния между акторами, требуются TIDs.
+function int DistToTarg(int act_tid, int targ_tid, bool useZ)
+{
+	int dist;
+	int ActX = to_int(GetActorX(act_tid));
+	int ActY = to_int(GetActorY(act_tid));
+	int TarX = to_int(GetActorX(targ_tid));
+	int TarY = to_int(GetActorY(targ_tid));
+	if(useZ)
+	{
+		int ActZ = to_int(GetActorZ(act_tid)+(GetActorProperty(act_tid,APROP_Height)/2));
+		int TarZ = to_int(GetActorZ(targ_tid)+(GetActorProperty(targ_tid,APROP_Height)/2));
+		dist = Sqrt(square(ActX-TarX)+square(ActY-TarY)+square(ActZ-TarZ));
+	}
+	else
+	{
+		dist = Sqrt(square(ActX-TarX)+square(ActY-TarY));
+	}
+	return dist;
+}
+//Вычисление расстояния между акторами, требуется поинтер.
+function int DistToTargetPtr(int tid, int ptr, int useZ)
+{
+	int result = SHORT_MAX;
+	int ActX = to_int(GetActorX(tid));
+	int ActY = to_int(GetActorY(tid));
+	int TarX,TarY;
+	if(useZ > 0)
+	{
+		int ActZ = to_int(GetActorZ(tid)+(GetActorProperty(tid,APROP_Height)/2));
+		if((ptr > 1) && SetActivator(tid,ptr))
+		{
+			TarX = to_int(GetActorX(0));
+			TarY = to_int(GetActorY(0));
+			int TarZ = to_int(GetActorZ(0)+(GetActorProperty(0,APROP_Height)/2));
+			result = Sqrt(square(ActX-TarX)+square(ActY-TarY)+square(ActZ-TarZ));
+		}
+	}
+	else
+	{
+		if((ptr > 1) && SetActivator(tid,ptr))
+		{		
+			TarX = to_int(GetActorX(0));
+			TarY = to_int(GetActorY(0));
+			result = Sqrt(square(ActX-TarX)+square(ActY-TarY));
+		}
+	}
+	return result;
+}
+
+//fixed angle, fixed pitch, fixed speed.
+function int LSDSpawnProjectile(int shooter_tid, str name, int angle, int pitch, int speed, int mass)
+{
+	angle = angle % 1.0;
+	mass = clamp(mass,0,SHORT_MAX);
+	int quarters;
+	if(pitch > 0.25)
+	{
+		pitch = pitch % 0.5;
+		if(pitch > 0.25)
+		{
+			quarters = FixedMul(integer(FixedDiv(pitch,0.25)),0.25);
+			pitch = 0.25 - (pitch - quarters);
+		}
+		else if(pitch > 0)
+		{
+			pitch = -pitch;
+		}
+		angle = (angle + 0.5) % 1.0;
+	}
+	else if(pitch < -0.25)
+	{
+		pitch = pitch % 0.5;
+		if(pitch < -0.25)
+		{
+			quarters = FixedMul(integer(FixedDiv(-pitch,0.25)),0.25);
+			pitch = -(0.25 + (pitch + quarters));
+		}
+		else if(pitch < 0)
+		{
+			pitch = -pitch;
+		}
+		angle = (angle + 0.5) % 1.0;
+	}
+	int byte_angle = angle>>8;
+	int hspeed = to_int(FixedMul(FixedMul(cos(pitch),speed),8.0));
+	int vspeed = to_int(FixedMul(FixedMul(sin(pitch),speed),8.0));
+	int newtid = UniqueTID(0,0);
+	SpawnProjectile(shooter_tid,name,byte_angle,hspeed,vspeed,mass,newtid);
+	if(ActorIsExists(newtid) && CheckActorClass(newtid,name))
+	{
+		return newtid;
+	}
+	return 0;
+}
 //==============================================================================
+script "Extra_DistToTarget" (int tid, int ptr, int useZ, int maxresult)
+{
+	int result = DistToTargetPtr(tid,ptr,useZ);
+	if((maxresult > 0) && (result > maxresult))result = maxresult;
+	SetResultValue(result);
+}
+
 script "Extra_SelectItemSpawn" (void)
 {
 	if(StrICmp(Strparam(l:"Item412026"),"0") == 0)
@@ -85,40 +247,134 @@ script "Extra_SetupItem" (void)
 		name = Strparam(l:"EXTERNAL_SENTRYGUNBOX_NAME");
 	}
 	int tid = GetUserVariable(0,"user_tid");
-	if((tid != 0) && !(ClassifyActor(tid) & ACTOR_MONSTER) && !(ClassifyActor(tid) & ACTOR_PLAYER) && CheckActorClass(tid,name))
+	if((tid != 0) && !(ActorIsMonster(tid) || ActorIsPlayer(tid)) && CheckActorClass(tid,name))
 	{
 		GiveActorInventory(tid,"ExtraResetFlagDROPPED",1);
 	}
 }
-
-script "ExtraBFG_Annihilate" (void)
+//==============================================================================
+script "Extra_BFGRaySetup" (void)
 {
-	if((SetActivator(0,AAPTR_TRACER) == 1) && (ClassifyActor(0) & ACTOR_MONSTER) && (ClassifyActor(0) & ACTOR_ALIVE) && !CheckFlag(0,"NODAMAGE") && !((CheckFlag(0,"BOSS") && CheckFlag(0,"NOFEAR") && CheckFlag(0,"NOICEDEATH") && CheckFlag(0,"NOCLIP") && CheckFlag(0,"NOTIMEFREEZE")) || (CheckFlag(0,"BOSS") && CheckFlag(0,"NOFEAR") && CheckFlag(0,"NOICEDEATH") && CheckFlag(0,"GHOST") && CheckFlag(0,"NOTIMEFREEZE"))) && (GetActorProperty(0,APROP_DamageFactor) > 0.01) && !CheckActorClass(0,"WolfensteinSS"))
+	str ShooterSpecies = GetActorProperty(0,APROP_Species);
+	bool friendliness = GetActorProperty(0,APROP_Friendly);
+	int BallSeeTID = LSDSpawnProjectile(0,"Extra_BFGSee",GetActorAngle(0),0,0,0);
+	if((BallSeeTID > 0) && (SetActivator(BallSeeTID) == 1))//Актор поиска целей.
 	{
-		SetActorProperty(0,APROP_Invulnerable,0);
-		Thing_Damage(0,10000000);
-		if(GetActorProperty(0,APROP_HEALTH) > 0)
+		SetPointer(AAPTR_MASTER,0,AAPTR_TARGET);
+		SetPointer(AAPTR_TARGET,0);
+		SetActorProperty(0,APROP_Species,ShooterSpecies);
+		SetActorProperty(0,APROP_Friendly,friendliness);
+		SetActorState(0,"Idle");
+	}
+}
+
+script "LSD_BFGRayAttack" (void)
+{
+	int PuffTID = GetAndSetUniqueTID();
+	if(SetActivator(0,AAPTR_TARGET) == 1)
+	{
+		int ShooterX = GetActorX(0);
+		int ShooterY = GetActorY(0);
+		int ShooterZ = GetActorZ(0)+(GetActorProperty(0,APROP_Height)/2);
+		if(SetActivator(PuffTID) == 1)
 		{
-			SetActorProperty(0,APROP_HEALTH,0);
-			Thing_Damage(0,10000000);
+			int TargetX = GetActorX(0);
+			int TargetY = GetActorY(0);
+			int TargetZ = GetActorZ(0)+(GetActorProperty(0,APROP_Height)/2);
+			int vx = TargetX-ShooterX;
+			int vy = TargetY-ShooterY;
+			int vz = TargetZ-ShooterZ;
+			SetActorPitch(0,VectorAngle(VectorLength(vx,vy),vz));
+			SetActorAngle(0,VectorAngle(vx,vy));
+			SetPointer(AAPTR_TARGET,0,AAPTR_MASTER,PTROP_UNSAFETARGET|PTROP_UNSAFEMASTER);
+			SetActorState(0,"Attack");
 		}
-		if(ActorIsMonster(0))
+	}
+}
+
+script "Extra_BFGShockwaveSetup" (void)
+{
+	str ShooterSpecies = GetActorProperty(0,APROP_Species);
+	bool friendliness = GetActorProperty(0,APROP_Friendly);
+	int BallShockwaveTID = LSDSpawnProjectile(0,"Extra_BFGShockwave",GetActorAngle(0),0,0,0);
+	if((BallShockwaveTID > 0) && (SetActivator(BallShockwaveTID) == 1))//Актор поиска целей.
+	{
+		SetPointer(AAPTR_MASTER,0,AAPTR_TARGET);
+		SetPointer(AAPTR_TARGET,0);
+		SetActorProperty(0,APROP_Species,ShooterSpecies);
+		SetActorProperty(0,APROP_Friendly,friendliness);
+		SetActorState(0,"Missile");
+	}
+}
+
+script "LSD_BFGShockwaveAttack" (void)
+{
+	int PuffTID = GetAndSetUniqueTID();
+	if(SetActivator(0,AAPTR_TARGET) == 1)
+	{
+		int ShooterX = GetActorX(0);
+		int ShooterY = GetActorY(0);
+		int ShooterZ = GetActorZ(0)+(GetActorProperty(0,APROP_Height)/2);
+		if(SetActivator(PuffTID) == 1)
 		{
+			int TargetX = GetActorX(0);
+			int TargetY = GetActorY(0);
+			int TargetZ = GetActorZ(0)+(GetActorProperty(0,APROP_Height)/2);
+			int vx = TargetX-ShooterX;
+			int vy = TargetY-ShooterY;
+			int vz = TargetZ-ShooterZ;
+			SetActorPitch(0,VectorAngle(VectorLength(vx,vy),vz));
+			SetActorAngle(0,VectorAngle(vx,vy));
+			SetPointer(AAPTR_TARGET,0,AAPTR_MASTER,PTROP_UNSAFETARGET|PTROP_UNSAFEMASTER);
+			SetActorState(0,"Attack");
+		}
+	}
+}
+
+script "Extra_BFGAnnihilate" (void)
+{
+	//bool debug = GetCVAR("Extra_debug");
+	if((CheckInventory("ExtraBFGAnnihilateCoolDown") < 1) && ActorIsMonster(0) &&
+		!(	
+			(CheckFlag(0,"BOSS") &&
+			CheckFlag(0,"NOFEAR") &&
+			CheckFlag(0,"NOICEDEATH") &&
+			CheckFlag(0,"NOCLIP") &&
+			CheckFlag(0,"NOTIMEFREEZE"))
+			||
+			(CheckFlag(0,"BOSS") &&
+			CheckFlag(0,"NOFEAR") &&
+			CheckFlag(0,"NOICEDEATH") &&
+			CheckFlag(0,"GHOST") &&
+			CheckFlag(0,"NOTIMEFREEZE"))
+		)
+		&&
+		(GetActorProperty(0,APROP_DamageFactor) > 0.01) &&
+		!CheckActorClass(0,"WolfensteinSS"))
+	{
+		GiveInventory("ExtraBFGAnnihilateCoolDown",1);
+		str itemname = GetActorClass(0);
+		//if(debug)log(s:"Extra_BFGAnnihilate start class: ", s:itemname);
+		delay(1);
+		while(CheckFlag(0,"SOLID") && (CheckInventory("ExtraBFGAnnihilateCoolDown") > 0) && CheckActorClass(0,itemname))
+		{
+			delay(1);
+		}
+		if(ActorIsMonster(0) && (CheckInventory("ExtraBFGAnnihilateCoolDown") > 0) && (GetActorProperty(0,APROP_Health) < 1) && CheckActorClass(0,itemname))
+		{
+			//if(debug)log(s:"Extra_BFGAnnihilate reset class: ", s:itemname);
+			GiveInventory("ExtraAnnihilateResetFlag",1);
+			SetActorProperty(0,APROP_DamageFactor,1.0);
 			int counter = 0;
-			while((counter < 525) && CheckFlag(0,"SOLID"))
-			{
-				counter++;
-				delay(1);
-			}
-			counter = 0;
-			while((counter < 10) && ActorIsMonster(0))
+			while((counter < 10) && !ActorIsPlayer(0) && CheckActorClass(0,itemname))
 			{
 				GiveInventory("ExtraAnnihilateFadeOut",1);
 				counter++;
 				delay(5);
 			}
-			if(ActorIsMonster(0))
+			if(!ActorIsPlayer(0) && CheckActorClass(0,itemname))
 			{
+				//if(debug)log(s:"Extra_BFGAnnihilate goto null");
 				StopSound(0,CHAN_WEAPON);
 				StopSound(0,CHAN_VOICE);
 				StopSound(0,CHAN_ITEM);
@@ -129,28 +385,24 @@ script "ExtraBFG_Annihilate" (void)
 				SetActorState(0,"Null");
 			}
 		}
+		else
+		{
+			//if(debug)log(s:"Extra_BFGAnnihilate false class: ", s:GetActorClass(0),s:", start class: ", s:itemname,s:", ",b:ActorIsMonster(0),b:(CheckInventory("ExtraBFGAnnihilateCoolDown") > 0),b:(GetActorProperty(0,APROP_Health) <= 0),b:CheckActorClass(0,itemname));
+			TakeInventory("ExtraBFGAnnihilateCoolDown",1);
+		}
 	}
 }
-
-script "Extra_FaceToTarget" (void)
+//==============================================================================
+script "Extra_SetPitch" (void)
 {
-	int shooterTID = GetAndSetUniqueTID();
-	int shooterX = GetActorX(0);
-	int shooterY = GetActorY(0);
-	int shooterZ = GetActorZ(0)+(GetActorProperty(0,APROP_Height)/2);
-	if(SetActivator(0,AAPTR_TARGET) == 1)
+	str itemname = GetActorClass(0);
+	While(((GetActorVelX(0) != 0) || (GetActorVelY(0) != 0) || (GetActorVelZ(0) != 0)) && CheckFlag(0,"MISSILE") && CheckActorClass(0,itemname))
 	{
-		int targetX = GetActorX(0);
-		int targetY = GetActorY(0);
-		int targetZ = GetActorZ(0)+(GetActorProperty(0,APROP_Height)/2);
-		int vx = targetX-shooterX;
-		int vy = targetY-shooterY;
-		int vz = targetZ-shooterZ;
-		SetActorPitch(shooterTID,VectorAngle(VectorLength(vx,vy),vz));
-		SetActorAngle(shooterTID,VectorAngle(vx,vy));
+		SetActorPitch(0,VectorAngle(VectorLength(GetActorVelX(0),GetActorVelY(0)),GetActorVelZ(0)));
+		delay(1);
 	}
 }
-
+//==============================================================================
 script "Extra_CheckActorMonster" (void)
 {
 	if(ActorIsMonster(0))
@@ -163,6 +415,18 @@ script "Extra_CheckActorMonster" (void)
 	}
 }
 
+script "Extra_CheckActorPlayer" (void)
+{
+	if(ActorIsPlayer(0))
+	{
+		SetResultValue(1);//player
+	}
+	else
+	{
+		SetResultValue(0);
+	}
+}
+//==============================================================================
 Script "Extra_MedicalBackpack" (void)
 {
 	bool use = false;
@@ -173,19 +437,28 @@ Script "Extra_MedicalBackpack" (void)
 			use = true;
 			PlaySound(0,"MedicalBackpack/Use",CHAN_ITEM);
 		}
-		TakeInventory("HealthBackpack", 1);
+		TakeInventory("HealthBackpack",1);
 		Healthing(1);
 		delay(1);
 	}
 }
 //==============================================================================
 //Music Changer
+script "Extra_MusicChangerSpawner" (int arg2, int arg3, int arg4)
+{
+	int tid = UniqueTID(0,0);
+	SpawnSpotFacingForced("LSDMusicChanger",0,tid);
+	SetThingSpecial(tid,0,0,0,arg2,arg3,arg4);
+}
+
 script "Extra_CoolDownMusicChanger" (void)
 {
-	delay(1);
-	if(MapMusicChangerPulse > 0)MapMusicChangerPulse--;
-	if(MusicChangerPulse > 0)MusicChangerPulse--;
-	restart;
+	while(1)
+	{
+		delay(1);
+		if(MapMusicChangerPulse > 0)MapMusicChangerPulse--;
+		if(MusicChangerPulse > 0)MusicChangerPulse--;
+	}
 }
 
 Script "Extra_PulseMusicChanger" (void)
@@ -201,30 +474,31 @@ Script "Extra_CheckMusicChanger" (void)
 	if(MapMusicChangerPulse < 1)
 	{
 		SetUserVariable(0,"user_music",0);
+		TakeInventory("ExtraMusicScriptRun",INT_MAX);
 	}
 }
 
 Script "Extra_StartMusic" (int mNum, int priority)
 {
-	if(ActorIsAlive(0) && (CheckInventory("ExtraMusicScriptRun") < 1))
+	if(isAlive(0) && (CheckInventory("ExtraMusicScriptRun") < 1))
 	{
-		GiveInventory("ExtraMusicScriptRun",random(1,INT_MAX));
+		GiveInventory("ExtraMusicScriptRun",1);
 		int CheckNum = CheckInventory("ExtraMusicScriptRun");
 		if(mNum >= 0)
 		{
-			while(ActorIsAlive(0) && (CheckInventory("ExtraMusicScriptRun") == CheckNum))//Ожидание старта.
+			str MonsterName = GetActorClass(0);
+			while(isAlive(0) && (CheckInventory("ExtraMusicScriptRun") == CheckNum) && (CheckNum > 0) && CheckActorClass(0,MonsterName))//Ожидание старта.
 			{
 				if(MusicChangerPulse < 1)
 				{
 					Music_priority = 0;
 				}
-				if(ActorIsAlive(0) && (GetUservariable(0,"user_music") == 0) && (Music_priority < priority))
+				if(isAlive(0) && (GetUservariable(0,"user_music") < 1) && (Music_priority < priority))
 				{
 					SetUserVariable(0,"user_music",1);
 					Music_priority = priority;
-					priority++;
 					//Цикл уменьшения громкости предыдущего трека.
-					while((MusicNumPlaying != mNum) && (MusicVolume >= 0.015625) && ActorIsAlive(0) && (GetUservariable(0,"user_music") == 1) && (Music_priority < priority) && (CheckInventory("ExtraMusicScriptRun") == CheckNum))
+					while((MusicNumPlaying != mNum) && (MusicVolume >= 0.015625) && ActorIsAlive(0) && (GetUservariable(0,"user_music") > 0) && (Music_priority <= priority) && (CheckInventory("ExtraMusicScriptRun") == CheckNum) && (CheckNum > 0) && CheckActorClass(0,MonsterName))
 					{
 						if(MusicChangerPulse != 350)
 						{
@@ -235,7 +509,7 @@ Script "Extra_StartMusic" (int mNum, int priority)
 						delay(1);
 					}
 					//Цикл форсирования трека.
-					while(ActorIsAlive(0) && (GetUservariable(0,"user_music") == 1) && (Music_priority < priority) && (CheckInventory("ExtraMusicScriptRun") == CheckNum))
+					while(isAlive(0) && (GetUservariable(0,"user_music") > 0) && (Music_priority <= priority) && (CheckInventory("ExtraMusicScriptRun") == CheckNum) && (CheckNum > 0) && CheckActorClass(0,MonsterName))
 					{
 						if(MusicChangerPulse != 350)
 						{
@@ -246,22 +520,26 @@ Script "Extra_StartMusic" (int mNum, int priority)
 						ACS_NamedExecuteWithResult("Extra_StartMusicCS",mNum,MusicVolume);
 						delay(35);
 					}
-					if(CheckInventory("ExtraMusicScriptRun") == CheckNum)
+					if((CheckInventory("ExtraMusicScriptRun") == CheckNum) && (CheckNum > 0) && CheckActorClass(0,MonsterName))
 					{
-						if(!ActorIsAlive(0))
+						if(!isAlive(0))
 						{
 							MusicNumPlaying = -1;
 							MusicVolume = 1.0;
 							ACS_NamedExecuteWithResult("Extra_StopMusicCS",MusicVolume);
 							Music_priority = 0;
 						}
-						SetUserVariable(0,"user_music",0);
+						//if(GetCVAR("Extra_debug"))log(s:"Extra_StartMusic: stop force music");
+						break;
+					}
+					else if(CheckActorClass(0,MonsterName))
+					{
+						//if(GetCVAR("Extra_debug"))log(s:"Extra_StartMusic: CheckNum false");
 						break;
 					}
 					else
 					{
-						if(GetCVAR("Extra_debug"))log(s:"Extra_StartMusic CheckNum false");
-						SetUserVariable(0,"user_music",0);
+						if(GetCVAR("Extra_debug"))log(s:"Extra_StartMusic: activator false");
 						break;
 					}
 				}
@@ -313,9 +591,169 @@ Script "Extra_StopMusicCS" (int Volume) CLIENTSIDE//set default music
 	}
 }
 //==============================================================================
+Script "Extra_SomeDies" KILL
+{
+	if(ActorIsMonster(0))
+	{
+		if((StrICmp(Strparam(l:"Item412026"),"0") == 0) && !((CheckFlag(0,"FLOAT") && CheckFlag(0,"DONTFALL")) || CheckFlag(0,"FRIENDLY") || CheckFlag(0,"STANDSTILL") || CheckFlag(0,"PUSHABLE") || CheckFlag(0,"DONTDRAIN") || CheckFlag(0,"NOBLOCKMAP") || CheckFlag(0,"NOTONAUTOMAP") || CheckFlag(0,"SERVERSIDEONLY")))
+		{
+			if(GetActorProperty(0,APROP_SpawnHealth) < 1000)
+			{
+				DropItem(0,"Extra_Bonus1",1,clamp(GetCvar("extra_chansetoken1"),1,256));
+			}
+			else
+			{
+				DropItem(0,"Extra_Bonus2",5,clamp(GetCvar("extra_chansetoken2"),1,256));
+			}
+		}
+	}
+}
+
+script "Extra_FoodUnit" (void)
+{
+	int Health = GetActorProperty(0,APROP_Health);
+	if(Health < 100)
+	{
+		int bonus1 = CheckInventory("Extra_Bonus1");
+		int bonus2 = CheckInventory("Extra_Bonus2");
+		if(!(StrICmp(Strparam(l:"Item412026"),"0") == 0) && !((bonus1 > 0) || (bonus2 > 0)))
+		{
+			int score = GetActorProperty(0,APROP_Score);
+			bonus1 = (clamp(score,0,1000) % 100) / 10;
+			bonus2 = (clamp(score,0,1000) % 1000) / 100;
+			SetActorProperty(0,APROP_Score,score-(bonus1*10)-(bonus2*100));
+		}
+		if((bonus1 > 0) || (bonus2 > 0))
+		{
+			int give;
+			if(Health <= 50)
+			{
+				if(bonus2 > 0)
+				{
+					give = 25;
+					TakeInventory("Extra_Bonus2",1);
+				}
+				else if(bonus1 > 0)
+				{
+					give = 10;
+					TakeInventory("Extra_Bonus1",1);
+				}
+				GiveInventory("Health",clamp(give,0,100-Health));
+				PlaySound(0,"foodunit/give",CHAN_ITEM);
+			}
+			else
+			{
+				if(bonus1 > 0)
+				{
+					give = 10;
+					TakeInventory("Extra_Bonus1",1);
+				}
+				else if(bonus2 > 0)
+				{
+					give = 25;
+					TakeInventory("Extra_Bonus2",1);
+				}
+				GiveInventory("Health",clamp(give,0,100-Health));
+				PlaySound(0,"foodunit/give",CHAN_ITEM);
+			}
+		}
+		else
+		{
+			PlaySound(0,"foodunit/nonetoken",CHAN_ITEM);
+		}
+		delay(23);
+	}
+	else
+	{
+		PlaySound(0,"foodunit/idle",CHAN_ITEM);
+	}
+}
+//==============================================================================
+script "Extra_HealthChamber" (int tag, int tid_sound_actor, int MaxHealth)
+{
+	if((tag != 0) && (tid_sound_actor != 0) && (CheckInventory("ExtraHealthChamberCoolDown") < 1))
+	{
+		GiveInventory("ExtraHealthChamberCoolDown",1);
+		MaxHealth = clamp(MaxHealth,100,32767);
+		str itemname = GetActorClass(0);
+		Delay(35);
+		PlaySound(tid_sound_actor,"HealthChamber/Activated",CHAN_VOICE);
+		Print(s:"Health chamber activated.");
+		while((DistToTarg(0,tid_sound_actor,true) < 256) && CheckSight(0,tid_sound_actor,0) && (ThingCountNameSector(itemname,0,tag) > 0) && (GetActorProperty(0,APROP_Health) < MaxHealth) && (ClassifyActor(0) & ACTOR_ALIVE) && CheckActorClass(0,itemname) && (CheckInventory("ExtraHealthChamberCoolDown") > 0))
+		{
+			HealThing(5,MaxHealth);
+			GiveInventory("ExtraHealthChamberCoolDown",1);
+			delay(35);
+		}
+	}
+}
+
+script "Extra_ArmorChamber" (int tag, int tid_sound_actor, int MaxArmor)
+{
+	if((tag != 0) && (tid_sound_actor != 0) && (CheckInventory("ExtraArmorChamberCoolDown") < 1))
+	{
+		GiveInventory("ExtraArmorChamberCoolDown",1);
+		if(CheckInventory("BasicArmor") > 0)
+		{
+			MaxArmor = clamp(MaxArmor,100,32767);
+			str itemname = GetActorClass(0);
+			Delay(35);
+			PlaySound(tid_sound_actor,"ArmorChamber/Activated",CHAN_VOICE);
+			Print(s:"Armor repair chamber activated.");
+			int count = 0;
+			while((DistToTarg(0,tid_sound_actor,true) < 256) && CheckSight(0,tid_sound_actor,0) && (ThingCountNameSector(itemname,0,tag) > 0) && (CheckInventory("BasicArmor") < MaxArmor) && (ClassifyActor(0) & ACTOR_ALIVE) && CheckActorClass(0,itemname) && (CheckInventory("ExtraArmorChamberCoolDown") > 0))
+			{
+				GiveInventory("Extra_RepairedArmor",1);
+				if(count == 0)GiveInventory("ExtraArmorChamberCoolDown",1);
+				delay(7);
+				count = (count + 1) % 5;
+			}
+		}
+		else
+		{
+			Print(s:"No armor detected.");
+		}
+	}
+}
+//==============================================================================
+script "Extra_GivePowerups" (int tid, int mode)
+{
+	if(ActorIsExists(tid))
+	{
+		switch(mode)
+		{
+			case 1://Monster Shield
+				GiveActorInventory(tid,"Extra_ShieldSphereGiver",1);
+				break;
+			case 2://Monster Damage
+				GiveActorInventory(tid,"Extra_PowerSphereGiver",1);
+				break;
+		}
+	}
+}
+//==============================================================================
+//Ammo spawners
+script "Extra_CellPackSpawner" (int spot_tid)
+{
+	if((spot_tid != 0) && ActorIsExists(spot_tid))
+	{
+		SpawnSpotFacingForced("ExtraCellPackSpawner",spot_tid,0);
+	}
+}
+//==============================================================================
 Script "Extra_OPEN" OPEN
 {
-	ACS_NamedExecuteAlways("Extra_CoolDownMusicChanger",0);
+	ACS_NamedExecute("Extra_CoolDownMusicChanger",0);
+}
+
+Script "LSD_SetCVarVanillamode" OPEN CLIENTSIDE
+{
+	int p_num = ConsolePlayerNumber();
+	delay(35+(p_num/4));
+	if(!PlayerIsBot(p_num))
+	{
+		if((!IsGameTypeSinglePlayer()) && (!PlayerInGame(ConsolePlayerNumber())))SetUserCVar(ConsolePlayerNumber(),"extra_localmusic",0);
+	}
 }
 
 script "Extra_Enter" ENTER
@@ -324,6 +762,12 @@ script "Extra_Enter" ENTER
 	delay(5*35);
 	SetPlayerProperty(0, OFF, PROP_NOTARGET);
 }
+
+/*script "Extra_EnterTest" ENTER
+{
+	delay(1+PlayerNumber());
+	if(GetCVAR("Extra_debug"))GiveInventory("BFG100500",1);
+}*/
 
 script "Extra_Respawn" RESPAWN
 {
