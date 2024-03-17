@@ -301,3 +301,8 @@ map MAP30 "BFG Laboratory"
 	ExitPic = INTER1
 	InterMusic = interm01
 }
+
+gameinfo
+{
+ForceKillScripts = true
+}

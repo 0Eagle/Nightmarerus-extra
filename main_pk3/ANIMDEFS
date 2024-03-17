@@ -40,6 +40,12 @@ flat fan1
 	pic fan2 tics 1
 	pic fan3 tics 1
 	pic fan4 tics 1
+	
+flat TSFA_01
+	pic TSFA_01 tics 1
+	pic TSFA_02 tics 1
+	pic TSFA_03 tics 1
+	pic TSFA_04 tics 1
 
 flat flava1
 	pic flava1 tics 8
@@ -134,6 +140,8 @@ warp flat wqlava
 cameratexture	camtx64 	384 384		fit	64 64
 cameratexture	camtx128	384 384		fit	128 128
 cameratexture 	CAMTEX1 	640 480 	fit 128 72
+cameratexture 	CAMTEX2 	640 480 	fit 72 44
+cameratexture 	CAMTEX3 	640 480 	fit 72 44
 
 //===============
 // Switch Sounds

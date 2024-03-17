@@ -1,0 +1,13 @@
+:Doorsashes1
+	door 11
+	play			sashes/start
+	playrepeat		sashes/mid
+	stopsound		sashes/stop
+end
+
+:Doorsashes2
+	door 12
+	playuntildone	sashes2/start
+	playrepeat		sashes2/mid
+	stopsound		sashes2/stop
+end

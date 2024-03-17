@@ -1,4 +1,11 @@
-//Brightmaps
+//Tesla Coil
+brightmap SPRITE TESLC0 { map "Brightmaps/BMTESLC0.png" DISABLEFULLBRIGHT }
+
+//BFG
+brightmap SPRITE XFGGB0 { map "Brightmaps/BMXFGGB0.png" DISABLEFULLBRIGHT }
+brightmap SPRITE XFGGC0 { map "Brightmaps/BMXFGGC0.png" DISABLEFULLBRIGHT }
+
+//Doors key lock
 brightmap texture DOORBRN { map "Brightmaps/BMTEKLOK.png" }
 brightmap texture DOORBLK { map "Brightmaps/BMTEKLOK.png" }
 brightmap texture DOORGRN { map "Brightmaps/BMTEKLOK.png" }
@@ -11,6 +18,7 @@ brightmap texture DOORWHT { map "Brightmaps/BMTEKLOK.png" }
 brightmap texture EWAL001A { map "Brightmaps/BMEWAL001A.png" }
 brightmap texture EWAL002B { map "Brightmaps/BMEWAL002B.png" }
 
+//Textures
 brightmap texture NLTBLUE1 { map "Brightmaps/BMNLTBLUE1.png" }
 brightmap texture NLTBLUE2 { map "Brightmaps/BMNLTBLUE2.png" }
 brightmap texture NLTBLUE3 { map "Brightmaps/BMNLTBLUE3.png" }
@@ -34,3 +42,5 @@ brightmap texture NLTYEL1 { map "Brightmaps/BMNLTYEL1.png" }
 brightmap texture NLTYEL2 { map "Brightmaps/BMNLTYEL2.png" }
 brightmap texture NLTYEL3 { map "Brightmaps/BMNLTYEL3.png" }
 brightmap texture NLTYEL4 { map "Brightmaps/BMNLTYEL4.png" }
+brightmap texture FOODUNT1 { map "Brightmaps/BMFOODUNT1.png" }
+brightmap texture FOODUNT2 { map "Brightmaps/BMFOODUNT2.png" }

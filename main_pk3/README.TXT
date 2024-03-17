@@ -80,3 +80,30 @@ Bubbles
 
 Decorate: Captain Toenail
 Sprites: CroTeam
+
+
+TeslaCoil
+
+Decorate: Eagle
+GLDefs: Eagle
+Sounds: Freesound.org (kev_durr, InspectorJ, DominikBraun, JavierZumer)
+Sprites: Id Software, Raven
+Sprite Edit: Captain Toenail
+
+
+BFG 100500
+
+Decorate: Eagle
+ACS: Eagle
+GLDefs: Eagle
+Sounds: Id Software
+Sprites: Id Software, Midway Games
+Sprite Edit: Eagle
+
+
+NuclearMissileLauncher
+
+Decorate: Eagle
+ACS: Eagle
+Sprites: 3D Realms
+Sounds: Epic Megagames (UT)

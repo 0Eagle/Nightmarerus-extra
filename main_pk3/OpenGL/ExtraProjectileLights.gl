@@ -48,14 +48,52 @@ OffSet 0 0 0
 Size 32
 }
 
+flickerlight Extra_NUKEROCKET
+{
+color 0.5 0.35 0.0
+size 40
+SecondarySize 56
+Chance 0.2
+}
+
+pointlight Extra_NUKEROCKET_X0
+{
+color 1.0 0.7 0.0
+size 56
+}
+
+flickerlight Extra_NUKEROCKET_X1
+{
+color 1.0 0.7 0.0
+size 64
+secondarySize 72
+chance 0.3
+}
+
+flickerlight Extra_NUKEROCKET_X2
+{
+color 0.5 0.1 0.0
+size 80
+secondarySize 88
+chance 0.3
+}
+
+flickerlight Extra_NUKEROCKET_X3
+{
+color 0.3 0.0 0.0
+size 96
+secondarySize 104
+chance 0.3
+}
+
 OBJECT ExtraBFGBall
 {
-Frame CGS1 { Light ExtraBall1 }
+Frame EGS2 { Light ExtraBall1 }
 }
 
 OBJECT ExtraBFGBall2
 {
-Frame CGS1 { Light ExtraBall1 }
+Frame EGS2 { Light ExtraBall1 }
 }
 
 OBJECT ExtraBFGEx
@@ -66,4 +104,46 @@ Frame EGE2C { Light ExtraBallExplode3 }
 Frame EGE2D { Light ExtraBallExplode4 }
 Frame EGE2E { Light ExtraBallExplode5 }
 Frame EGE2F { Light ExtraBallExplode6 }
+}
+
+object Extra_NuclearMissileShot
+{
+frame NKS3 { light Extra_NUKEROCKET }
+}
+
+object Extra_NuclearMissileEx
+{
+frame NKE3A { light Extra_NUKEROCKET_X0 }
+frame NKE3B { light Extra_NUKEROCKET_X3 }
+frame NKE3C { light Extra_NUKEROCKET_X3 }
+frame NKE3D { light Extra_NUKEROCKET_X3 }
+frame NKE3E { light Extra_NUKEROCKET_X3 }
+frame NKE3F { light Extra_NUKEROCKET_X2 }
+frame NKE3G { light Extra_NUKEROCKET_X2 }
+frame NKE3H { light Extra_NUKEROCKET_X2 }
+frame NKE3I { light Extra_NUKEROCKET_X2 }
+frame NKE3J { light Extra_NUKEROCKET_X1 }
+frame NKE3K { light Extra_NUKEROCKET_X1 }
+frame NKE3L { light Extra_NUKEROCKET_X1 }
+frame NKE3M { light Extra_NUKEROCKET_X1 }
+frame NKE3N { light Extra_NUKEROCKET_X0 }
+frame NKE3O { light Extra_NUKEROCKET_X0 }
+frame NKE3P { light Extra_NUKEROCKET_X0 }
+frame NKE3Q { light Extra_NUKEROCKET_X0 }
+}
+
+object Extra_NukeFire
+{
+frame NKFR { light Extra_NUKEROCKET_X0 }
+}
+
+object Extra_NukeExplosionGenerator
+{
+frame ROKE { light Extra_NUKEROCKET_X0 }
+}
+
+object Extra_NukeWall
+{
+frame FLWS { light Extra_NUKEROCKET_X0 }
+frame FLWE { light Extra_NUKEROCKET_X1 }
 }

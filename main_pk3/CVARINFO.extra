@@ -1,3 +1,5 @@
 SERVER noarchive bool extra_debug = FALSE;
+SERVER noarchive int extra_chansetoken1 = 64;
+SERVER noarchive int extra_chansetoken2 = 160;
 USER noarchive bool extra_localmusic = FALSE;
 USER bool extra_music = TRUE;

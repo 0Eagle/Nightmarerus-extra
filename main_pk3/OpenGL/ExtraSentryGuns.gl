@@ -1,16 +1,13 @@
-Object ExtraCeilingTurret
+flickerlight2 ExtraCeilingTurret_Light
 {
-Frame TURTB { light ZOMBIEATK }
-Frame TURTD { light ZOMBIEATK }
+color 1.0 0.8 0.2
+size 48
+secondarySize 56
+interval 1
+offset 0 0 0
 }
 
-object ExtraCeilingTurretBulletPuff
-{
-Frame PUFFA { Light SentryGunPuffLight }
-Frame PUFFB { Light SentryGunPuffLight }
-}
-
-flickerlight2 SentryGunAttackLight1
+flickerlight2 ExtraSentryGunAttack_Light
 {
 color 1.0 0.8 0.2
 size 48
@@ -19,12 +16,7 @@ interval 1
 offset 0 40 0
 }
 
-Object SentryGun
-{
-Frame SENTB { light SentryGunAttackLight1 }
-}
-
-FLICKERLIGHT SentryGunPuffLight
+flickerlight ExtraSentryGunPuff_Light
 {
 Color 0.8 0.6 0
 OffSet 0 0 0
@@ -32,20 +24,13 @@ Size 6
 SecondarySize 8
 Chance 0.3
 }
-
-object SentryGunBulletPuff
-{
-Frame PUFFA { Light SentryGunPuffLight }
-Frame PUFFB { Light SentryGunPuffLight }
-}
-
-pointlight SentryGunBoom1
+pointlight ExtraSentryGunBoom1
 {
 color 1.0 0.7 0.0
 size 56
 }
 
-flickerlight SentryGunBoom2
+flickerlight ExtraSentryGunBoom2
 {
 color 1.0 0.7 0.0
 size 64
@@ -53,7 +38,7 @@ secondarySize 72
 chance 0.3
 }
 
-flickerlight SentryGunBoom3
+flickerlight ExtraSentryGunBoom3
 {
 color 0.5 0.1 0.0
 size 80
@@ -61,7 +46,7 @@ secondarySize 88
 chance 0.3
 }
 
-flickerlight SentryGunBoom4
+flickerlight ExtraSentryGunBoom4
 {
 color 0.3 0.0 0.0
 size 96
@@ -69,10 +54,69 @@ secondarySize 104
 chance 0.3
 }
 
-object SentryBoom
+flickerlight Extra_BulletPuff_Light1
 {
-Frame XPL1A { light SentryGunBoom1 }
-Frame XPL1B { light SentryGunBoom2 }
-Frame XPL1C { light SentryGunBoom3 }
-Frame XPL1D { light SentryGunBoom4 }
+color 0.5 0.5 0.0
+size 6
+secondarySize 8
+chance 0.8
+}
+
+flickerlight Extra_BulletPuff_Light2
+{
+color 0.5 0.5 0.0
+size 3
+secondarySize 4
+chance 0.8
+}
+
+FlickerLight TeslaCoilAttack_Light
+{
+Color 0 0 0.8
+Size 46
+SecondarySize 62
+Chance 0.2
+offset 0 48 0
+}
+
+pointlight Extra_TeslaZapper_Light
+{
+color 0 0 0.8
+size 24
+}
+
+Object ExtraCeilingTurret
+{
+Frame TURTB { light ExtraCeilingTurret_Light }
+Frame TURTD { light ExtraCeilingTurret_Light }
+}
+
+Object SentryGun
+{
+Frame SENTB { light ExtraSentryGunAttack_Light }
+}
+
+object ExtraSentryBoom
+{
+Frame XPL1A { light ExtraSentryGunBoom1 }
+Frame XPL1B { light ExtraSentryGunBoom2 }
+Frame XPL1C { light ExtraSentryGunBoom3 }
+Frame XPL1D { light ExtraSentryGunBoom4 }
+}
+
+object Extra_BulletPuff
+{
+frame XBP0A { light Extra_BulletPuff_Light1 }
+frame XBP0B { light Extra_BulletPuff_Light2 }
+}
+
+object Extra_TeslaCoil
+{
+frame TESLC { light TeslaCoilAttack_Light }
+}
+
+object Extra_TeslaZapperPuff
+{
+frame XBP0A { light Extra_TeslaZapper_Light }
+frame XBP0B { light Extra_TeslaZapper_Light }
 }
