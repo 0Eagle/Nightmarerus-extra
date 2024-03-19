@@ -287,7 +287,7 @@ States
 	{
 	Spawn:
 		TNT1 A 0 Nodelay A_TransferPointer(AAPTR_TARGET,AAPTR_DEFAULT,AAPTR_TRACER,AAPTR_MASTER,PTROP_NOSAFEGUARDS)
-		TNT1 A 5 ACS_NamedExecuteAlways("LSD_BFGRayAttack",0)
+		TNT1 A 5 ACS_NamedExecuteAlways("Extra_BFGRayAttack",0)
 		Stop
 	Attack:
 		TNT1 A 1 A_CustomMissile("Extra_BFGRayBlast",1,0,angle,CMF_TRACKOWNER|CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH,pitch)
@@ -404,7 +404,7 @@ States
 	{
 	Spawn:
 		TNT1 A 0 Nodelay A_TransferPointer(AAPTR_TARGET,AAPTR_DEFAULT,AAPTR_TRACER,AAPTR_MASTER,PTROP_NOSAFEGUARDS)
-		TNT1 A 5 ACS_NamedExecuteAlways("LSD_BFGShockwaveAttack",0)
+		TNT1 A 5 ACS_NamedExecuteAlways("Extra_BFGShockwaveAttack",0)
 		Stop
 	Attack:
 		TNT1 A 1 A_CustomMissile("Extra_BFGTracerBlast",1,0,angle,CMF_TRACKOWNER|CMF_ABSOLUTEANGLE|CMF_ABSOLUTEPITCH,pitch)

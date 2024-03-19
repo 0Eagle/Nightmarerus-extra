@@ -164,7 +164,7 @@ function int DistToTargetPtr(int tid, int ptr, int useZ)
 }
 
 //fixed angle, fixed pitch, fixed speed.
-function int LSDSpawnProjectile(int shooter_tid, str name, int angle, int pitch, int speed, int mass)
+function int ExtraSpawnProjectile(int shooter_tid, str name, int angle, int pitch, int speed, int mass)
 {
 	angle = angle % 1.0;
 	mass = clamp(mass,0,SHORT_MAX);
@@ -237,17 +237,8 @@ script "Extra_GetTID" (void)
 
 script "Extra_SetupItem" (void)
 {
-	str name;
-	if(StrICmp(Strparam(l:"Item412026"),"0") == 0)
-	{
-		name = Strparam(l:"EXTRA_SENTRYGUNBOX_NAME");
-	}
-	else
-	{
-		name = Strparam(l:"EXTERNAL_SENTRYGUNBOX_NAME");
-	}
 	int tid = GetUserVariable(0,"user_tid");
-	if((tid != 0) && !(ActorIsMonster(tid) || ActorIsPlayer(tid)) && CheckActorClass(tid,name))
+	if((tid != 0) && !(ActorIsMonster(tid) || ActorIsPlayer(tid)) && ActorIsExists(tid))
 	{
 		GiveActorInventory(tid,"ExtraResetFlagDROPPED",1);
 	}
@@ -257,7 +248,7 @@ script "Extra_BFGRaySetup" (void)
 {
 	str ShooterSpecies = GetActorProperty(0,APROP_Species);
 	bool friendliness = GetActorProperty(0,APROP_Friendly);
-	int BallSeeTID = LSDSpawnProjectile(0,"Extra_BFGSee",GetActorAngle(0),0,0,0);
+	int BallSeeTID = ExtraSpawnProjectile(0,"Extra_BFGSee",GetActorAngle(0),0,0,0);
 	if((BallSeeTID > 0) && (SetActivator(BallSeeTID) == 1))//Актор поиска целей.
 	{
 		SetPointer(AAPTR_MASTER,0,AAPTR_TARGET);
@@ -268,7 +259,7 @@ script "Extra_BFGRaySetup" (void)
 	}
 }
 
-script "LSD_BFGRayAttack" (void)
+script "Extra_BFGRayAttack" (void)
 {
 	int PuffTID = GetAndSetUniqueTID();
 	if(SetActivator(0,AAPTR_TARGET) == 1)
@@ -296,7 +287,7 @@ script "Extra_BFGShockwaveSetup" (void)
 {
 	str ShooterSpecies = GetActorProperty(0,APROP_Species);
 	bool friendliness = GetActorProperty(0,APROP_Friendly);
-	int BallShockwaveTID = LSDSpawnProjectile(0,"Extra_BFGShockwave",GetActorAngle(0),0,0,0);
+	int BallShockwaveTID = ExtraSpawnProjectile(0,"Extra_BFGShockwave",GetActorAngle(0),0,0,0);
 	if((BallShockwaveTID > 0) && (SetActivator(BallShockwaveTID) == 1))//Актор поиска целей.
 	{
 		SetPointer(AAPTR_MASTER,0,AAPTR_TARGET);
@@ -307,7 +298,7 @@ script "Extra_BFGShockwaveSetup" (void)
 	}
 }
 
-script "LSD_BFGShockwaveAttack" (void)
+script "Extra_BFGShockwaveAttack" (void)
 {
 	int PuffTID = GetAndSetUniqueTID();
 	if(SetActivator(0,AAPTR_TARGET) == 1)
@@ -746,7 +737,7 @@ Script "Extra_OPEN" OPEN
 	ACS_NamedExecute("Extra_CoolDownMusicChanger",0);
 }
 
-Script "LSD_SetCVarVanillamode" OPEN CLIENTSIDE
+Script "Extra_OPENCLIENTSIDE" OPEN CLIENTSIDE
 {
 	int p_num = ConsolePlayerNumber();
 	delay(35+(p_num/4));
@@ -762,12 +753,6 @@ script "Extra_Enter" ENTER
 	delay(5*35);
 	SetPlayerProperty(0, OFF, PROP_NOTARGET);
 }
-
-/*script "Extra_EnterTest" ENTER
-{
-	delay(1+PlayerNumber());
-	if(GetCVAR("Extra_debug"))GiveInventory("BFG100500",1);
-}*/
 
 script "Extra_Respawn" RESPAWN
 {
