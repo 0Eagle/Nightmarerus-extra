@@ -855,14 +855,15 @@ States
 		Loop
 	Fire:
 		XFGG A 20 A_BFGSound
-		XFGG B 10 A_GunFlash
+		XFGG B 10 A_GunFlash("Flash")
 		XFGG B 10 A_FireCustomMissile("ExtraBFGBall",0,1)
 		XFGG B 20 A_ReFire
 		Goto Ready
 	Flash:
 		XFGF A 11 Bright A_Light1
 		XFGF B 6 Bright A_Light2
-		Goto LightDone
+		TNT1 A 1 A_Light0
+		Stop
 	}
 }
 //==============================================================================
