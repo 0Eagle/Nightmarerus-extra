@@ -435,10 +435,13 @@ Actor Extra_Bonus1 : Inventory
 {
 Height 8
 Radius 8
++INVENTORY.INVBAR
 Inventory.Amount 1
 Inventory.MaxAmount 32767
 Inventory.InterHubAmount 0
 Inventory.PickupMessage "You picked up a food token!"
+Inventory.Icon "FDT1B0"
+Tag "Food token"
 States
 	{
 	Spawn:
@@ -451,6 +454,7 @@ States
 
 Actor Extra_Bonus2 : Extra_Bonus1
 {
+Inventory.Icon "FDT2B0"
 States
 	{
 	Spawn:
@@ -540,7 +544,6 @@ Actor Extra_RuneDrain : PowerDrain
 Powerup.Strength 0.5
 Powerup.duration 2147483645
 }
-
 Actor Extra_RuneRegeneration : PowerRegeneration
 {
 +NOTIMEFREEZE
@@ -585,7 +588,6 @@ Actor Extra_RuneSpeed25 : PowerSpeed
 Speed 2
 Powerup.duration 2147483645
 }
-
 Actor Extra_RuneIncreaseDamage : PowerDamage
 {
 +NOTIMEFREEZE
@@ -597,7 +599,6 @@ Actor Extra_RuneIncreaseDamage : PowerDamage
 Powerup.duration 2147483645
 DamageFactor "Normal", 2
 }
-
 Actor Extra_RuneHalfDamage : PowerProtection
 {
 +NOTIMEFREEZE
@@ -610,7 +611,6 @@ Powerup.duration 2147483645
 DamageFactor "Normal", 0.5
 ActiveSound "Extra_Rune/Protection"
 }
-
 Actor Extra_RuneDoubleFiringSpeed : PowerDoubleFiringSpeed
 {
 +NOTIMEFREEZE
