@@ -143,6 +143,7 @@ RenderStyle None
 +THRUACTORS
 +NOINTERACTION
 +NOTONAUTOMAP
++NOKILLSCRIPTS
 +SERVERSIDEONLY
 var int user_angle;
 States
@@ -206,6 +207,7 @@ ReactionTime 10
 +NOTONAUTOMAP
 +DONTHARMSPECIES
 +DONTHARMCLASS
++NOKILLSCRIPTS
 Species "SS"
 Obituary "%o was irradiated by a BFG 100500."
 Tag "Extra BFG"
@@ -353,6 +355,7 @@ ReactionTime 24
 +NOTONAUTOMAP
 +DONTHARMSPECIES
 +DONTHARMCLASS
++NOKILLSCRIPTS
 Species "SS"
 Obituary "%o was irradiated by a BFG 100500."
 Tag "Extra BFG"
